@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  numero: 1
+  letra: 
+  tipo: 1
+  pasada: 1
+  preferen: 1
+  fechapref: 2012-03-28
+  fechasol: 2012-03-28
+  tratado: 1
+
+two:
+  numero: 1
+  letra: 
+  tipo: 1
+  pasada: 1
+  preferen: 1
+  fechapref: 2012-03-28
+  fechasol: 2012-03-28
+  tratado: 1

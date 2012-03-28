@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codigo: 1
+  nombre: MyString
+  sexo: 
+  bloque: MyString
+  bloquea1: MyString
+  bloquea2: MyString
+  bloquea3: MyString
+  direccion: MyString
+  telefono: MyString
+  localidad: MyString
+  cp: MyString
+  inicio: 2012-03-28
+  fin: 2012-03-28
+  profesion: MyString
+  foto: MyString
+  mc: 1
+  peri1: 1
+  peri2: 1
+  peri3: 1
+  peri4: 1
+  feci1: 2012-03-28
+  fecs1: 2012-03-28
+  fecs2: 2012-03-28
+
+two:
+  codigo: 1
+  nombre: MyString
+  sexo: 
+  bloque: MyString
+  bloquea1: MyString
+  bloquea2: MyString
+  bloquea3: MyString
+  direccion: MyString
+  telefono: MyString
+  localidad: MyString
+  cp: MyString
+  inicio: 2012-03-28
+  fin: 2012-03-28
+  profesion: MyString
+  foto: MyString
+  mc: 1
+  peri1: 1
+  peri2: 1
+  peri3: 1
+  peri4: 1
+  feci1: 2012-03-28
+  fecs1: 2012-03-28
+  fecs2: 2012-03-28
