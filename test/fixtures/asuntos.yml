@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  numero: 1
+  letra: MyString
+  tipo: 
+  pasada: 1
+  asunentr: 1
+  fechasen: 2012-03-28
+  numreunion: 1
+  numsesion: 1
+  asunto: 
+  comision1: 1
+  comision2: 1
+  comision3: 1
+  comision4: 1
+  comision5: 1
+  comsion6: 1
+
+two:
+  numero: 1
+  letra: MyString
+  tipo: 
+  pasada: 1
+  asunentr: 1
+  fechasen: 2012-03-28
+  numreunion: 1
+  numsesion: 1
+  asunto: 
+  comision1: 1
+  comision2: 1
+  comision3: 1
+  comision4: 1
+  comision5: 1
+  comsion6: 1
