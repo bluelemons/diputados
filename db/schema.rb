@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20120328132041) do
 
   create_table "finals", :force => true do |t|
     t.integer  "numero"
-    t.string   "letra"
+    t.string   "letra",      :limit => 3
     t.integer  "tipo"
     t.integer  "pasada"
     t.integer  "nota"

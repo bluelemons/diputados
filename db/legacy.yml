@@ -1,0 +1,10 @@
+expedientes:
+  modelo: Expediente
+  legacy: proyecto.dbf
+  tabla: expedientes
+
+finals:
+  modelo: Final
+  legacy: final.dbf
+  tabla: finals
+

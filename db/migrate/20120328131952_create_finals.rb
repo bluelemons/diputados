@@ -7,7 +7,7 @@ class CreateFinals < ActiveRecord::Migration
   def change
     create_table :finals do |t|
       t.integer :numero
-      t.string :letra
+      t.string :letra, :limit => 3
       t.integer :tipo
       t.integer :pasada
       t.integer :nota
@@ -27,18 +27,6 @@ class CreateFinals < ActiveRecord::Migration
 
       t.timestamps
     end
-    table = DBF::Table.new('db/legacy/final.dbf')
-    table.encoding = "cp1252"
-    # TODO: podría ser otro el encoding correspondiente
-    # la lista: https://github.com/infused/dbf/blob/master/lib/dbf/encodings.yml
-
-    say_with_time "migrando expedientes" do
-      Final.reset_column_information
-      table.each do |record|
-        attributes = record.attributes.select { |k,v| k =~ /^[a-z]*$/ }
-        Final.create!(attributes)
-      end
-      Final.all.count
-    end
   end
 end
+
