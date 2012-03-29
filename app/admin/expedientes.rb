@@ -1,5 +1,7 @@
 ActiveAdmin.register Expediente do
 
+  actions  :index, :show
+
   filter :numero
   filter :tipo
   filter :letra
@@ -14,6 +16,7 @@ ActiveAdmin.register Expediente do
     column :letra
     column :pasada
     column :fechaentr
+    default_actions
   end
 
 end
