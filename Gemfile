@@ -6,6 +6,10 @@ gem 'rails-i18n'
 
 gem 'mysql2'
 
+group :production do
+  gem 'thin'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
