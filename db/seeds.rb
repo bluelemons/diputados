@@ -1,23 +1,36 @@
+# encoding: UTF-8
 require 'yaml'
 require 'benchmark'
 require 'dbf'
 
-config_file = File.join("db","legacy.yml")
-legacy_configs = YAML.load(File.open(config_file))
+legacy_tables = YAML.load(File.open(File.join("db","legacy.yml")))
 
-def seed_from_foxpro(tabla, detalles)
-  modelo = Object.const_get detalles["modelo"]
-  modelo.delete_all
-  legacy_table = DBF::Table.new("db/legacy/#{detalles['legacy']}")
+def seed_from_foxpro(tabla)
+  modelo = Object.const_get(tabla['modelo'])
+
+  legacy_table = DBF::Table.new("db/legacy/#{tabla['legacy']}")
 
   legacy_table.encoding = "cp1252"
   # TODO: podría ser otro el encoding correspondiente
   # la lista: https://github.com/infused/dbf/blob/master/lib/dbf/encodings.yml
 
+  if legacy_table.record_count == modelo.count
+    raise "Tabla ya migrada y sin registros nuevos #{legacy_table.record_count} #{modelo.count}"
+  else
+    modelo.delete_all
+  end
+
   legacy_table.each do |record|
-    if record && attributes = record.attributes
-      attributes = attributes.select { |k,v| k =~ /^[a-z]*$/ }
-      modelo.create!(attributes)
+    begin
+      if record
+        attributes = record.attributes.select { |k,v| k =~ /^[a-z]*$/ }
+        modelo.create!(attributes)
+        print('·')
+      else
+        print('V')
+      end
+    rescue
+      print ('E')
     end
   end
   legacy_table.close
@@ -25,9 +38,13 @@ def seed_from_foxpro(tabla, detalles)
   modelo.all.count
 end
 
-legacy_configs.each do |tabla, detalles|
-  puts "migrando #{tabla}"
-  time = Benchmark.measure { seed_from_foxpro(tabla, detalles) }
-  puts "#{tabla} migrado correctamente en #{time.real} segundos"
+legacy_tables.each do |tabla|
+  begin
+    puts "Migrando: #{tabla['legacy']}\n"
+    time = Benchmark.measure { seed_from_foxpro(tabla) }
+    puts "\n---\n#{tabla['legacy']} migrado correctamente en #{time.real} segundos\n"
+  rescue
+    puts $!
+  end
 end
 

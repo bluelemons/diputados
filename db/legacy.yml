@@ -1,10 +1,31 @@
-expedientes:
+-
   modelo: Expediente
   legacy: proyecto.dbf
-  tabla: expedientes
-
-finals:
+-
   modelo: Final
   legacy: final.dbf
-  tabla: finals
+-
+  modelo: Senado
+  legacy: senado.dbf
+-
+  modelo: Asunto
+  legacy: asunto.dbf
+-
+  modelo: Estado
+  legacy: estado.dbf
+-
+  modelo: Tipo
+  legacy: tipo.dbf
+-
+  modelo: Sesion
+  legacy: sesion.dbf
+-
+  modelo: Tema
+  legacy: temas.dbf
+-
+  modelo: Diputado
+  legacy: diputado.dbf
+-
+  modelo: Prefer
+  legacy: prefer.dbf
 

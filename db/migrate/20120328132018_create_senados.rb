@@ -1,23 +1,18 @@
-require 'dbf'
-
-class Senado < ActiveRecord::Base
-end
-
 class CreateSenados < ActiveRecord::Migration
   def change
     create_table :senados do |t|
       t.integer :codigo
-      t.string :nombre
-      t.string :sexo
-      t.string :bloque
-      t.string :direccion
-      t.string :telefono
-      t.string :localidad
-      t.string :cp
+      t.string :nombre, :limit => 30
+      t.string :sexo, :limit => 1
+      t.string :bloque, :limit => 3
+      t.string :direccion, :limit => 25
+      t.string :telefono, :limit => 8
+      t.string :localidad, :limit => 25
+      t.string :cp, :limit => 5
       t.date :inicio
       t.date :fin
-      t.string :profesion
-      t.string :foto
+      t.string :profesion, :limit => 15
+      t.string :foto, :limit => 10
       t.integer :mc
       t.integer :peri1
       t.integer :peri2
@@ -26,18 +21,6 @@ class CreateSenados < ActiveRecord::Migration
 
       t.timestamps
     end
-    table = DBF::Table.new('db/legacy/senado.dbf')
-    table.encoding = "cp1252"
-    # TODO: podría ser otro el encoding correspondiente
-    # la lista: https://github.com/infused/dbf/blob/master/lib/dbf/encodings.yml
-
-    say_with_time "migrando expedientes" do
-      Senado.reset_column_information
-      table.each do |record|
-        attributes = record.attributes.select { |k,v| k =~ /^[a-z]*$/ }
-        Senado.create!(attributes)
-      end
-      Senado.all.count
-    end
   end
 end
+

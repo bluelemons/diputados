@@ -1,8 +1,3 @@
-require 'dbf'
-
-class Final < ActiveRecord::Base
-end
-
 class CreateFinals < ActiveRecord::Migration
   def change
     create_table :finals do |t|
@@ -12,7 +7,7 @@ class CreateFinals < ActiveRecord::Migration
       t.integer :pasada
       t.integer :nota
       t.integer :nronota
-      t.integer :fechanota
+      t.date :fechanota
       t.integer :nroexpte
       t.date :respu
       t.date :archi

@@ -1,0 +1,101 @@
+ActiveRecord::Schema.define do
+  create_table "foxuser" do |t|
+    t.string :type, :limit => 12
+    t.string :id, :limit => 12
+    t.string :name, :limit => 24
+    t.boolean :readonly
+    t.integer :ckval
+    t.text :data
+    t.date :updated
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "partidos" do |t|
+    t.string :codigo, :limit => 3
+    t.string :nombre, :limit => 30
+    t.string :sede1, :limit => 20
+    t.string :sede2, :limit => 20
+    t.string :telefono1, :limit => 8
+    t.string :telefono2, :limit => 8
+    t.string :localidad, :limit => 25
+    t.string :cp, :limit => 5
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "descrip" do |t|
+    t.integer :numero
+    t.string :letra, :limit => 3
+    t.integer :tipo
+    t.integer :pasada
+    t.string :descrip, :limit => 250
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "marca" do |t|
+    t.integer :marca
+    t.integer :numero
+    t.string :letra, :limit => 3
+    t.integer :tipo
+    t.integer :pasada
+    t.integer :estado
+    t.integer :ley
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "comision" do |t|
+    t.integer :codigo
+    t.string :nombre, :limit => 25
+    t.integer :pte
+    t.integer :vice
+    t.integer :int1
+    t.integer :int2
+    t.integer :int3
+    t.integer :int4
+    t.integer :int5
+    t.integer :int6
+    t.integer :int7
+    t.integer :int8
+    t.integer :int9
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "status" do |t|
+    t.integer :estado
+    t.string :nombre, :limit => 20
+  end
+end
+
+ActiveRecord::Schema.define do
+  create_table "letra" do |t|
+    t.string :letra, :limit => 3
+    t.integer :p09
+    t.integer :p10
+    t.integer :p11
+    t.integer :p12
+    t.integer :p13
+    t.integer :p14
+    t.integer :p15
+    t.integer :p16
+    t.integer :p17
+    t.integer :p18
+    t.integer :p19
+    t.integer :p20
+    t.integer :p21
+    t.integer :p22
+    t.integer :p23
+    t.integer :p24
+    t.integer :p25
+    t.integer :p26
+    t.integer :p27
+    t.integer :p28
+    t.integer :p29
+    t.date :ini
+    t.date :fin
+  end
+end
+
