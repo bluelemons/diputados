@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/eloyesp/dbf.git
+  revision: 8037ec4f16f06a0a030556df09e1a04d552590d8
+  specs:
+    dbf (1.7.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,7 +59,6 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     daemons (1.1.8)
-    dbf (1.7.5)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -171,7 +176,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   coffee-rails (~> 3.2.1)
-  dbf
+  dbf!
   jquery-rails
   mysql2
   pry

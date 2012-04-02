@@ -32,6 +32,6 @@ group :development, :test do
 end
 
 group :migrations do
-  gem 'dbf'
+  gem 'dbf', :git => 'git://github.com/eloyesp/dbf.git'
 end
 
