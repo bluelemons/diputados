@@ -19,4 +19,10 @@ ActiveAdmin.register Expediente do
     default_actions
   end
 
+  member_action :print do
+    expediente = Expediente.find params[:id]
+    output = ExpedientesReport.new.show(expediente)
+    send_data output, :filename => "expediente.pdf",
+                          :type => "application/pdf"
+  end
 end

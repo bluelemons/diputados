@@ -35,3 +35,4 @@ group :migrations do
   gem 'dbf', :git => 'git://github.com/eloyesp/dbf.git'
 end
 
+gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
