@@ -1,0 +1,7 @@
+es-AR:
+  meta_search:
+    or: 'o'
+    predicates:
+      contains: "%{attribute} contiene"
+      equals: "%{attribute} igual"
+      starts_with: "%{attribute}"

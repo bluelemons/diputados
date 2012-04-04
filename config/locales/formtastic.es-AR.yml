@@ -1,0 +1,10 @@
+es-AR:
+  formtastic:
+    :yes: 'Si'
+    :no: 'No'
+    :create: 'Crear %{model}'
+    :update: 'Modificar %{model}'
+    :required: 'requirido'
+
+    labels:
+      name: "Nombre"

@@ -1,0 +1,9 @@
+es-AR:
+  unauthorized:
+    manage:
+      all: "No estas  autorizado a %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    lock:
+      all: "No puedes cerrar un registro hasta que completes todos los datos"
+    update:
+      person: "No podes modificar esta persona."

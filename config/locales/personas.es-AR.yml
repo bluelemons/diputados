@@ -1,0 +1,14 @@
+es-AR:
+  people: personas
+  person: persona
+  activerecord:
+    attributes:
+      personas/address:
+        taddress: 'Tipo de contacto'
+        format: 'Domicilio'
+      personas/person:
+        name: 'Nombre'
+        born: 'Nacimiento'
+        tdoc: 'Tipo de documento'
+        doc: 'Documento'
+
