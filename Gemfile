@@ -7,7 +7,7 @@ gem 'rails-i18n'
 gem 'mysql2'
 
 group :production do
-  gem 'thin'
+  gem 'thin', :require => false
 end
 
 # Gems used only for assets and not required
