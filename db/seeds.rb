@@ -48,3 +48,5 @@ legacy_tables.each do |tabla|
   end
 end
 
+AdminUser.find_or_create_by_email("admin@example.com", :password => "password")
+
