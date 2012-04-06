@@ -14,9 +14,6 @@
   modelo: Estado
   legacy: estado.dbf
 -
-  modelo: Tipo
-  legacy: tipo.dbf
--
   modelo: Sesion
   legacy: sesion.dbf
 -
