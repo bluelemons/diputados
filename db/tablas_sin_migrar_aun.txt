@@ -64,13 +64,6 @@ ActiveRecord::Schema.define do
 end
 
 ActiveRecord::Schema.define do
-  create_table "status" do |t|
-    t.integer :estado
-    t.string :nombre, :limit => 20
-  end
-end
-
-ActiveRecord::Schema.define do
   create_table "letra" do |t|
     t.string :letra, :limit => 3
     t.integer :p09

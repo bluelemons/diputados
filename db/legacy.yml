@@ -25,4 +25,7 @@
 -
   modelo: Prefer
   legacy: prefer.dbf
+-
+  modelo: Status
+  legacy: status.dbf
 
