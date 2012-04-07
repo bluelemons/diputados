@@ -24,7 +24,7 @@ def seed_from_foxpro(tabla)
     begin
       if record
         attributes = record.attributes.select { |k,v| k =~ /^[a-z]*$/ }
-        modelo.create!(attributes)
+        modelo.create!(attributes, :without_protection => true)
         print('·')
       else
         print('V')
