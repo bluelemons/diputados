@@ -4,7 +4,12 @@ include Header
 include Commons
 
 class ExpedientesReport < Prawn::Document
-  def show(expediente)
+
+  def index(params)
+    render
+  end
+
+  def show()
     header_prawn("Camara de diputados")
 
 #    form({:ID => pase.id,

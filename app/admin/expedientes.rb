@@ -2,6 +2,20 @@ ActiveAdmin.register Expediente do
 
   actions  :index, :show
 
+  controller do
+    respond_to :html, :xml, :json, :pdf
+
+    def index
+      super do |format|
+        format.pdf {
+          output = ExpedientesReport.new.index(params)
+          send_data output, :filename => "expedientes.pdf",
+                            :type => "application/pdf"
+          }
+      end
+    end
+  end
+
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :letra
