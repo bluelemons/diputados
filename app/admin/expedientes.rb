@@ -7,8 +7,9 @@ ActiveAdmin.register Expediente do
 
     def index
       super do |format|
+        datos = Expediente.search(params[:q])
         format.pdf {
-          output = ExpedientesReport.new.index(params)
+          output = ExpedientesReport.new.index(datos,params)
           send_data output, :filename => "expedientes.pdf",
                             :type => "application/pdf"
           }
@@ -40,4 +41,3 @@ ActiveAdmin.register Expediente do
                           :type => "application/pdf"
   end
 end
-
