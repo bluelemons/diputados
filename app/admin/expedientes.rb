@@ -20,6 +20,7 @@ ActiveAdmin.register Expediente do
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :letra
+  filter :estado
   filter :fechaentr
   filter :autor
   filter :firmantes
@@ -41,3 +42,4 @@ ActiveAdmin.register Expediente do
                           :type => "application/pdf"
   end
 end
+
