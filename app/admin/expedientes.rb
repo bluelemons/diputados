@@ -3,7 +3,7 @@ ActiveAdmin.register Expediente do
   actions  :index, :show
 
   filter :numero
-  filter :tipo, :as => :select, :collection => Expediente::Tipos.invert
+  filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :letra
   filter :fechaentr
   filter :autor
@@ -26,3 +26,4 @@ ActiveAdmin.register Expediente do
                           :type => "application/pdf"
   end
 end
+
