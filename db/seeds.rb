@@ -10,8 +10,8 @@ def seed_from_foxpro(tabla)
 
   legacy_table = DBF::Table.new("db/legacy/#{tabla['legacy']}")
 
-  legacy_table.encoding = "CP850"
-  # TODO: podría ser otro el encoding correspondiente: IBM437 o CP1252
+  legacy_table.encoding = "CP1252"
+  # TODO: podría ser otro el encoding correspondiente: "CP850", "IBM437" o "CP1252"
   # la lista: https://github.com/infused/dbf/blob/master/lib/dbf/encodings.yml
 
   if legacy_table.record_count == modelo.count
