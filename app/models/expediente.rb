@@ -11,7 +11,20 @@ class Expediente < ActiveRecord::Base
 
   belongs_to :estado, :foreign_key => :estado, :class_name => Status
 
+  # Al migrar asigno directamente el numero que deberia ser guardado como
+  # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
+  # simultaneo.
+
+  def estado=(estado)
+    if estado.is_a? Fixnum
+      write_attribute(:estado, estado)
+    else
+      super
+    end
+  end
+
   def tipo_format
     "#{tipo} #{ley if tipo == "Ley"}"
   end
 end
+
