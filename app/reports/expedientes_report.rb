@@ -20,6 +20,7 @@ class ExpedientesReport < Prawn::Document
                         Pasada
                         Letra
                         Entrada
+                        Autor
                         Firmantes
                         ] ]
 
@@ -30,11 +31,12 @@ class ExpedientesReport < Prawn::Document
                       #{r.pasada}
                       #{r.letra}
                       #{r.fechaentr}
+                      #{r.autor}
                       #{r.firmantes} ]
     end
 
     rows = header_row + valores_tabla
-    widths = { 6 => 260 }
+    widths = { 7 => 260 }
 
     bounding_box [20, bounds.top - 30], :width => 500, :height => bounds.top-30*2 do
 
