@@ -10,5 +10,8 @@ class Expediente < ActiveRecord::Base
   end
 
   belongs_to :estado, :foreign_key => :estado, :class_name => Status
-end
 
+  def tipo_format
+    "#{tipo} #{ley if tipo == "Ley"}"
+  end
+end

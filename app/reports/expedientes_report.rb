@@ -27,7 +27,7 @@ class ExpedientesReport < Prawn::Document
     valores_tabla = datos.all.map do |r|
       data_row = %W[  #{r.id}
                       #{r.numero}
-                      #{r.tipo}
+                      #{r.tipo_format}
                       #{r.pasada}
                       #{r.letra}
                       #{r.fechaentr}
@@ -36,7 +36,7 @@ class ExpedientesReport < Prawn::Document
     end
 
     rows = header_row + valores_tabla
-    widths = { 7 => 260 }
+    widths = { 7 => 160 }
 
     bounding_box [20, bounds.top - 30], :width => 500, :height => bounds.top-30*2 do
 
