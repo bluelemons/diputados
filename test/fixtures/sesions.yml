@@ -3,9 +3,9 @@
 one:
   numero: 1
   tipo: 1
-  letra: 
+  letra: PJ
   pasada: 1
-  tipoperiodo: 1
+  tipoperiod: 1
   numperiodo: 1
   ordendia: 1
   fechaordia: 2012-03-28
@@ -13,7 +13,7 @@ one:
   numsesion: 1
   asunto: 1
   fechases: 2012-03-28
-  tratanient: 1
+  tratamient: 1
   resuvotac: 1
   comision1: 1
   comision2: 1
@@ -24,26 +24,3 @@ one:
   observ: MyText
   wp: 1
 
-two:
-  numero: 1
-  tipo: 1
-  letra: 
-  pasada: 1
-  tipoperiodo: 1
-  numperiodo: 1
-  ordendia: 1
-  fechaordia: 2012-03-28
-  numreunion: 1
-  numsesion: 1
-  asunto: 1
-  fechases: 2012-03-28
-  tratanient: 1
-  resuvotac: 1
-  comision1: 1
-  comision2: 1
-  comision3: 1
-  comision4: 1
-  comision5: 1
-  comision6: 1
-  observ: MyText
-  wp: 1

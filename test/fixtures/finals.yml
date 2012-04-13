@@ -2,13 +2,13 @@
 
 one:
   numero: 1
-  letra: 
+  letra:
   tipo: 1
   pasada: 1
   nota: 1
   nronota: 1
   fechanota: 1
-  nroexpete: 1
+  nroexpte: 1
   respu: 2012-03-28
   archi: 2012-03-28
   tomo: 1
@@ -20,22 +20,3 @@ one:
   expveto: 1
   caducado: 2012-03-28
 
-two:
-  numero: 1
-  letra: 
-  tipo: 1
-  pasada: 1
-  nota: 1
-  nronota: 1
-  fechanota: 1
-  nroexpete: 1
-  respu: 2012-03-28
-  archi: 2012-03-28
-  tomo: 1
-  ley: 1
-  decreto: 1
-  promu: 2012-03-28
-  veto: 1
-  tipoveto: 1
-  expveto: 1
-  caducado: 2012-03-28
