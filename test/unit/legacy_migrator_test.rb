@@ -8,6 +8,10 @@ class LegacyMigrationTest < ActiveSupport::TestCase
       Legacy::Migration.new :legacy => "proyecto.dbf", :model => "Expediente"
   end
 
+  def teardown
+    @migration.close
+  end
+
   def test_sanity
     assert_kind_of Class, Legacy::Migration
   end
