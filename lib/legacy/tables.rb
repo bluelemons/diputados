@@ -1,4 +1,9 @@
 module Legacy
+  # El encoding utilizado en las tablas dBase de FoxPro
+  # Las alternativas serían "CP850", "IBM437", "CP1252".
+
+  LEGACY_ENCODING = "CP1252"
+
   # Listado de las tablas a migrar en el orden que debe ser realizado.
 
   LEGACY_TABLES = [

@@ -1,6 +1,7 @@
 # Encoding: utf-8
 require 'dbf'
 require 'seed-fu'
+require 'legacy/tables'
 
 module Legacy
   class Migration
@@ -25,6 +26,7 @@ module Legacy
       @legacy_table = DBF::Table.new("db/legacy/#{opts[:legacy]}")
       @model = opts[:model]
       SeedFu.quiet = true unless opts.delete(:verbose)
+      @legacy_table.encoding = opts[:encoding] || Legacy::LEGACY_ENCODING
     end
 
     # Corre la migración
@@ -57,19 +59,14 @@ module Legacy
     private
 
     def migrate_record(record)
-      # TODO: fix encoding error!!
       attributes = downcase_and_stringify_attributes record.attributes
       @model.seed(attributes)
     end
 
     def downcase_and_stringify_attributes(attributes)
-      default_encoding = Encoding.default_internal
-      Encoding.default_internal = "UTF-8"
       hash = {}
       attributes.each { |k,v| hash[k.downcase.to_sym] = v }
       hash
-    ensure
-      Encoding.default_internal = default_encoding
     end
 
   end
