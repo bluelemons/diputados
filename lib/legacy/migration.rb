@@ -1,27 +1,46 @@
+# Encoding: utf-8
 require 'dbf'
 require 'seed-fu'
 
 module Legacy
   class Migration
 
-    attr_reader :legacy_table, :model
+    # @return [DBF::Table]
 
-    # Inicializa la migracrion
+    attr_reader :legacy_table
+
+    # Modelo de la aplicación al cual se migran los datos.
+
+    attr_reader :model
+
+    # Inicializa la migración
     #
+    # @param [Hash] opts Datos de inicialización.
+    # @option opts [String] :legacy_table Archivo dbf de donde obtener los datos
+    # @option opts [String] :model Modelo donde guardar los datos.
+    # @option opts [Bool] :verbose (false) be verbose.
 
-    def initialize(options)
-      @legacy_table = DBF::Table.new("db/legacy/#{options[:legacy]}")
-      @model = Object.const_get(options[:model])
-      SeedFu.quiet = true unless options.delete(:verbose)
+    def initialize(opts)
+      @legacy_table = DBF::Table.new("db/legacy/#{opts[:legacy]}")
+      @model = Object.const_get(opts[:model])
+      SeedFu.quiet = true unless opts.delete(:verbose)
     end
 
-    def run(options)
-      count = options[:count] || 2
+    # Corre la migración
+    #
+    # @option opts [Fixnum] :count (2) cantidad de datos a migrar.
+
+    def run(opts)
+      count = opts[:count] || 2
       count.times do |i|
         record = @legacy_table.find(i)
         migrate_record(record) if record
       end
     end
+
+    # Cierra el archivo dbf.
+    #
+    # @return [Bool]
 
     def close
       @legacy_table.close
