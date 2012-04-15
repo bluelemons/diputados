@@ -5,7 +5,7 @@ class LegacyMigrationTest < ActiveSupport::TestCase
 
   def setup
     @migration =
-      Legacy::Migration.new :legacy => "proyecto.dbf", :model => "Expediente"
+      Legacy::Migration.new :legacy => "proyecto.dbf", :model => Expediente
   end
 
   def teardown
@@ -25,6 +25,13 @@ class LegacyMigrationTest < ActiveSupport::TestCase
     Expediente.delete_all
     @migration.run(:count => 1)
     assert_equal Expediente.all.count, 1, "should create a single record"
+  end
+
+  def test_complete_migration
+    Diputado.delete_all
+    @migration = Legacy::Migration.new :legacy => 'diputado.dbf', :model => Diputado
+    @migration.run
+    assert Diputado.count > 20, "Los diputados no se migraron bien"
   end
 end
 
