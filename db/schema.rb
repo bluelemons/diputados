@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407161123) do
+ActiveRecord::Schema.define(:version => 20120415220104) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20120407161123) do
 
   create_table "estados", :force => true do |t|
     t.integer  "numero"
-    t.string   "letra",      :limit => 3
+    t.string   "letra",         :limit => 3
     t.integer  "tipo"
     t.integer  "pasada"
     t.date     "fechaent"
@@ -111,9 +111,12 @@ ActiveRecord::Schema.define(:version => 20120407161123) do
     t.date     "fechamin1"
     t.date     "fechamin2"
     t.integer  "v"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "expediente_id"
   end
+
+  add_index "estados", ["expediente_id"], :name => "index_estados_on_expediente_id"
 
   create_table "expedientes", :force => true do |t|
     t.integer  "numero"
@@ -138,6 +141,8 @@ ActiveRecord::Schema.define(:version => 20120407161123) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_numero_and_pasada_and_letra_and_tipo"
 
   create_table "finals", :force => true do |t|
     t.integer  "numero"
