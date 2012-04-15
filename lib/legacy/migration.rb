@@ -57,12 +57,19 @@ module Legacy
     private
 
     def migrate_record(record)
-      attributes = clean_duplicated_attributes record.attributes
+      # TODO: fix encoding error!!
+      attributes = downcase_and_stringify_attributes record.attributes
       @model.seed(attributes)
     end
 
-    def clean_duplicated_attributes(attributes)
-      attributes.select { |k,v| k =~ /^[a-z]*$/ }
+    def downcase_and_stringify_attributes(attributes)
+      default_encoding = Encoding.default_internal
+      Encoding.default_internal = "UTF-8"
+      hash = {}
+      attributes.each { |k,v| hash[k.downcase.to_sym] = v }
+      hash
+    ensure
+      Encoding.default_internal = default_encoding
     end
 
   end
