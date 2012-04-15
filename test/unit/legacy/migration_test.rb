@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'legacy_migrator'
+require 'legacy/migration'
 
 class LegacyMigrationTest < ActiveSupport::TestCase
 
