@@ -12,4 +12,4 @@ Es una aplicación prototipo para la cámara de diputaos de la provincia de Sant
 Cada listado tiene un detalle de los parametros de busqueda.
 * listado del index
 * show del expedientes
-* show del expediente con listado de asuntos, sendo y comisiones.
+* show del expediente con listado de asuntos, senado y comisiones.
