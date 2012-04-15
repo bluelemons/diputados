@@ -11,6 +11,14 @@ class Expediente < ActiveRecord::Base
 
   belongs_to :estado, :foreign_key => :estado, :class_name => Status
 
+  def estados
+    Estado.limit(3)
+  end
+
+  def sesion
+    Sesion.first
+  end
+
   def tipo_format
     "#{tipo} #{ley if tipo == "Ley"}"
   end
