@@ -27,7 +27,17 @@ class LegacyMigrationTest < ActiveSupport::TestCase
     assert_equal Expediente.all.count, 1, "should create a single record"
   end
 
+  def test_estado_migration
+    Estado.delete_all
+    @migration = Legacy::Migration.new :legacy => "estado.dbf", :model => Estado
+    @migration.run(:count => 1)
+    assert_equal 1, Estado.all.count, "should create a single record"
+    assert Estado.first.numero, "El estado no tienen numero"
+    assert Estado.first.expediente == expedientes(:two)
+  end
+
   def test_complete_migration
+#    skip
     Diputado.delete_all
     @migration = Legacy::Migration.new :legacy => 'diputado.dbf', :model => Diputado
     @migration.run

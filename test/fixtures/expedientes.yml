@@ -19,3 +19,10 @@ one:
   marca: 12
   etiq: 12
 
+two:
+  numero: 118
+  letra: UCR
+  tipo: 1
+  pasada: 1
+  descrip: estoy relacionado con un estado
+
