@@ -11,6 +11,8 @@ class Expediente < ActiveRecord::Base
 
   belongs_to :estado, :foreign_key => :estado, :class_name => Status
 
+  has_many :estados
+
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.
@@ -25,6 +27,11 @@ class Expediente < ActiveRecord::Base
 
   def tipo_format
     "#{tipo} #{ley if tipo == "Ley"}"
+  end
+
+  def self.find_by_legacy_id(data)
+    self.where({ :numero => data[:numero], :letra => data[:letra],
+      :pasada => data[:pasada], :tipo => data[:tipo]}).first
   end
 end
 
