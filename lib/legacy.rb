@@ -10,6 +10,7 @@ module Legacy
       begin
         puts "Migrando: #{tabla[:legacy]}\n"
         migracion = Migration.new(tabla)
+        migracion.output = :dots
 
         if migracion.legacy_table.record_count == migracion.model.count
           raise "Tabla ya migrada y sin registros nuevos #{migracion.legacy_table.record_count} #{migracion.model.count}"
