@@ -32,7 +32,9 @@ group :development, :test do
 end
 
 group :migrations do
-  gem 'dbf', :git => 'git://github.com/eloyesp/dbf.git'
+  gem 'dbf', '>= 1.7.7', '< 2.0'
+  gem 'seed-fu'
 end
 
 gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
+
