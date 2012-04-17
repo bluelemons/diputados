@@ -31,6 +31,10 @@ module Legacy
     def initialize(opts)
       @legacy_table = DBF::Table.new("db/legacy/#{opts[:legacy]}")
       @model = opts[:model]
+      # constraints for seed-fu seeding
+      @constraints = @model.const_get(:LEGACY_CONSTRAINTS) rescue [:id]
+      # references to fill if possible.
+      @references = @model.reflect_on_all_associations(:belongs_to)
       SeedFu.quiet = true unless opts.delete(:verbose)
       @legacy_table.encoding = opts[:encoding] || Legacy::LEGACY_ENCODING
       @output = opts[:output] || nil
@@ -66,12 +70,29 @@ module Legacy
     private
 
     def migrate_record(record)
-      attributes = downcase_and_stringify_attributes record.attributes
-      @model.seed(attributes)
+      attributes = downcase_and_symbolize_attributes record.attributes
+      attributes.merge! build_references(attributes) unless @references.empty?
+      @model.seed(*@constraints, attributes)
       print "·" if @output == :dots
     end
 
-    def downcase_and_stringify_attributes(attributes)
+    def build_references(seed_attr)
+      hash = {}
+      @references.each do |r|
+        hash[r.foreign_key] = find_associated_record_id(r.klass, seed_attr)
+      end
+      hash
+    end
+
+    def find_associated_record_id(model, seed_attributes)
+      relation = model
+      model.const_get(:LEGACY_CONSTRAINTS).each do |a|
+        relation.where(a => seed_attributes[a.to_sym])
+      end
+      relation.first.try :id
+    end
+
+    def downcase_and_symbolize_attributes(attributes)
       hash = {}
       attributes.each { |k,v| hash[k.downcase.to_sym] = v }
       hash

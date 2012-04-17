@@ -1,4 +1,6 @@
 class Status < ActiveRecord::Base
+  LEGACY_CONSTRAINTS = [:estado]
+
   self.table_name = "status"
   self.primary_key = "estado"
 

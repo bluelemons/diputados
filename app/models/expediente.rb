@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 class Expediente < ActiveRecord::Base
+
+  LEGACY_CONSTRAINTS = [:numero, :letra, :pasada, :tipo]
+
   Tipos = { 1 => "Ley", 2 => "Comunicación", 3 => "Declaración",
     4 => "Resolución", 5 => "Decreto", 6 => "Mensaje" }
   TiposColection = Tipos.invert

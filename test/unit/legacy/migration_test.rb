@@ -49,5 +49,15 @@ class LegacyMigrationTest < ActiveSupport::TestCase
       @migration.run :count => 2
     end
   end
+
+  def test_repeated_migration_do_not_repeat_records
+    @migration = Legacy::Migration.new :legacy => 'status.dbf', :model => Status
+    @migration.run
+    @migration.close
+    first_count = Status.count
+    @migration = Legacy::Migration.new :legacy => 'status.dbf', :model => Status
+    @migration.run
+    assert_equal Status.count, first_count, "Los registros son migrados duplicados"
+  end
 end
 
