@@ -1,0 +1,16 @@
+es-AR:
+  prawnbot:
+    attributes:
+      eq: "igual"
+      gt: "mayor"
+      gte: "mayor igual"
+      lt: "menor"
+      lte: "menor igual"
+      contains: "contiene"
+      numero: "Numero"
+      tipo: "Tipo"
+      letra: "Letra"
+      estado: "Estado"
+      fechaentr: "Fecha de entrada"
+      autor: "Autor"
+      firmantes: "Firmantes"

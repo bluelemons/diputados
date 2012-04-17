@@ -1,16 +1,25 @@
-require "report.rb"
-include MyReport
+require 'prawnbot'
+#include MyReport
 require 'open-uri'
 
-class ExpedientesReport < MyReport::Report
+class ExpedientesReport < Prawnbot::Report
+
+  def initialize
+    super
+    @header_title = "CAMARA DE DIPUTADOS"
+    @header_subtitle = "Provicina de Santa Fe"
+
+    @logo = "#{Rails.root}/app/assets/images/santa_fe_escudo_logo.png"
+    @water_print = "#{Rails.root}/app/assets/images/santa_fe_escudo_fondo.png"
+
+  end
 
   def index(datos, params)
-
-    header
+    body
 
     show_title "Listado de expedientes"
 
-    #informacion_de_busqueda(params)
+    informacion_de_busqueda(params)
 
     header_row = [ %w[  ID
                         Numero
@@ -36,7 +45,7 @@ class ExpedientesReport < MyReport::Report
     rows = header_row + valores_tabla
     widths = { 7 => 160 }
 
-    move_down 30
+#    move_down 30
 
     mytable rows, :column_widths => widths
 
@@ -44,23 +53,24 @@ class ExpedientesReport < MyReport::Report
   end
 
   def show(expediente)
-    header
+    body
 
     show_title "DETALLE DE EXPEDIENTE"
 
+    show_title "#{expediente.tipo_format} N #{expediente.numero} (#{expediente.pasada})"
+
     myform([
-      "<b>Expediente</b> De #{expediente.tipo_format} N #{expediente.numero} (#{expediente.pasada})",
       "<b>Autor</b> #{expediente.autor}",
       "<b>Tema</b> #{expediente.tema}",
       "<b>Estado</b> #{expediente.estado}"])
 
     myform(["Descripcion"])
 
-    mymemo(expediente.descrip)
+    mybox(expediente.descrip)
 
     myform(["Firmantes",expediente.firmantes])
 
-    mymemo("Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}")
+    mybox("Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}")
 
     myform(["<b>COMISIONES ASIGNADAS</b> (desde As. Entrados)"])
 
@@ -96,7 +106,7 @@ class ExpedientesReport < MyReport::Report
 
     myform ["<b>TRATAMIENTO EN SESION</b>"]
 
-    mymemo("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
+    mybox("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
 
     render
   end
