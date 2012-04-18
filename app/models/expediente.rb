@@ -16,6 +16,9 @@ class Expediente < ActiveRecord::Base
 
   has_many :estados
 
+  # puede ser un has_one, pero no estoy seguro.
+  has_many  :asuntos
+
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.
