@@ -12,9 +12,12 @@ module Legacy
         migracion = Migration.new(tabla)
         migracion.output = :dots
 
-        if migracion.legacy_table.record_count == migracion.model.count
-          raise "Tabla ya migrada y sin registros nuevos #{migracion.legacy_table.record_count} #{migracion.model.count}"
+        puts "Datos a migrar: #{migracion.legacy_table.record_count} / #{migracion.model.count}"
+
+        if migracion.legacy_table.record_count <= migracion.model.count + 2
+          raise "Tabla ya migrada y sin registros nuevos"
         else
+          puts "borrando #{migracion.model.count} registros"
           migracion.model.delete_all
         end
 

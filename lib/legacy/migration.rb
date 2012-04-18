@@ -54,7 +54,11 @@ module Legacy
         end
       else
         @legacy_table.each do |record|
-          migrate_record(record) if record
+          if record
+            migrate_record(record)
+          else
+            puts "V" if @output == :dots
+          end
         end
       end
     end
