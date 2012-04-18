@@ -1,6 +1,6 @@
 class Estado < ActiveRecord::Base
 
-  LEGACY_CONSTRAINTS = [:expediente_id, :fechaent, :comision]
+  LEGACY_CONSTRAINTS = [:numero, :letra, :pasada, :tipo, :fechaent, :comision]
 
   belongs_to :expediente
 
