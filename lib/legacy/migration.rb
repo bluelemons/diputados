@@ -87,7 +87,7 @@ module Legacy
     def find_associated_record_id(model, seed_attributes)
       relation = model
       model.const_get(:LEGACY_CONSTRAINTS).each do |a|
-        relation.where(a => seed_attributes[a.to_sym])
+        relation = relation.where(a => seed_attributes[a.to_sym])
       end
       relation.first.try :id
     end
