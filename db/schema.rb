@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419112748) do
+ActiveRecord::Schema.define(:version => 20120419113020) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20120419112748) do
 
   create_table "finals", :force => true do |t|
     t.integer  "numero"
-    t.string   "letra",      :limit => 3
+    t.string   "letra",         :limit => 3
     t.integer  "tipo"
     t.integer  "pasada"
     t.integer  "nota"
@@ -166,9 +166,12 @@ ActiveRecord::Schema.define(:version => 20120419112748) do
     t.integer  "tipoveto"
     t.integer  "expveto"
     t.date     "caducado"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "expediente_id"
   end
+
+  add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
