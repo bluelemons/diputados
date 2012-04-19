@@ -1,0 +1,90 @@
+# Encoding: UTF-8
+
+puente_comision_4_1:
+  id: 16532
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2004-11-08
+  comision: 4
+  fechasal: 2004-11-12
+  dictmay: ! 'REUTEMANN Roberto F, CAVUTO Adriana, PEIRONE Ricardo,  DEHESA Roberto,
+    TIBALDO Mario,  ARANDA Lucrecia, '
+  fechamay: 2004-11-11
+  v: 0
+  expediente: puente
+
+puente_comision_2:
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2004-11-18
+  comision: 2
+  fechasal: 2004-11-19
+  dictmay: ! 'PEIRONE Ricardo, SCATAGLINI Darío, LAGNA Jorge, VENESIA Laura Mercedes,
+    MAGUID Alberto, DALLA FONTANA Ariel, '
+  fechamay: 2004-11-18
+  v: 0
+  expediente: puente
+
+puente_comision_1_1:
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2004-11-22
+  comision: 1
+  fechasal: 2004-11-26
+  dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela, BENAS Verónica,
+    LAMBERTO Raúl, LIBERATI Sergio
+  fechamay: 2004-11-24
+  v: 0
+  expediente: puente
+
+puente_comision_1_2:
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2005-05-16
+  comision: 1
+  fechasal: 2005-05-18
+  dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela, DEHESA Roberto,
+    LACAVA Mario, BENAS Verónica, MASCHERONI Santiago Angel, LAMBERTO Raúl, LIBERATI
+    Sergio
+  fechamay: 2005-05-18
+  v: 1
+  created_at: 2012-04-19 12:24:16.000000000 Z
+  updated_at: 2012-04-19 12:24:16.000000000 Z
+  expediente: puente
+
+puente_comision_4_2:
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2005-05-20
+  comision: 4
+  fechasal: 2005-06-17
+  dictmay: ! 'REUTEMANN Roberto F, PEIRONE Ricardo, DEHESA Roberto, TIBALDO Claudio
+    Octavio,  ARANDA Lucrecia, '
+  fechamay: 2005-06-16
+  v: 1
+  expediente: puente
+
+puente_comision_1_3:
+  numero: 13782
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  fechaent: 2005-06-22
+  comision: 1
+  fechasal: 2005-06-23
+  dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela,  LACAVA
+    Mario, BENAS Verónica, MASCHERONI Santiago Angel, LIBERATI Sergio
+  fechamay: 2005-06-22
+  v: 1
+  expediente: puente
+

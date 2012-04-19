@@ -1,19 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  numero: 1
-  letra: MyString
-  tipo:
+puente:
+  numero: 13782
+  letra: SEN
+  tipo: 1
   pasada: 1
-  asuntoentr: 1
-  fechaasen: 2012-03-28
-  numreunion: 1
-  numsesion: 1
-  asunto:
-  comision1: 1
-  comision2: 1
+  asuntoentr: 25
+  fechaasen: 2004-11-04
+  numreunion: 26
+  numsesion: 24
+  asunto: 92
+  comision1: 4
+  comision2: 2
   comision3: 1
-  comision4: 1
-  comision5: 1
-  comision6: 1
+  comision4: 0
+  comision5: 0
+  comision6: 0
+  expediente: puente
 

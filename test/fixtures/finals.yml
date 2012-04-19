@@ -1,22 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  numero: 1
-  letra:
+puente:
+  numero: 13782
+  letra: SEN
   tipo: 1
   pasada: 1
-  nota: 1
-  nronota: 1
-  fechanota: 1
-  nroexpte: 1
-  respu: 2012-03-28
-  archi: 2012-03-28
-  tomo: 1
-  ley: 1
-  decreto: 1
-  promu: 2012-03-28
-  veto: 1
-  tipoveto: 1
-  expveto: 1
-  caducado: 2012-03-28
+  nota: 2
+  nronota: 150905
+  fechanota: 2005-07-20
+  nroexpte: 0
+  tomo: 0
+  ley: 12448
+  decreto: 0
+  promu: 2005-09-08
+  veto: 0
+  tipoveto: 0
+  expveto: 0
+  expediente: puente
 
