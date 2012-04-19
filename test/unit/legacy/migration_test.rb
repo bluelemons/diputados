@@ -25,10 +25,10 @@ class LegacyMigrationTest < ActiveSupport::TestCase
   def test_migration_con_relacion
     Estado.delete_all
     migration = Legacy::Migration.new :legacy => "estado.dbf", :model => Estado
-    migration.run(:count => 1)
-    assert_equal 1, Estado.all.count, "should create a single record"
-    assert Estado.first.numero, "El estado no tienen numero"
-    assert Estado.first.expediente == expedientes(:two)
+    migration.run(:count => 2)
+    estado_1, estado_2 = *Estado.first(2)
+    assert_equal estado_1.expediente_id, expedientes(:two).id, "El estado no tiene relacion"
+    assert_nil estado_2.expediente_id, "El estado tiene relacion"
   end
 
   def test_mass_migration
