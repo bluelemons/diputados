@@ -18,6 +18,8 @@ class Expediente < ActiveRecord::Base
 
   # puede ser un has_one, pero no estoy seguro.
   has_many  :asuntos
+  has_many  :finals
+  has_many  :sesions
 
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
