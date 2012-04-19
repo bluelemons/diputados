@@ -34,10 +34,5 @@ class Expediente < ActiveRecord::Base
   def tipo_format
     "#{tipo} #{ley if tipo == "Ley"}"
   end
-
-  def self.find_by_legacy_id(data)
-    self.where({ :numero => data[:numero], :letra => data[:letra],
-      :pasada => data[:pasada], :tipo => data[:tipo]}).first
-  end
 end
 
