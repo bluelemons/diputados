@@ -9,5 +9,7 @@ class Status < ActiveRecord::Base
   def name
     nombre
   end
+  alias_method :to_s, :name
+
 end
 
