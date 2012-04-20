@@ -1,16 +1,23 @@
-require "layouts/header.rb"
-require "layouts/commons.rb"
-require "layouts/search.rb"
-include Header
-include Commons
-include Search
+require 'prawnbot'
+#include MyReport
+require 'open-uri'
 
-class ExpedientesReport < Prawn::Document
+class ExpedientesReport < Prawnbot::Report
+
+  def initialize
+    super
+    @header_title = "CAMARA DE DIPUTADOS"
+    @header_subtitle = "Provicina de Santa Fe"
+
+    @logo = "#{Rails.root}/app/assets/images/santa_fe_escudo_logo.png"
+    @water_print = "#{Rails.root}/app/assets/images/santa_fe_escudo_fondo.png"
+
+  end
 
   def index(datos, params)
+    body
 
-    self.font_size = 7
-    header_prawn("Camara de diputados")
+    show_title "Listado de expedientes"
 
     informacion_de_busqueda(params)
 
@@ -38,37 +45,68 @@ class ExpedientesReport < Prawn::Document
     rows = header_row + valores_tabla
     widths = { 7 => 160 }
 
-    bounding_box [20, bounds.top - 30], :width => 500, :height => bounds.top-30*2 do
+#    move_down 30
 
-      move_down 30
-
-      table rows, :header => true,
-                  :row_colors => %w[e2f0fb ffffff],
-                  :column_widths => widths do
-        cells.style :borders => [:top], :overflow => :expand
-
-        # encabezado
-        row(0).style :background_color => '87b6d9', :text_color => '000000', :align => :center
-        # fila de totales:
-        row(-1).style :font_style => :bold
-      end
-    end
+    mytable rows, :column_widths => widths
 
     render
   end
 
-  def show()
-    header_prawn("Camara de diputados")
+  def show(expediente)
+    body
 
-#    form({:ID => pase.id,
-#          :EXPEDIENTE => pase.catastro.id,
-#          :RESPONSABLE => pase.catastro.responsable,
-#          :PARTIDA => pase.catastro.partida,
-#          :FECHA => pase.entrada,
-#          :OFICINA => pase.oficina.name,
-#          :OBSERVADO => pase.observaciones
-#        },
-#          [20, bounds.top - 30])
+    show_title "DETALLE DE EXPEDIENTE"
+
+    show_title "#{expediente.tipo_format} N #{expediente.numero} (#{expediente.pasada})"
+
+    myform([
+      "<b>Autor</b> #{expediente.autor}",
+      "<b>Tema</b> #{expediente.tema}",
+      "<b>Estado</b> #{expediente.estado}"])
+
+    myform(["Descripcion"])
+
+    mybox(expediente.descrip)
+
+    myform(["Firmantes",expediente.firmantes])
+
+    mybox("Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}")
+
+    myform(["<b>COMISIONES ASIGNADAS</b> (desde As. Entrados)"])
+
+    header_row = [ %w[  Comision
+                      Entrada
+                      Tratamses
+                      Salida
+                      Dictmay
+                      Dictmin1
+                      Dictmin2
+                      Fechamay
+                      Fechamin1
+                      Fechamin2
+                      V
+                      ] ]
+    valores_tabla = expediente.estados.all.map do |r|
+      data_row = %W[  #{r.comision}
+                      #{r.fechaent}
+                      #{r.tratamses}
+                      #{r.fechasal}
+                      #{r.dictmay}
+                      #{r.dictmin1}
+                      #{r.dictmin2}
+                      #{r.fechamay}
+                      #{r.fechamin1}
+                      #{r.fechamin2}
+                      #{r.v} ]
+      end
+
+    mytable (header_row + valores_tabla)
+
+    move_down 10
+
+    myform ["<b>TRATAMIENTO EN SESION</b>"]
+
+    mybox("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
 
     render
   end
