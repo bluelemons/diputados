@@ -106,8 +106,13 @@ class ExpedientesReport < Prawnbot::Report
 
     myform ["<b>TRATAMIENTO EN SESION</b>"]
 
-    mybox("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
+    if expediente.sesion
+      mybox("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
+    else
+      mybox "Sin tratamiento en session"
+    end
 
     render
   end
 end
+
