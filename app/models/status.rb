@@ -2,9 +2,8 @@ class Status < ActiveRecord::Base
   LEGACY_CONSTRAINTS = [:estado]
 
   self.table_name = "status"
-  self.primary_key = "estado"
 
-  has_many :expedientes, :foreign_key => :estado
+  has_many :expedientes
 
   def name
     nombre

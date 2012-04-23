@@ -12,7 +12,7 @@ class Expediente < ActiveRecord::Base
     Tipos[read_attribute(:tipo)] || "No indicado"
   end
 
-  belongs_to :estado, :foreign_key => :estado, :class_name => Status
+  belongs_to :estado, :class_name => Status
 
   has_many :estados
 

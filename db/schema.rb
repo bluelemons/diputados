@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423142911) do
+ActiveRecord::Schema.define(:version => 20120423143611) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -143,8 +143,10 @@ ActiveRecord::Schema.define(:version => 20120423142911) do
     t.integer  "etiq"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.integer  "estado_id"
   end
 
+  add_index "expedientes", ["estado_id"], :name => "index_expedientes_on_estado_id"
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
 
   create_table "finals", :force => true do |t|
@@ -238,7 +240,8 @@ ActiveRecord::Schema.define(:version => 20120423142911) do
 
   add_index "sesions", ["expediente_id"], :name => "index_sesions_on_expediente_id"
 
-  create_table "status", :primary_key => "estado", :force => true do |t|
+  create_table "status", :force => true do |t|
+    t.integer  "estado"
     t.string   "nombre",     :limit => 20
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
