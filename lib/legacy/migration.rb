@@ -93,7 +93,7 @@ module Legacy
       model.const_get(:LEGACY_CONSTRAINTS).each do |a|
         relation = relation.where(a => seed_attributes[a.to_sym])
       end
-      relation.first.try :id
+      relation.limit(1).pluck(:id)[0]
     end
 
     def downcase_and_symbolize_attributes(attributes)
