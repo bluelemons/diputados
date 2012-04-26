@@ -40,7 +40,7 @@ class LegacyMigrationTest < ActiveSupport::TestCase
 
   def test_migration_with_dots_output
     migration.output = :dots
-    assert_output("··") do
+    assert_output("··*") do
       migration.run :count => 2
     end
   end

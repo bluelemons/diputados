@@ -47,18 +47,24 @@ module Legacy
 
     def run(opts = {})
       count = opts[:count] || :all
+      batches = opts[:batches] || 100
       if count.kind_of? Integer
+        records = []
         count.times do |i|
           record = @legacy_table.find(i)
-          migrate_record(record) if record
+          records << prepare_record(record) if record
         end
+        migrate_records records.compact
       else
-        @legacy_table.each do |record|
-          if record
-            migrate_record(record)
-          else
-            puts "V" if @output == :dots
+        @legacy_table.each_slice(batches) do |records|
+          records.map! do |record|
+            if record
+              prepare_record(record)
+            else
+              puts "V" if @output == :dots
+            end
           end
+          migrate_records records.compact
         end
       end
     end
@@ -73,11 +79,16 @@ module Legacy
 
     private
 
-    def migrate_record(record)
+    def prepare_record(record)
       attributes = downcase_and_symbolize_attributes record.attributes
       attributes.merge! build_references(attributes) unless @references.empty?
-      @model.seed(*@constraints, attributes)
       print "·" if @output == :dots
+      attributes
+    end
+
+    def migrate_records(records)
+      @model.seed(*@constraints, records)
+      print "*" if @output == :dots
     end
 
     def build_references(seed_attr)
