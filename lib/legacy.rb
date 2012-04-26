@@ -8,17 +8,20 @@ module Legacy
   def self.seed_legacy_databases
     LEGACY_TABLES.each do |tabla|
       begin
+        puts "\n---"
         puts "Migrando: #{tabla[:legacy]}\n"
         migracion = Migration.new(tabla)
         migracion.output = :dots
 
         puts "Datos a migrar: #{migracion.legacy_table.record_count} / #{migracion.model.count}"
 
-        if migracion.legacy_table.record_count <= migracion.model.count + 2
-          raise "Tabla ya migrada y sin registros nuevos"
-        else
-          puts "borrando #{migracion.model.count} registros"
-          migracion.model.delete_all
+        unless re_seedable? migracion.model
+          if migracion.legacy_table.record_count <= migracion.model.count + 2 and migracion.model.count > 0
+            raise "tabla ya migrada y sin registros nuevos (y además no es reseedeable)"
+          else
+            puts "borre primero los registros: #{migracion.model.count} registros (porque no es re-seedeable)"
+            raise "ahora no borro registros, mejor borrar a mano :)"
+          end
         end
 
         migracion.run
@@ -27,6 +30,10 @@ module Legacy
         puts "\n---\n#{tabla[:legacy]} #{$!}"
       end
     end
+  end
+
+  def self.re_seedable?(model)
+    legacy_id = model.const_get(:LEGACY_CONSTRAINTS) rescue nil
   end
 end
 
