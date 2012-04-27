@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423143611) do
+ActiveRecord::Schema.define(:version => 20120427123436) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120423143611) do
   end
 
   add_index "asuntos", ["expediente_id"], :name => "index_asuntos_on_expediente_id"
+  add_index "asuntos", ["numero"], :name => "index_asuntos_on_numero"
 
   create_table "diputados", :force => true do |t|
     t.integer  "codigo"
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20120423143611) do
   end
 
   add_index "estados", ["expediente_id"], :name => "index_estados_on_expediente_id"
+  add_index "estados", ["numero"], :name => "index_estados_on_numero"
 
   create_table "expedientes", :force => true do |t|
     t.integer  "numero"
@@ -174,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20120423143611) do
   end
 
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
+  add_index "finals", ["numero"], :name => "index_finals_on_numero"
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
@@ -239,6 +242,7 @@ ActiveRecord::Schema.define(:version => 20120423143611) do
   end
 
   add_index "sesions", ["expediente_id"], :name => "index_sesions_on_expediente_id"
+  add_index "sesions", ["numero"], :name => "index_sesions_on_numero"
 
   create_table "status", :force => true do |t|
     t.integer  "estado"
