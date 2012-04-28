@@ -41,5 +41,8 @@ ActiveAdmin.register Expediente do
     send_data output, :filename => "expediente.pdf",
                           :type => "application/pdf"
   end
-end
 
+  action_item(:only =>[:show]) do
+    link_to("Imprimir", print_admin_expediente_path(expediente))
+  end
+end
