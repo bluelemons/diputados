@@ -1,0 +1,26 @@
+es-AR:
+  activerecord:
+    attributes:
+      person:
+        name: 'nombre'
+        born: 'nacimiento'
+        tdoc: 'tipo de documento'
+        doc: 'numero de documento'
+        dead: 'defuncion'
+      sesion:
+        ordendia: 'orden de dia'
+        fechaordia: 'fecha de orden de dia'
+        numreunion: 'Reunion'
+        numsesion: 'Sesion'
+        fechases: 'Fecha de sesion'
+      expediente:
+        descrip: 'descripcion'
+        fechaentr: 'fecha de entrada'
+        tipoentr: 'tipo de entrada'
+        tipoperiod: 'periodo'
+        numperiodo: 'número periodo'
+        expte: 'expte'
+        etiq: 'etiqueta'
+        numsenado: 'senado'
+      address:
+        format: 'direccion'
