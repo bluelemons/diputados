@@ -1,0 +1,109 @@
+$header-color: lighten(#84ac49,15%);
+$header-background-color: #6A7176;
+$menu-button-color: #6A7176;
+$menu-button-background-color: #ffffff;
+
+$title-background: $header-color;
+$title-color: #ffffff;
+$ref-color: #ffffff;
+
+// ui-buttons
+.table_actions{
+  width: 220px;
+}
+.ui-button-icon-only .ui-icon {
+    left: -70%;
+}
+.ui-button-text{
+    font-size: 80%;
+    margin-left: 15px;
+}
+.ui-button-icon-only{
+    height: 1.5em;
+    width: 1.5em;
+}
+.member_link{
+  float: left;
+}
+// ends ui buttons
+
+#header {
+  background: -moz-linear-gradient(-90deg, darken($header-background-color,10%), darken($header-background-color,40%)) repeat scroll 0 0 transparent;
+  border-bottom: 1px solid darken($header-background-color,70%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  overflow: visible;
+  padding: 23px 30px;
+  text-shadow: 0 1px 0 black;
+  z-index: 900;
+  h1 {
+    color: $header-color;
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+  ul#tabs{
+    li.current > a, li.has_nested.current > a{
+      text-shadow: 0 1px 0 white;
+      background: none repeat scroll 0 0 $header-color;
+      color: black;
+    }
+    li:hover > a{
+      background: none repeat scroll 0 0 lighten($header-color,10%);
+      color: black;
+    }
+    li.has_nested:hover > a {
+      text-shadow: 0 1px 0 white;
+      background: url("/assets/active_admin/nested_menu_arrow_dark.gif") no-repeat scroll 89% 50% lighten($header-color,10%);
+      border-bottom: 5px solid lighten($header-color,10%);
+      border-radius: 10px 10px 0 0;
+    }
+    li ul,li ul li a{
+      text-shadow: 0 1px 0 white;
+      background: none repeat scroll 0 0 lighten($header-color,10%);
+      color: black;
+    }
+  }
+}
+
+
+
+#title_bar {
+    background: -moz-linear-gradient(-90deg, $title-background, darken($title-background,20%)) repeat scroll 0 0 transparent;
+    box-shadow: 0 1px 2px #244C50;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 140%;
+    text-shadow: 0 1px 0 green;
+  a{
+    color: $ref-color;
+  }
+  h2 {
+    color: $title-color;
+    font-size: 2.6em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+$table-th-color: lighten($header-color,20%);
+
+
+table.index_table th.sorted-asc, table.index_table th.sorted-desc{
+  color: darken($table-th-color,70%);
+  background: -moz-linear-gradient(-90deg, darken($table-th-color,20%), darken($table-th-color,30%)) repeat scroll 0 0 transparent;
+  border-bottom: 1px solid darken($table-th-color,20%);
+}
+table.index_table th, .sidebar_section h3, .section h3, .panel h3{
+  color: darken($table-th-color,70%);
+  background: -moz-linear-gradient(-90deg, $table-th-color, darken($table-th-color,20%)) repeat scroll 0 0 transparent;
+  border-bottom: 1px solid darken($table-th-color,20%);
+}
+
+table.index_table th a, table.index_table th a:link, table.index_table th a:visited {
+    color: darken($table-th-color,70%);
+    display: block;
+    text-decoration: none;
+}
