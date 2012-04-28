@@ -13,6 +13,16 @@ class Expediente < ActiveRecord::Base
   end
 
   belongs_to :estado, :class_name => Status
+  Entrada = { 1 => "Mesa de entrada", 2 => "Secretaria"}
+  def tipoentr
+    Entrada[read_attribute(:tipoentr)] || "No indicado"
+  end
+
+  Periodo = { 1 => "Ordinario", 2 => "De prorroga", 3 => "Extraordinario"}
+  def tipoperiod
+    Periodo[read_attribute(:tipoperiod)] || "No indicado"
+  end
+
 
   has_many :estados
 
