@@ -7,6 +7,7 @@ module Legacy
   # Listado de las tablas a migrar en el orden que debe ser realizado.
 
   LEGACY_TABLES = [
+    {:model=> Comision, :legacy=>"comision.dbf"},
     {:model=> Tema, :legacy=>"temas.dbf"},
     {:model=> Status, :legacy=>"status.dbf"},
     {:model=> Expediente, :legacy=>"proyecto.dbf"},

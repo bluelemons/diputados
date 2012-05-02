@@ -1,5 +1,6 @@
 # Encoding: utf-8
 require 'legacy/migration'
+require 'legacy/comision_migration'
 require 'legacy/tables'
 
 module Legacy
