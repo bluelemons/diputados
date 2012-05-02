@@ -7,6 +7,12 @@ GIT
     prawn (0.10.2)
       pdf-reader (>= 0.8.1)
 
+GIT
+  remote: https://github.com/eloyesp/dbf.git
+  revision: baaa7a195a19934c7fbf27e7fe141b8f0e61925d
+  specs:
+    dbf (1.7.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,7 +69,6 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     daemons (1.1.8)
-    dbf (1.7.7)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -188,7 +193,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   coffee-rails (~> 3.2.1)
-  dbf (>= 1.7.7, < 2.0)
+  dbf!
   jquery-rails
   mysql2
   prawn!
