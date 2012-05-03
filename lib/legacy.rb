@@ -10,7 +10,10 @@ module Legacy
       begin
         puts "\n---"
         puts "Migrando: #{tabla[:legacy]}\n"
-        migracion = Migration.new(tabla)
+
+        migration_class = Legacy.const_get(tabla[:legacy].chomp(".dbf").capitalize.concat("Migration")) rescue Migration
+        migracion = migration_class.new(tabla)
+
         migracion.output = :dots
 
         puts "Datos a migrar: #{migracion.legacy_table.record_count} / #{migracion.model.count}"
