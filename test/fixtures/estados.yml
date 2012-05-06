@@ -7,7 +7,7 @@ puente_comision_4_1:
   tipo: 1
   pasada: 1
   fechaent: 2004-11-08
-  comision: 4
+  comision: obras
   fechasal: 2004-11-12
   dictmay: ! 'REUTEMANN Roberto F, CAVUTO Adriana, PEIRONE Ricardo,  DEHESA Roberto,
     TIBALDO Mario,  ARANDA Lucrecia, '
@@ -21,7 +21,7 @@ puente_comision_2:
   tipo: 1
   pasada: 1
   fechaent: 2004-11-18
-  comision: 2
+  comision: presupuestos
   fechasal: 2004-11-19
   dictmay: ! 'PEIRONE Ricardo, SCATAGLINI Darío, LAGNA Jorge, VENESIA Laura Mercedes,
     MAGUID Alberto, DALLA FONTANA Ariel, '
@@ -35,7 +35,7 @@ puente_comision_1_1:
   tipo: 1
   pasada: 1
   fechaent: 2004-11-22
-  comision: 1
+  comision: asuntos
   fechasal: 2004-11-26
   dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela, BENAS Verónica,
     LAMBERTO Raúl, LIBERATI Sergio
@@ -49,7 +49,7 @@ puente_comision_1_2:
   tipo: 1
   pasada: 1
   fechaent: 2005-05-16
-  comision: 1
+  comision: asuntos
   fechasal: 2005-05-18
   dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela, DEHESA Roberto,
     LACAVA Mario, BENAS Verónica, MASCHERONI Santiago Angel, LAMBERTO Raúl, LIBERATI
@@ -66,7 +66,7 @@ puente_comision_4_2:
   tipo: 1
   pasada: 1
   fechaent: 2005-05-20
-  comision: 4
+  comision: obras
   fechasal: 2005-06-17
   dictmay: ! 'REUTEMANN Roberto F, PEIRONE Ricardo, DEHESA Roberto, TIBALDO Claudio
     Octavio,  ARANDA Lucrecia, '
@@ -80,7 +80,7 @@ puente_comision_1_3:
   tipo: 1
   pasada: 1
   fechaent: 2005-06-22
-  comision: 1
+  comision: asuntos
   fechasal: 2005-06-23
   dictmay: ESQUIVEL Mario César, KILIBARDA Danilo, MEOTTO Liliana Graciela,  LACAVA
     Mario, BENAS Verónica, MASCHERONI Santiago Angel, LIBERATI Sergio
