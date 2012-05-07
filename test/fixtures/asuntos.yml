@@ -10,9 +10,9 @@ puente:
   numreunion: 26
   numsesion: 24
   asunto: 92
-  comision1: 4
-  comision2: 2
-  comision3: 1
+  comision1: <%= ActiveRecord::Fixtures.identify("obras") %>
+  comision2: <%= ActiveRecord::Fixtures.identify("presupuesto") %>
+  comision3: <%= ActiveRecord::Fixtures.identify("asuntos") %>
   comision4: 0
   comision5: 0
   comision6: 0
