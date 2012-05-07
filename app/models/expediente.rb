@@ -15,6 +15,7 @@ class Expediente < ActiveRecord::Base
   belongs_to :estado, :class_name => Status
 
   has_many :estados
+  has_many :prefers
 
   # puede ser un has_one, pero no estoy seguro.
   has_many  :asuntos
