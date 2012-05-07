@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503020355) do
+ActiveRecord::Schema.define(:version => 20120507125245) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -198,16 +198,20 @@ ActiveRecord::Schema.define(:version => 20120503020355) do
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
-    t.string   "letra",      :limit => 3
+    t.string   "letra",         :limit => 3
     t.integer  "tipo"
     t.integer  "pasada"
     t.integer  "preferen"
     t.date     "fechapref"
     t.date     "fechasol"
     t.integer  "tratado"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "expediente_id"
   end
+
+  add_index "prefers", ["expediente_id"], :name => "index_prefers_on_expediente_id"
+  add_index "prefers", ["numero"], :name => "index_prefers_on_numero"
 
   create_table "senados", :force => true do |t|
     t.integer  "codigo"
