@@ -53,6 +53,7 @@ ActiveAdmin.register Expediente do
         li link_to "Asuntos entrados", "#xtabs-2"
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
+        li link_to "Preferencia", "#xtabs-5" if expediente.prefers.count > 0
       end
 
       div(:id => "xtabs-1") do
@@ -64,6 +65,7 @@ ActiveAdmin.register Expediente do
         expediente.finals.each do |final|
           div final.descripcion
         end
+        
       end
 
       div(:id => "xtabs-2") do
@@ -103,6 +105,12 @@ ActiveAdmin.register Expediente do
             :fechases, :tratamiento, :resultado
         else
           "Este expediente no ha sido tratado en sesion"
+        end
+      end
+
+      div(:id => "xtabs-5") do
+        expediente.prefers.each do |pre|
+          attributes_table_for pre, :fechasol, :fechapref, :tratado
         end
       end
 
