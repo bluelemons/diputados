@@ -23,7 +23,7 @@ class Expediente < ActiveRecord::Base
     Periodo[read_attribute(:tipoperiod)] || "No indicado"
   end
 
-
+  belongs_to :tema, :class_name => Tema, :foreign_key => :tema
   has_many :estados
 
   # puede ser un has_one, pero no estoy seguro.
