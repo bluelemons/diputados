@@ -23,7 +23,7 @@ class Expediente < ActiveRecord::Base
     Periodo[read_attribute(:tipoperiod)] || "No indicado"
   end
 
-  belongs_to :tema, :class_name => Tema, :foreign_key => :tema
+  belongs_to :tema
   has_many :estados
 
   # puede ser un has_one, pero no estoy seguro.
@@ -34,6 +34,13 @@ class Expediente < ActiveRecord::Base
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.
+  def tema=(tema)
+    if tema.is_a? Fixnum
+      write_attribute(:tema, tema)
+    else
+      super
+    end
+  end
 
   def estado=(estado)
     if estado.is_a? Fixnum
