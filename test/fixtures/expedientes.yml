@@ -5,7 +5,7 @@ one:
   tipo: 1
   pasada: 1
   numsenado: 12
-  tema: 12
+  tema_id: <%= ActiveRecord::Fixtures.identify("judiciales") %>
   descrip: Habla sobre cosas interesantes
   fechaentr: 2012-03-28
   hora: hora
@@ -33,7 +33,7 @@ puente:
   tipo: 1
   pasada: 1
   numsenado: 0
-  tema: 4
+  tema_id: <%= ActiveRecord::Fixtures.identify("edificaciones") %>
   descrip: VENIDO EN REVISION; POR EL CUAL SE DISPONE LA CONSTRUCCION DE UN PUENTE DE
     CEMENTO SOBRE EL ARROYO LEYES EN LA RUTA PROVINCIAL 1.-    *545J*  (tratamiento
     comjunto con el Expte. 13369 - UCR)
