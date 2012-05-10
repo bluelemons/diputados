@@ -77,10 +77,21 @@ module Legacy
       @legacy_table.close
     end
 
+    # Permite que las clases hijas alteren el hash de attributos antes de
+    # realizar cualquier seed.
+    #
+    # @param [Hash] attributes hash de datos de la tabla
+    # @return  [hash]
+
+    def override_attributes(attributes)
+      attributes
+    end
+
     private
 
     def prepare_record(record)
       attributes = downcase_and_symbolize_attributes record.attributes
+      attributes = override_attributes(attributes)
       attributes.merge! build_references(attributes) unless @references.empty?
       print "·" if @output == :dots
       attributes
@@ -94,7 +105,8 @@ module Legacy
     def build_references(seed_attr)
       hash = {}
       @references.each do |r|
-        hash[r.foreign_key] = find_associated_record_id(r.klass, seed_attr)
+        hash[r.foreign_key] = seed_attr[r.foreign_key.to_sym] ||
+                              find_associated_record_id(r.klass, seed_attr)
       end
       hash
     end

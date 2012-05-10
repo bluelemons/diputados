@@ -46,24 +46,6 @@ ActiveRecord::Schema.define do
 end
 
 ActiveRecord::Schema.define do
-  create_table "comision" do |t|
-    t.integer :codigo
-    t.string :nombre, :limit => 25
-    t.integer :pte
-    t.integer :vice
-    t.integer :int1
-    t.integer :int2
-    t.integer :int3
-    t.integer :int4
-    t.integer :int5
-    t.integer :int6
-    t.integer :int7
-    t.integer :int8
-    t.integer :int9
-  end
-end
-
-ActiveRecord::Schema.define do
   create_table "letra" do |t|
     t.string :letra, :limit => 3
     t.integer :p09
