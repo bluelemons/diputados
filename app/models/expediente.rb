@@ -13,7 +13,17 @@ class Expediente < ActiveRecord::Base
   end
 
   belongs_to :estado, :class_name => Status
+  Entrada = { 1 => "Mesa de entrada", 2 => "Secretaria"}
+  def tipoentr
+    Entrada[read_attribute(:tipoentr)] || "No indicado"
+  end
 
+  Periodo = { 1 => "Ordinario", 2 => "De prorroga", 3 => "Extraordinario"}
+  def tipoperiod
+    Periodo[read_attribute(:tipoperiod)] || "No indicado"
+  end
+
+  belongs_to :tema
   has_many :estados
   has_many :prefers
 
@@ -25,6 +35,13 @@ class Expediente < ActiveRecord::Base
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.
+  def tema=(tema)
+    if tema.is_a? Fixnum
+      write_attribute(:tema, tema)
+    else
+      super
+    end
+  end
 
   def estado=(estado)
     if estado.is_a? Fixnum
