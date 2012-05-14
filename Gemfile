@@ -37,3 +37,6 @@ group :migrations do
 end
 
 gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
+
+gem 'simplecov', :require => false, :group => :test
+
