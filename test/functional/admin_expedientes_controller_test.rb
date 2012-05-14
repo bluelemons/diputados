@@ -11,5 +11,20 @@ class Admin::ExpedientesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should show detalles" do
+    get :show, id: @expediente
+    assert_response :success
+  end
+
+  test "Se puede imprimir la busqueda" do
+    get :index, format: :pdf
+    assert_response :success
+  end
+
+  test "Se puede imprimir el expediente" do
+    get :print, id: @expediente
+    assert_response :success
+  end
+
 end
 
