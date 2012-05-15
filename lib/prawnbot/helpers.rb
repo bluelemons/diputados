@@ -12,6 +12,16 @@ module Resource
 
     end
 
+    def report_line(data)
+
+      bounding_box [0, cursor],:width => bounds.right do
+        data.each do |d|
+          text d, :inline_format => true
+        end
+      end
+ 
+    end
+
     def mybox( texto )
       table([[texto]], :row_colors => ["F0F0F0"])
       move_down 10
