@@ -18,4 +18,5 @@
 # Ignore generated documentation
 .yardoc/
 doc/
+coverage/
 
