@@ -90,7 +90,7 @@ class ExpedientesReport < Prawnbot::Report
 
     if expediente.sesion
       report_line([
-        "Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}",
+        "Tratamiento #{expediente.sesion.tratamiento} Resultado de la votacion: #{expediente.sesion.resultado} Fecha de sesion #{expediente.sesion.fechases}",
         "#{expediente.sesion.periodo}"
       ])
     else
