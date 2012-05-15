@@ -50,15 +50,24 @@ class ExpedientesReport < Prawnbot::Report
       "#{expediente.clave}",
       "<b>Autor</b> #{expediente.autor}",
       "<b>Tema</b> #{expediente.tema}",
-      "<b>Estado</b> #{expediente.estado}",
-      " ",
+      "<b>Estado</b> #{expediente.estado}"
+      ])
+
+    move_down 10
+    
+    report_line([
       "<b>Descripcion</b>",
-      "#{expediente.descrip}",
-      " ",
+      "#{expediente.descrip}"
+      ])
+
+    move_down 10
+    report_line([
       "<b>Firmantes</b> #{expediente.firmantes}",
       " ",
       "Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}"
       ])
+
+    move_down 10
 
     show_title "PASE POR COMISIONES"
     expediente.estados.each do |estado|
@@ -66,7 +75,7 @@ class ExpedientesReport < Prawnbot::Report
       dic = ""
       estado.dictamenes.each do |dictamen|
         dic += "<b>#{dictamen[:tipo]}</b> <b>fecha</b>: #{dictamen[:fecha]}<br>"
-        dic += "#{dictamen[:dictamen]}<br>"
+        dic += "#{dictamen[:dictamen]}"
       end
 
       report_line([
@@ -74,10 +83,19 @@ class ExpedientesReport < Prawnbot::Report
         "<b>Entrada:</b>#{estado.fechaent}  <b>Salida:</b>#{estado.fechasal}",
         dic
       ])
-
+      move_down 10
     end
 
     show_title "TRATAMIENTO EN SESION"
+
+    if expediente.sesion
+      report_line([
+        "Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}",
+        "#{expediente.sesion.periodo}"
+      ])
+    else
+      report_line(["Sin tratamiento en session"])
+    end
 
     render
   end
