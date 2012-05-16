@@ -7,25 +7,32 @@ module Prawnbot
 
   class Report < Prawn::Document
 
-    attr_accessor :header_title,
-                  :with_header,
-                  :with_footer,
-                  :fsize,
-                  :logo,
-                  :water_print
-
     include Resource::Search
     include Resource::Body
     include Resource::Helpers
 
-    def initialize
-      @fsize = 7
-      @with_header = true
-      @with_footer = true
-
-      super
-      self.font_size = @fsize
+    def self.setup
+      yield self
     end
+
+    cattr_accessor :fsize
+    @font_size = 10
+
+    cattr_accessor :header_title
+    cattr_accessor :header_subtitle
+
+    cattr_accessor :with_header
+    @with_header = true
+
+    cattr_accessor :with_footer
+    @with_footer = false
+
+    cattr_accessor :logo
+
+    cattr_accessor :water_print
+
+    cattr_accessor :title_font_size
+    cattr_accessor :title_font_color
 
   end
 end
