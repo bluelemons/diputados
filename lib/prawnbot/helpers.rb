@@ -58,7 +58,7 @@ module Resource
     end
 
     def myform(data)
-      bounding_box [0, cursor],:width => 250, :height => (data.size * 12) do
+      bounding_box [0, cursor],:width => 250 do
         data.each do |d|
           text d, :inline_format => true
         end
