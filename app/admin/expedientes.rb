@@ -32,6 +32,7 @@ ActiveAdmin.register Expediente do
     column :letra
     column :pasada
     column :fechaentr
+    column(:estado){|expediente| status_tag(expediente.estado.nombre)}
     default_actions
   end
 
