@@ -5,7 +5,7 @@ class ExpedientesReport < Prawnbot::Report
 
   def index(datos, params)
     body
-
+    fsize = 8 
     show_title "Listado de expedientes"
 
     informacion_de_busqueda(params)
@@ -79,7 +79,7 @@ class ExpedientesReport < Prawnbot::Report
       end
 
       report_line([
-        "#{estado.comision.name}",
+        "#{estado.comision.try(:name)}",
         "<b>Entrada:</b>#{estado.fechaent}  <b>Salida:</b>#{estado.fechasal}",
         dic
       ])
