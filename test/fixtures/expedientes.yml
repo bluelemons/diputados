@@ -49,3 +49,30 @@ puente:
   marca: 0
   etiq: 1
 
+dia:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  created_at: <%= Date.today %>
+
+semana:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  created_at: <%= 6.day.ago %>
+
+mes:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  created_at: <%= 8.day.ago %>
+
