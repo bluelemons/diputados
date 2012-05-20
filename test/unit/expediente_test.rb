@@ -14,18 +14,19 @@ class ExpedienteTest < ActiveSupport::TestCase
   end
 
   test "Expediente debe tener un scope que muestre los expedientes del dia" do
-    @expediente = expedientes(:dia)
-    assert_equal Expediente.last_week.sould.all.include? @expediente
+    @expediente = expedientes(:day)
+    binding.pry
+    assert Expediente.day.include?(@expediente), "este es el error"
   end
 
   test "Expediente debe tener un scope que muestre los expedientes de la semana" do
-    @expediente = expedientes(:semana)
-    assert_equal Expediente.last_week.sould.all.include? @expediente
+    @expediente = expedientes(:week)
+    assert Expediente.week.include?(@expediente)
   end
 
   test "Expediente debe tener un scope que muestre los expedientes del mes " do
-    @expediente = expedientes(:mes)
-    assert_equal Expediente.last_week.sould.all.include? @expediente
+    @expediente = expedientes(:month)
+    assert Expediente.month.include?(@expediente)
   end
 
 end
