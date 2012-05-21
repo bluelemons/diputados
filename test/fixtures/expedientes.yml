@@ -56,7 +56,7 @@ day:
   pasada: 1
   numsenado: 0
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
-  created_at: <%= Date.today %>
+  fechaentr: <%= Date.today %>
 
 week:
   numero: 13732
@@ -65,7 +65,7 @@ week:
   pasada: 1
   numsenado: 0
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
-  created_at: <%= 6.day.ago %>
+  fechaentr: <%= 6.day.ago %>
 
 month:
   numero: 13732
@@ -74,5 +74,5 @@ month:
   pasada: 1
   numsenado: 0
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
-  created_at: <%= 8.day.ago %>
+  fechaentr: <%= 8.day.ago %>
 
