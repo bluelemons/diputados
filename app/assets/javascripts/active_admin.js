@@ -3,5 +3,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require tabs
+
 //= require jquery.cookie
+//= require dataTables/jquery.dataTables
+
+//= require_tree .
+
