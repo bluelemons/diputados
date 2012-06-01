@@ -2,6 +2,10 @@ ActiveAdmin.register Expediente do
 
   actions :index, :show
 
+  scope :all, :default => true
+  scope :week
+  scope :month
+
   controller do
     respond_to :html, :xml, :json, :pdf
 

@@ -23,6 +23,10 @@ class Expediente < ActiveRecord::Base
     Periodo[read_attribute(:tipoperiod)] || "No indicado"
   end
 
+  scope :day, where("fechaentr >= ?", 1.day.ago.strftime("%Y-%m-%d"))
+  scope :week, where("fechaentr >= ?", 1.week.ago.strftime("%Y-%m-%d"))
+  scope :month, where("fechaentr >= ?", 1.month.ago.strftime("%Y-%m-%d"))
+
   belongs_to :tema
   has_many :estados
   has_many :prefers
