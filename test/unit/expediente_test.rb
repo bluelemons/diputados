@@ -15,7 +15,6 @@ class ExpedienteTest < ActiveSupport::TestCase
 
   test "Expediente debe tener un scope que muestre los expedientes del dia" do
     @expediente = expedientes(:day)
-    binding.pry
     assert Expediente.day.include?(@expediente), "este es el error"
   end
 
