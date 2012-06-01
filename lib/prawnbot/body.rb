@@ -3,11 +3,10 @@ module Resource
   module Body
 
     def body
+      header if with_header
+      footer if with_footer
 
-      header if @with_header
-      footer if @with_footer
-
-      @fsize = self.font_size
+      font_size = fsize
 
     end
 
@@ -15,14 +14,14 @@ module Resource
       repeat :all do
         bounding_box [0, cursor],:width => 500, :height => 90 do
           fill_color "6b0303"
-          image(@logo,:at => [bounds.right - 50, cursor - 12],:scale=>0.30)
-          image(@water_print,:at => [50, cursor - 100])
+          image(logo,:at => [bounds.right - 50, cursor - 12],:scale=>0.30)
+          image(water_print,:at => [50, cursor - 100])
           font_size 11 do
             stroke_horizontal_rule
             pad(20) {
-              text "<b>#{@header_title}</b>",:inline_format => true
+              text "<b>#{header_title}</b>",:inline_format => true
 
-              text @header_subtitle,:inline_format => true
+              text header_subtitle, :inline_format => true
             }
             stroke_horizontal_rule
             move_down 10

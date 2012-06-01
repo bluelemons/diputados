@@ -12,7 +12,7 @@ module Resource
 
     def convierte(params)
       filtro = clean(params) if params
-      bounding_box([20, cursor], :width => 500, :height => params.size * 15 +20) do
+      bounding_box([20, cursor], :width => 500) do
         if filtro
           text "Filtros de busqueda:"
           filtro.each{|k,v| text "<b>#{human_attribute_name k.to_s}</b>: #{v}",:inline_format => true}
