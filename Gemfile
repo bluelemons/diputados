@@ -40,3 +40,9 @@ gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :sub
 
 gem 'simplecov', :require => false, :group => :test
 
+group :deployment do
+  gem 'rvm-capistrano'
+  gem 'bundler'
+  gem 'capistrano'
+end
+

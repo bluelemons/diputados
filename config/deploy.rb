@@ -1,3 +1,12 @@
+require "bundler/capistrano"
+
+# RVM Setup
+
+set :rvm_ruby_string, "1.9.3"
+set :rvm_type, :system  # Copy the exact line. I really mean :system here
+
+require "rvm/capistrano"
+
 set :application, "diputados"
 set :repository,  "https://github.com/BlueLemon/diputados.git"
 
