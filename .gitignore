@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore productiono assets
+/public/assets
+
 # Ignore generated documentation
 .yardoc/
 doc/
