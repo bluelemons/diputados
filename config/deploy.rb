@@ -12,6 +12,23 @@ set :user, "diputados"
 
 set :use_sudo, false
 
+namespace :deploy do
+
+  namespace :db do
+
+    desc <<-DESC
+      [internal] Updates the symlink for database.yml file to the just deployed release.
+    DESC
+    task :symlink, :except => { :no_release => true }, :role => :app do
+      run "ln -fs ~/database.yml #{release_path}/config/database.yml"
+    end
+
+  end
+
+end
+
+after "deploy:finalize_update", "deploy:db:symlink"
+
 #role :web, "diputados"                          # Your HTTP server, Apache/etc
 #role :app, "diputados"                          # This may be the same as your `Web` server
 #role :db,  "diputados", :primary => true        # This is where Rails migrations will run
