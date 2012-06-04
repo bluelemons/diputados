@@ -24,7 +24,7 @@ ActiveAdmin.register Expediente do
   filter :fechaentr
   filter :autor
   filter :firmantes
-  filter :descripcion
+  filter :descrip, :label => "Descripcion"
 
   index do
     column :numero
