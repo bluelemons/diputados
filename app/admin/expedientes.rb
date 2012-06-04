@@ -2,6 +2,10 @@ ActiveAdmin.register Expediente do
 
   actions :index, :show
 
+  scope :all, :default => true
+  scope :week
+  scope :month
+
   controller do
     respond_to :html, :xml, :json, :pdf
 
@@ -84,7 +88,7 @@ ActiveAdmin.register Expediente do
 
       div(:id => "xtabs-3") do
         expediente.estados.each do |estado|
-          panel estado.comision.name do
+          panel estado.comision.try(:name) do
             div "<b>Entrada </b> #{estado.fechaent}".html_safe
             estado.dictamenes.each do |dictamen|
               div do

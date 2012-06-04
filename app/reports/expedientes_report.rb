@@ -1,22 +1,11 @@
 require 'prawnbot'
-#include MyReport
 require 'open-uri'
 
 class ExpedientesReport < Prawnbot::Report
 
-  def initialize
-    super
-    @header_title = "CAMARA DE DIPUTADOS"
-    @header_subtitle = "Provicina de Santa Fe"
-
-    @logo = "#{Rails.root}/app/assets/images/santa_fe_escudo_logo.png"
-    @water_print = "#{Rails.root}/app/assets/images/santa_fe_escudo_fondo.png"
-
-  end
-
   def index(datos, params)
     body
-
+    fsize = 8 
     show_title "Listado de expedientes"
 
     informacion_de_busqueda(params)
@@ -57,59 +46,55 @@ class ExpedientesReport < Prawnbot::Report
 
     show_title "DETALLE DE EXPEDIENTE"
 
-    show_title "#{expediente.tipo_format} N #{expediente.numero} (#{expediente.pasada})"
-
-    myform([
+    report_line([
+      "#{expediente.clave}",
       "<b>Autor</b> #{expediente.autor}",
       "<b>Tema</b> #{expediente.tema}",
-      "<b>Estado</b> #{expediente.estado}"])
+      "<b>Estado</b> #{expediente.estado}"
+      ])
 
-    myform(["Descripcion"])
+    move_down 10
+    
+    report_line([
+      "<b>Descripcion</b>",
+      "#{expediente.descrip}"
+      ])
 
-    mybox(expediente.descrip)
-
-    myform(["Firmantes",expediente.firmantes])
-
-    mybox("Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}")
-
-    myform(["<b>COMISIONES ASIGNADAS</b> (desde As. Entrados)"])
-
-    header_row = [ %w[  Comision
-                      Entrada
-                      Tratamses
-                      Salida
-                      Dictmay
-                      Dictmin1
-                      Dictmin2
-                      Fechamay
-                      Fechamin1
-                      Fechamin2
-                      V
-                      ] ]
-    valores_tabla = expediente.estados.all.map do |r|
-      data_row = %W[  #{r.comision}
-                      #{r.fechaent}
-                      #{r.tratamses}
-                      #{r.fechasal}
-                      #{r.dictmay}
-                      #{r.dictmin1}
-                      #{r.dictmin2}
-                      #{r.fechamay}
-                      #{r.fechamin1}
-                      #{r.fechamin2}
-                      #{r.v} ]
-      end
-
-    mytable (header_row + valores_tabla)
+    move_down 10
+    report_line([
+      "<b>Firmantes</b> #{expediente.firmantes}",
+      " ",
+      "Entrada: #{expediente.fechaentr}, Por: #{expediente.tipoentr} a las #{expediente.hora} en el periodo #{expediente.tipoperiod} N #{expediente.numperiodo}"
+      ])
 
     move_down 10
 
-    myform ["<b>TRATAMIENTO EN SESION</b>"]
+    show_title "PASE POR COMISIONES"
+    expediente.estados.each do |estado|
+
+      dic = ""
+      estado.dictamenes.each do |dictamen|
+        dic += "<b>#{dictamen[:tipo]}</b> <b>fecha</b>: #{dictamen[:fecha]}<br>"
+        dic += "#{dictamen[:dictamen]}"
+      end
+
+      report_line([
+        "#{estado.comision.try(:name)}",
+        "<b>Entrada:</b>#{estado.fechaent}  <b>Salida:</b>#{estado.fechasal}",
+        dic
+      ])
+      move_down 10
+    end
+
+    show_title "TRATAMIENTO EN SESION"
 
     if expediente.sesion
-      mybox("Tratamiento #{expediente.sesion.tratamient} Resultado de la votacion: #{expediente.sesion.resuvotac} Fecha de sesion #{expediente.sesion.fechases}")
+      report_line([
+        "Tratamiento #{expediente.sesion.tratamiento} Resultado de la votacion: #{expediente.sesion.resultado} Fecha de sesion #{expediente.sesion.fechases}",
+        "#{expediente.sesion.periodo}"
+      ])
     else
-      mybox "Sin tratamiento en session"
+      report_line(["Sin tratamiento en session"])
     end
 
     render

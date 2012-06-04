@@ -1,17 +1,44 @@
 module Resource
   module Helpers
     def show_title(t)
-      r=self.font_size
-      font_size 10 do
-        text "<b>#{t}</b>", :inline_format => true
+
+      font_size title_font_size do
+        fill_color title_font_color
+        text "#{t}", :inline_format => true
       end
+
+      fill_color "000000"
       move_down 10
-      font_size = r
+
+    end
+
+    def report_line(data)
+
+      bounding_box [0, cursor],:width => bounds.right do
+        data.each do |d|
+          text d, :inline_format => true
+        end
+      end
+ 
     end
 
     def mybox( texto )
       table([[texto]], :row_colors => ["F0F0F0"])
       move_down 10
+    end
+
+    def mylist(rows,options={}) 
+      widths = options.delete(:column_widths) || {}
+      table rows, :header => true,
+              :row_colors => %w[ffffff],
+              :column_widths => widths do
+        cells.style :borders => [:top], :overflow => :expand
+
+        # encabezado
+        row(0).style :text_color => '000000', :align => :center
+        # fila de totales:
+        row(-1).style :font_style => :bold
+      end
     end
 
     def mytable( rows,options={} )
@@ -31,7 +58,7 @@ module Resource
     end
 
     def myform(data)
-      bounding_box [0, cursor],:width => 250, :height => (data.size * 12) do
+      bounding_box [0, cursor],:width => 250 do
         data.each do |d|
           text d, :inline_format => true
         end

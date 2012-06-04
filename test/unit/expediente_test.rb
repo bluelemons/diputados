@@ -12,6 +12,21 @@ class ExpedienteTest < ActiveSupport::TestCase
     assert_equal asuntos(:puente), @expediente.asuntos.first, "El asunto no está asociado"
     assert_equal finals(:puente), @expediente.finals.first, "El final no esta asociado"
   end
-  
+
+  test "Expediente debe tener un scope que muestre los expedientes del dia" do
+    @expediente = expedientes(:day)
+    assert Expediente.day.include?(@expediente), "este es el error"
+  end
+
+  test "Expediente debe tener un scope que muestre los expedientes de la semana" do
+    @expediente = expedientes(:week)
+    assert Expediente.week.include?(@expediente)
+  end
+
+  test "Expediente debe tener un scope que muestre los expedientes del mes " do
+    @expediente = expedientes(:month)
+    assert Expediente.month.include?(@expediente)
+  end
+
 end
 
