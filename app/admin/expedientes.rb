@@ -34,6 +34,7 @@ ActiveAdmin.register Expediente do
     column :tipo
     column :pasada
     column :fechaentr
+    column :descrip
     default_actions
   end
 
