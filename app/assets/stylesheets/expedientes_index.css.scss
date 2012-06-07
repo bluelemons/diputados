@@ -1,0 +1,21 @@
+$selected-row-color: lighten($header-color, 20%);
+
+.index.admin_expedientes tr {
+  td.descrip {
+    float: left;
+    height: 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &:hover {
+    td {
+      background-color: $selected-row-color;
+    }
+    td.descrip {
+      float: none;
+      overflow: visible;
+    }
+  }
+}
+
+
