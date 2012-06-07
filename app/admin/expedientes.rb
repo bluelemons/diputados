@@ -23,7 +23,6 @@ ActiveAdmin.register Expediente do
 
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
-  filter :letra
   filter :estado
   filter :fechaentr
   filter :autor
@@ -33,7 +32,6 @@ ActiveAdmin.register Expediente do
   index do
     column :numero
     column :tipo
-    column :letra
     column :pasada
     column :fechaentr
     default_actions
