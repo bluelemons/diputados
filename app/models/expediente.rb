@@ -72,7 +72,8 @@ class Expediente < ActiveRecord::Base
   end
 
   def html_descrip
-    "<p>#{descrip}</p>".html_safe
+    pretty_descrip = descrip.mb_chars.capitalize
+    "<p>#{pretty_descrip}</p>".html_safe
   end
 
 end
