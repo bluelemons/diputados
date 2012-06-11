@@ -58,7 +58,7 @@ class Expediente < ActiveRecord::Base
   def tipo_format
     "#{tipo} #{ley if tipo == "Ley"}"
   end
-  
+
   def entrada
     "#{fechaentr} #{hora} por: #{tipoentr}"
   end
@@ -69,6 +69,10 @@ class Expediente < ActiveRecord::Base
 
   def clave
     "#{numero} #{letra} #{tipo_format} (#{pasada})"
+  end
+
+  def html_descrip
+    "<p>#{descrip}</p>".html_safe
   end
 
 end
