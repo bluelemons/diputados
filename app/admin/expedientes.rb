@@ -34,7 +34,7 @@ ActiveAdmin.register Expediente do
     column :tipo
     column :pasada
     column :fechaentr
-    column :descrip
+    column :descrip, :html_descrip
     default_actions
   end
 
@@ -68,7 +68,7 @@ ActiveAdmin.register Expediente do
         expediente.finals.each do |final|
           div final.descripcion
         end
-        
+
       end
 
       div(:id => "xtabs-2") do
@@ -122,3 +122,4 @@ ActiveAdmin.register Expediente do
   end
 
 end
+
