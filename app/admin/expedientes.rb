@@ -25,7 +25,8 @@ ActiveAdmin.register Expediente do
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :estado
   filter :fechaentr
-  filter :autor
+  filter :autor, :as => :select,
+    :collection => Diputado.pluck(:nombre).concat(Senado.pluck(:nombre)).sort
   filter :firmantes
   filter :descrip, :label => "Descripcion"
 
