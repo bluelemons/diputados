@@ -1,5 +1,8 @@
 require "bundler/capistrano"
 
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
+
 # RVM Setup
 
 set :rvm_ruby_string, "1.9.3"

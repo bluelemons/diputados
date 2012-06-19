@@ -46,3 +46,4 @@ group :deployment do
   gem 'capistrano'
 end
 
+gem 'whenever', :require => false
