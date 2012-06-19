@@ -60,3 +60,16 @@ end
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
+namespace :legacy  do
+
+  desc "Link db/legacy for current deploy to the shared location"
+  task :update_symlink, :roles => [:db] do
+    run "ln -nfs #{shared_path}/legacy #{release_path}/db/legacy"
+  end
+
+end
+
+before "deploy:symlink" do
+  legacy.update_symlink
+end
+
