@@ -36,8 +36,6 @@ group :migrations do
   gem 'seed-fu'
 end
 
-gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
-
 gem 'simplecov', :require => false, :group => :test
 
 group :deployment do
