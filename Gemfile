@@ -44,4 +44,6 @@ group :deployment do
   gem 'capistrano'
 end
 
+gem 'odf-report'
+
 gem 'whenever', :require => false
