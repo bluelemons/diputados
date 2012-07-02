@@ -40,10 +40,61 @@ ActiveAdmin.register Expediente do
   end
 
   member_action :print do
-    expediente = Expediente.find params[:id]
-    output = ExpedientesReport.new.show(expediente)
-    send_data output, :filename => "expediente.pdf",
-                          :type => "application/pdf"
+#    expediente = Expediente.find params[:id]
+#    output = ExpedientesReport.new.show(expediente)
+#    send_data output, :filename => "expediente.pdf",
+#                          :type => "application/pdf"
+
+    @expediente = Expediente.find(params[:id])
+
+    report = ODFReport::Report.new(Rails.root.join("app/reports/expediente.odt")) do |r|
+
+      r.add_field(:clave,         @expediente.clave.to_s)
+      r.add_field(:autor,         @expediente.autor.to_s)
+      r.add_field(:tema,          @expediente.tema.to_s)
+      r.add_field(:estado,        @expediente.estado.to_s)
+      r.add_field(:descripcion,   @expediente.descrip.mb_chars.capitalize)
+      r.add_field(:firmantes,     @expediente.firmantes.to_s)
+
+      r.add_field(:fechaentr,     @expediente.fechaentr.to_s)
+      r.add_field(:tipoentr,      @expediente.tipoentr.to_s)
+      r.add_field(:hora,          @expediente.hora.to_s)
+      r.add_field(:tipoperiod,    @expediente.tipoperiod.to_s)
+      r.add_field(:numperiodo,    @expediente.numperiodo.to_s)
+
+#      r.add_field(:created_by, @ticket.created_by)
+#      r.add_field(:created_at, @ticket.created_at.strftime("%d/%m/%Y - %H:%M"))
+#      r.add_field(:type,       @ticket.type.name)
+#      r.add_field(:status,     @ticket.status_text)
+#      r.add_field(:date,       Time.now.strftime("%d/%m/%Y - %H:%M"))
+#      r.add_field(:solution,   (@ticket.solution || ''))
+
+      r.add_section "COMISION", @expediente.estados do |s|
+        s.add_field(:nombre) { |estado| estado.comision.nombre }
+        s.add_field(:entrada) { |estado| estado.fechaent }
+        s.add_field(:salida) { |estado| estado.fechasal }
+        s.add_section("DICTAMEN", :dictamenes) do |ss|
+
+          ss.add_field(:tipo) { |n| n[:tipo].to_s }
+          ss.add_field(:fecha) { |n| n[:fecha].to_s }
+          ss.add_field(:dictamen) { |n| n[:dictamen].to_s }
+        end
+      end
+#      r.add_table("estados", @expediente.estados) do |t|
+#        t.add_column(:nombre, t.name)
+#      end
+
+#      r.add_table("FIELDS", @ticket.fields) do |t|
+#        t.add_column(:field_name, :name)
+#        t.add_column(:field_value) { |field| field.text_value || "Empty" }
+#      end
+
+    end
+
+    report_file_name = report.generate
+
+    send_file(report_file_name)
+
   end
 
   action_item(:only =>[:show]) do
