@@ -8,15 +8,16 @@ module Legacy
   # Realiza la migración de todas las tablas e indica los resultados en la
   # consola
   def self.seed_legacy_databases
+    puts "\n--- MIGRACION INICIO: #{Time.now} ---"
     LEGACY_TABLES.each do |tabla|
       begin
-        puts "\n---"
+        puts "\n--- #{Time.now}"
         puts "Migrando: #{tabla[:legacy]}\n"
 
         migration_class = Legacy.const_get(tabla[:legacy].chomp(".dbf").capitalize.concat("Migration")) rescue Migration
         migracion = migration_class.new(tabla)
 
-        migracion.output = :dots
+        migracion.output = :dots if ENV["PROGRESS"]
 
         puts "Datos a migrar: #{migracion.legacy_table.record_count} / #{migracion.model.count}"
 
@@ -37,6 +38,7 @@ module Legacy
         puts "\n---\n#{tabla[:legacy]} #{$!}"
       end
     end
+    puts "--- MIGRACION FINAL: #{Time.now} ---"
   end
 
   def self.re_seedable?(model)
