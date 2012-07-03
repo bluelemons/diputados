@@ -11,11 +11,22 @@ ActiveAdmin.register Expediente do
 
     def index
       super do |format|
-        datos = Expediente.search(params[:q])
         format.pdf {
-          output = ExpedientesReport.new.index(datos,params)
-          send_data output, :filename => "expedientes.pdf",
-                            :type => "application/pdf"
+          @expedientes = Expediente.search(params[:q])
+          report = ODFReport::Report.new(Rails.root.join("app/reports/expedientes.odt")) do |r|
+            r.add_table("EXPEDIENTES", @expedientes, :header=>true) do |t|
+              t.add_column(:clave) { |item| item.clave.to_s }
+              t.add_column(:entrada) { |item| item.entrada.to_s }
+              t.add_column(:autor) { |item| item.autor.to_s }
+              t.add_column(:firmantes) { |item| item.firmantes.to_s }
+              t.add_column(:descripcion) { |item| item.descrip.to_s }
+
+            end
+          end
+
+          report_file_name = report.generate
+
+          send_file(report_file_name)
           }
       end
     end
@@ -40,10 +51,6 @@ ActiveAdmin.register Expediente do
   end
 
   member_action :print do
-#    expediente = Expediente.find params[:id]
-#    output = ExpedientesReport.new.show(expediente)
-#    send_data output, :filename => "expediente.pdf",
-#                          :type => "application/pdf"
 
     @expediente = Expediente.find(params[:id])
 
@@ -62,12 +69,10 @@ ActiveAdmin.register Expediente do
       r.add_field(:tipoperiod,    @expediente.tipoperiod.to_s)
       r.add_field(:numperiodo,    @expediente.numperiodo.to_s)
 
-#      r.add_field(:created_by, @ticket.created_by)
-#      r.add_field(:created_at, @ticket.created_at.strftime("%d/%m/%Y - %H:%M"))
-#      r.add_field(:type,       @ticket.type.name)
-#      r.add_field(:status,     @ticket.status_text)
-#      r.add_field(:date,       Time.now.strftime("%d/%m/%Y - %H:%M"))
-#      r.add_field(:solution,   (@ticket.solution || ''))
+      r.add_field(:tratamiento,   @expediente.sesion.tratamiento.to_s)
+      r.add_field(:resultado,     @expediente.sesion.resultado.to_s)
+      r.add_field(:fechases,      @expediente.sesion.fechases.to_s)
+      r.add_field(:periodo,       @expediente.sesion.periodo.to_s)
 
       r.add_section "COMISION", @expediente.estados do |s|
         s.add_field(:nombre) { |estado| estado.comision.nombre }
@@ -80,14 +85,6 @@ ActiveAdmin.register Expediente do
           ss.add_field(:dictamen) { |n| n[:dictamen].to_s }
         end
       end
-#      r.add_table("estados", @expediente.estados) do |t|
-#        t.add_column(:nombre, t.name)
-#      end
-
-#      r.add_table("FIELDS", @ticket.fields) do |t|
-#        t.add_column(:field_name, :name)
-#        t.add_column(:field_value) { |field| field.text_value || "Empty" }
-#      end
 
     end
 
