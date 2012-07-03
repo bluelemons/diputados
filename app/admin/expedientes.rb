@@ -12,7 +12,7 @@ ActiveAdmin.register Expediente do
     def index
       super do |format|
         format.pdf {
-          report = ExpedientesReport.new.detalle 
+          report = ExpedientesReport.new.detalle(params)
           send_file(report)
         }
       end
