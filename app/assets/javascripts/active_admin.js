@@ -5,3 +5,4 @@
 //= require jquery-ui
 //= require tabs
 //= require jquery.cookie
+//= require users.js.coffee

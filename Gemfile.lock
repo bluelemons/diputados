@@ -60,6 +60,7 @@ GEM
     bourbon (1.4.0)
       sass (>= 3.1)
     builder (3.0.0)
+    cancan (1.6.7)
     capistrano (2.12.0)
       highline
       net-scp (>= 1.0.0)
@@ -217,6 +218,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bundler
+  cancan
   capistrano
   coffee-rails (~> 3.2.1)
   dbf!
