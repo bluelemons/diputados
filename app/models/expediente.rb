@@ -56,7 +56,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def tipo_format
-    "#{tipo} #{ley if tipo == "Ley"}"
+    "#{tipo} #{ley if tipo == "Ley" and ley > 0}"
   end
 
   def entrada
