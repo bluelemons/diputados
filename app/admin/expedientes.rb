@@ -11,12 +11,11 @@ ActiveAdmin.register Expediente do
 
     def index
       super do |format|
-        datos = Expediente.search(params[:q])
         format.pdf {
-          output = ExpedientesReport.new.index(datos,params)
-          send_data output, :filename => "expedientes.pdf",
-                            :type => "application/pdf"
-          }
+          @expedientes = Expediente.search(params[:q]).all
+          report = ExpedientesReport.new.detalle(@expedientes)
+          send_file(report)
+        }
       end
     end
   end
@@ -40,10 +39,10 @@ ActiveAdmin.register Expediente do
   end
 
   member_action :print do
-    expediente = Expediente.find params[:id]
-    output = ExpedientesReport.new.show(expediente)
-    send_data output, :filename => "expediente.pdf",
-                          :type => "application/pdf"
+
+    report = ExpedientesReport.new.listado(params)
+    send_file(report)
+
   end
 
   action_item(:only =>[:show]) do
