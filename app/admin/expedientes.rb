@@ -12,7 +12,8 @@ ActiveAdmin.register Expediente do
     def index
       super do |format|
         format.pdf {
-          report = ExpedientesReport.new.detalle(params)
+          @expedientes = Expediente.search(params[:q]).all
+          report = ExpedientesReport.new.detalle(@expedientes)
           send_file(report)
         }
       end

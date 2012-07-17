@@ -1,15 +1,15 @@
 class ExpedientesReport
-  def detalle
-
-    @expedientes = Expediente.search(params[:q])
+  def detalle(expedientes)
 
     report = ODFReport::Report.new(Rails.root.join("app/reports/expedientes.odt")) do |r|
-      r.add_table("EXPEDIENTES", @expedientes, :header=>true) do |t|
+      r.add_table("EXPEDIENTES", expedientes, :header=>false) do |t|
         t.add_column(:clave) { |item| item.clave.to_s }
         t.add_column(:entrada) { |item| item.entrada.to_s }
         t.add_column(:autor) { |item| item.autor.to_s }
         t.add_column(:firmantes) { |item| item.firmantes.to_s }
         t.add_column(:descripcion) { |item| item.descrip.to_s }
+        t.add_column(:estado) { |item| item.estado.to_s }
+        t.add_column(:tema) { |item| item.tema.to_s }
 
       end
     end
