@@ -9,11 +9,11 @@ ActiveAdmin.register Expediente do
   controller do
     respond_to :html, :xml, :json, :pdf
 
-    def index
-      super do |format|
+    def index(options={}, &block)
+      super(options) do |format|
+        block.call(format) if block
         format.pdf {
-          @expedientes = Expediente.search(params[:q]).page(1).per(300)
-          report = ExpedientesReport.new.detalle(@expedientes)
+          report = ExpedientesReport.new.detalle @expedientes
           send_file(report)
         }
       end
