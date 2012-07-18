@@ -1,5 +1,9 @@
 ActiveAdmin.register Expediente do
 
+  before_filter :only => :index do |controller|
+    @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
+  end
+
   actions :index, :show
 
   scope :all, :default => true
