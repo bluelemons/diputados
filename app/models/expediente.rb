@@ -91,7 +91,7 @@ class Expediente < ActiveRecord::Base
     #todos los archivos
     #"*"
     #los archivos que empiezan con el numero del expediente
-    "#{numero}*"
+    "??#{numero}*"
   end
 
 end
