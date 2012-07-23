@@ -76,5 +76,23 @@ class Expediente < ActiveRecord::Base
     "<p>#{pretty_descrip}</p>".html_safe
   end
 
+  def archivos_digitales
+    # http://www.ruby-doc.org/core-1.9.3/Dir.html#method-c-glob
+    archivos = Array.new
+    Dir.glob(Rails.root.join "public", "pdf", "**",reglas_del_archivo) do |archivo|
+      i = archivo.index("public").to_i + 6
+      archivos.push archivo[i..archivo.length]
+    end
+
+    archivos
+  end
+
+  def reglas_del_archivo
+    #todos los archivos
+    #"*"
+    #los archivos que empiezan con el numero del expediente
+    "??#{numero}*"
+  end
+
 end
 
