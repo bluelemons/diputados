@@ -73,6 +73,12 @@ ActiveAdmin.register Expediente do
           div final.descripcion
         end
 
+        panel "Archivos" do
+          expediente.archivos_digitales.each do |archivo|
+            div link_to archivo, archivo
+          end
+        end
+
       end
 
       div(:id => "xtabs-2") do
