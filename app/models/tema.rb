@@ -4,4 +4,8 @@ class Tema < ActiveRecord::Base
 
   alias_attribute :name ,:nombre
 
+  def to_s
+    name
+  end
+
 end

@@ -1,5 +1,9 @@
 ActiveAdmin.register Expediente do
 
+  before_filter :only => :index do |controller|
+    @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
+  end
+
   actions :index, :show
 
   scope :all, :default => true
@@ -9,14 +13,13 @@ ActiveAdmin.register Expediente do
   controller do
     respond_to :html, :xml, :json, :pdf
 
-    def index
-      super do |format|
-        datos = Expediente.search(params[:q])
+    def index(options={}, &block)
+      super(options) do |format|
+        block.call(format) if block
         format.pdf {
-          output = ExpedientesReport.new.index(datos,params)
-          send_data output, :filename => "expedientes.pdf",
-                            :type => "application/pdf"
-          }
+          report = ExpedientesReport.new.detalle @expedientes
+          send_file(report)
+        }
       end
     end
   end
@@ -35,15 +38,15 @@ ActiveAdmin.register Expediente do
     column :tipo
     column :pasada
     column :fechaentr
-    column :descrip, :html_descrip
+    column :descrip
     default_actions
   end
 
   member_action :print do
-    expediente = Expediente.find params[:id]
-    output = ExpedientesReport.new.show(expediente)
-    send_data output, :filename => "expediente.pdf",
-                          :type => "application/pdf"
+
+    report = ExpedientesReport.new.listado(params)
+    send_file(report)
+
   end
 
   action_item(:only =>[:show]) do
@@ -68,6 +71,12 @@ ActiveAdmin.register Expediente do
 
         expediente.finals.each do |final|
           div final.descripcion
+        end
+
+        panel "Archivos" do
+          expediente.archivos_digitales.each do |archivo|
+            div link_to archivo, archivo
+          end
         end
 
       end
