@@ -39,6 +39,17 @@ namespace :deploy do
 
   end
 
+  namespace :mail do
+
+    desc <<-DESC
+      [internal] Updates the symlink for mail.yml file to the just deployed release.
+    DESC
+    task :symlink, :except => { :no_release => true }, :role => :app do
+      run "#{try_sudo} ln -fs #{shared_path}/mail.yml #{release_path}/config/mail.yml"
+    end
+
+  end
+
 end
 
 after "deploy:finalize_update", "deploy:db:symlink"
