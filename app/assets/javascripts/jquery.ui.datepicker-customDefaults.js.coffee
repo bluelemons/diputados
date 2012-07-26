@@ -6,6 +6,5 @@ jQuery.datepicker.setDefaults
 # Fix issue with hardcoded format in Active Admin
 jQuery ->
   $(".datepicker")
-    .datepicker("destroy")
-    .datepicker()
+    .datepicker("option", "dateFormat", "dd/mm/yy")
 
