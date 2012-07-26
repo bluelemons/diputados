@@ -5,3 +5,7 @@
 //= require jquery-ui
 //= require tabs
 //= require jquery.cookie
+
+//= require jquery.ui.datepicker-es
+//= require jquery.ui.datepicker-customDefaults
+
