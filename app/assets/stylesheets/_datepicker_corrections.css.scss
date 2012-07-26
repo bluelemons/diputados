@@ -1,0 +1,17 @@
+.ui-datepicker {
+  width: 17em;
+  .ui-datepicker-header {
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+    height: auto;
+  }
+  table.ui-datepicker-calendar {
+    width: 100%;
+  }
+  .ui-datepicker-header a {
+    margin: 2px;
+  }
+}
+
