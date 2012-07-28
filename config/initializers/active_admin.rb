@@ -57,7 +57,7 @@ ActiveAdmin.setup do |config|
   # within the controller.
   # config.authentication_method = :authenticate_admin_user!
   # no es necesario autentificar, cualquier persona puede buscar estos datos
-  config.authentication_method = false
+  config.authentication_method = :authenticate_admin_user!
 
 
   # == Current User

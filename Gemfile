@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'activeadmin'
+gem 'cancan'
 
 gem 'jquery-rails'
 

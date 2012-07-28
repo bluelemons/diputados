@@ -1,3 +1,13 @@
+#wrapper {
+  background-image: url("/assets/headermantis.png");
+  background-repeat: no-repeat;
+}
+
+body.logged_out #content_wrapper {
+    width: 500px;
+    margin: 130px auto;
+}
+
 // ui-buttons
 .table_actions{
   width: 220px;
