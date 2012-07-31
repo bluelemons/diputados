@@ -26,9 +26,12 @@ class Expediente < ActiveRecord::Base
   scope :day, where("fechaentr >= ?", 1.day.ago.strftime("%Y-%m-%d"))
   scope :week, where("fechaentr >= ?", 1.week.ago.strftime("%Y-%m-%d"))
   scope :month, where("fechaentr >= ?", 1.month.ago.strftime("%Y-%m-%d"))
+  scope :en_comision, joins(:estados).where("estados.fechasal is null")
 
   belongs_to :tema
   has_many :estados
+  has_many :comisions, :through => :estados
+
   has_many :prefers
 
   # puede ser un has_one, pero no estoy seguro.

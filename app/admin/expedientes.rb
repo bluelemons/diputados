@@ -9,6 +9,13 @@ ActiveAdmin.register Expediente do
   scope :all, :default => true
   scope :week
   scope :month
+  scope :en_comision
+
+#  Comision.all.each do |comision|
+#    self.send(:scope, comision.name) do |items|
+#      items.joins(:estados).where("comision_id = #{comision.id} and estados.fechasal is not null and estados.fechaent is not null")
+#    end if comision.name > ""
+#  end
 
   controller do
     respond_to :html, :xml, :json, :pdf
@@ -27,6 +34,7 @@ ActiveAdmin.register Expediente do
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :estado
+  filter :comisions_nombre, :as => :select, :label => "Comision", :collection => Comision.pluck(:nombre)
   filter :fechaentr
   filter :autor, :as => :select,
     :collection => Diputado.pluck(:nombre).concat(Senado.pluck(:nombre)).sort
