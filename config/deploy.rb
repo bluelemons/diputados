@@ -53,6 +53,7 @@ namespace :deploy do
 end
 
 after "deploy:finalize_update", "deploy:db:symlink"
+after "deploy:finalize_update", "deploy:mail:symlink"
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
