@@ -31,7 +31,13 @@ class ExpedienteTest < ActiveSupport::TestCase
   test "tiene un estado_actual" do
     assert_nil expedientes(:puente).estado_actual, "el puente no tiene estado_actual"
     @expediente = expedientes(:legalizacion)
-    assert_equal comisions(:asuntos), @expediente.estado_actual.comision, "no anda el estado_actual"
+    refute_nil @expediente.estado_actual.comision, "no anda el estado_actual"
+  end
+
+  test "tiene una comisión" do
+    assert_nil expedientes(:puente).comision, "en que comisión?"
+    @expediente = expedientes(:legalizacion)
+    assert_equal comisions(:asuntos), @expediente.comision, "no funca la comisión"
   end
 
 end
