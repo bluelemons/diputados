@@ -28,5 +28,11 @@ class ExpedienteTest < ActiveSupport::TestCase
     assert Expediente.month.include?(@expediente)
   end
 
+  test "tiene un estado_actual" do
+    assert_nil expedientes(:puente).estado_actual, "el puente no tiene estado_actual"
+    @expediente = expedientes(:legalizacion)
+    assert_equal comisions(:asuntos), @expediente.estado_actual.comision, "no anda el estado_actual"
+  end
+
 end
 
