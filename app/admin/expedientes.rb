@@ -27,6 +27,7 @@ ActiveAdmin.register Expediente do
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
   filter :estado
+  filter :comision, :as => :select, :collection => Comision.all
   filter :fechaentr
   filter :autor, :as => :select,
     :collection => Diputado.pluck(:nombre).concat(Senado.pluck(:nombre)).sort

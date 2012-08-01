@@ -36,6 +36,9 @@ class Expediente < ActiveRecord::Base
   has_many  :finals
   has_one   :sesion
 
+  has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }
+  has_one   :comision, :through => :estado_actual
+
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.
