@@ -10,3 +10,5 @@
 //= require jquery.ui.datepicker-es
 //= require jquery.ui.datepicker-customDefaults
 
+//= require si_en_comision
+
