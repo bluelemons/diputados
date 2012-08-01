@@ -40,5 +40,11 @@ class ExpedienteTest < ActiveSupport::TestCase
     assert_equal comisions(:asuntos), @expediente.comision, "no funca la comisión"
   end
 
+  test "se puede buscar por comision" do
+    @expedientes = Expediente.search(:comision_id_eq => comisions(:asuntos).id).all
+    assert_includes @expedientes, expedientes(:legalizacion), "legalizacion, deberia ser un resultado"
+    refute_includes @expedientes, expedientes(:puente), "el puente esta en asuntos?"
+  end
+
 end
 
