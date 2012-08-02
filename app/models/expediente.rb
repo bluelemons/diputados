@@ -82,7 +82,7 @@ class Expediente < ActiveRecord::Base
   def archivos_digitales
     base_path = Rails.root.join "public"
     contained_files = []
-    Dir[File.join(base_path, "assets", "pdf", '**', reglas_del_archivo)].each do |full_path|
+    Dir[File.join(base_path, "system", "pdf", "**", reglas_del_archivo)].each do |full_path|
       path = Pathname.new(full_path).relative_path_from(base_path)
       contained_files << path
     end
