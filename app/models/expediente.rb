@@ -80,14 +80,13 @@ class Expediente < ActiveRecord::Base
   end
 
   def archivos_digitales
-    # http://www.ruby-doc.org/core-1.9.3/Dir.html#method-c-glob
-    archivos = Array.new
-    Dir.glob(Rails.root.join "public", "assets", "pdf", "*", "*", "*", reglas_del_archivo) do |archivo|
-      i = archivo.index("public").to_i + 6
-      archivos.push archivo[i..archivo.length]
+    base_path = Rails.root.join "public"
+    contained_files = []
+    Dir[File.join(base_path, "assets", "pdf", '**', reglas_del_archivo)].each do |full_path|
+      path = Pathname.new(full_path).relative_path_from(base_path)
+      contained_files << path
     end
-
-    archivos
+    contained_files
   end
 
   def reglas_del_archivo

@@ -32,6 +32,10 @@ group :development, :test do
   gem 'pry-doc'
 end
 
+group :test do
+  gem 'fakefs', :require => "fakefs/safe"
+end
+
 group :migrations do
   gem 'dbf', :git=>'https://github.com/eloyesp/dbf.git'
   gem 'seed-fu'

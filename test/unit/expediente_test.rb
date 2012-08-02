@@ -1,5 +1,7 @@
 # Encoding: UTF-8
 require 'test_helper'
+require 'fakefs'
+require 'fileutils'
 
 class ExpedienteTest < ActiveSupport::TestCase
   test "la ley sobre el puente y sus relaciones" do
@@ -44,6 +46,22 @@ class ExpedienteTest < ActiveSupport::TestCase
     @expedientes = Expediente.search(:comision_id_eq => comisions(:asuntos).id).all
     assert_includes @expedientes, expedientes(:legalizacion), "legalizacion, deberia ser un resultado"
     refute_includes @expedientes, expedientes(:puente), "el puente esta en asuntos?"
+  end
+
+  test "encuentra los archivos del expediente" do
+    @expediente = expedientes(:puente)
+    FakeFS do
+
+      archivos = ["dc1378212.pdf","dc1375212.doc"]
+      base_path = Rails.root.join "public", "assets", "pdf", "01-proyecto", "comunicacion"
+      FileUtils::mkpath(base_path.join "finalizados")
+      archivos.each do |archivo|
+        File.open( File.join(base_path, archivo), "w" ){|file|}
+        File.open( File.join(base_path, "finalizados", archivo), "w" ){|file|}
+      end
+
+      assert @expediente.archivos_digitales.length == 2, "No está encontrando los arhivos."
+    end
   end
 
 end
