@@ -28,5 +28,23 @@ class ExpedienteTest < ActiveSupport::TestCase
     assert Expediente.month.include?(@expediente)
   end
 
+  test "tiene un estado_actual" do
+    assert_nil expedientes(:puente).estado_actual, "el puente no tiene estado_actual"
+    @expediente = expedientes(:legalizacion)
+    refute_nil @expediente.estado_actual.comision, "no anda el estado_actual"
+  end
+
+  test "tiene una comisión" do
+    assert_nil expedientes(:puente).comision, "en que comisión?"
+    @expediente = expedientes(:legalizacion)
+    assert_equal comisions(:asuntos), @expediente.comision, "no funca la comisión"
+  end
+
+  test "se puede buscar por comision" do
+    @expedientes = Expediente.search(:comision_id_eq => comisions(:asuntos).id).all
+    assert_includes @expedientes, expedientes(:legalizacion), "legalizacion, deberia ser un resultado"
+    refute_includes @expedientes, expedientes(:puente), "el puente esta en asuntos?"
+  end
+
 end
 

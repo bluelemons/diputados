@@ -1,5 +1,13 @@
 # Encoding: UTF-8
 
+# el asunto de la legalizacion quedo trabado en asuntos constitucionales
+legalizacion_asuntos:
+  expediente: legalizacion
+  comision: asuntos
+  fechaent: 2004-11-08
+  fechasal:
+
+
 puente_comision_4_1:
   id: 16532
   numero: 13782
