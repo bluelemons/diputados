@@ -22,5 +22,8 @@ es-AR:
         expte: 'expte'
         etiq: 'etiqueta'
         numsenado: 'senado'
+        asuntoentr: 'asunto entrado'
+        numreunion: 'reunion'
+        numsesion: 'sesion'
       address:
         format: 'direccion'
