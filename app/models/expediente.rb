@@ -82,19 +82,34 @@ class Expediente < ActiveRecord::Base
   def archivos_digitales
     base_path = Rails.root.join "public"
     contained_files = []
-    Dir[File.join(base_path, "system", "pdf", "**", reglas_del_archivo)].each do |full_path|
+    Dir[File.join(base_path, "system", "pdf", "*", directorio, "**", reglas_del_archivo)].each do |full_path|
       path = Pathname.new(full_path).relative_path_from(base_path)
       contained_files << path
     end
     contained_files
   end
 
+  def archivo
+    {
+      1 => {:letra =>"dl", :directorio => "Ley*"},
+      2 => {:letra =>"cc", :directorio => "Comunicacion*"},
+      3 => {:letra =>"dd", :directorio => "Declaracion*"},
+      4 => {:letra =>"dr", :directorio => "Resolucion*"},
+      5 => {:letra =>"dt", :directorio => "Decreto*"},
+      6 => {:letra =>"ed", :directorio => "Mensaje*"}
+    }[read_attribute(:tipo)]
+
+  end
+
   def reglas_del_archivo
     #todos los archivos
     #"*"
     #los archivos que empiezan con el numero del expediente
-    "??#{numero}*"
+    "#{archivo[:letra]}#{numero}*"
   end
 
+  def directorio
+    archivo[:directorio]
+  end
 end
 
