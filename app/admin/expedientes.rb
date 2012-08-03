@@ -76,7 +76,7 @@ ActiveAdmin.register Expediente do
 
         panel "Archivos" do
           expediente.archivos_digitales.each do |archivo|
-            div link_to archivo, archivo
+            div link_to(archivo.basename, "/#{archivo}")
           end
         end
 
