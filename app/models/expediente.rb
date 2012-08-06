@@ -39,6 +39,13 @@ class Expediente < ActiveRecord::Base
   has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }
   has_one   :comision, :through => :estado_actual
 
+  # Busca el final de tramite correspondiente y carga la descripcion o retorna
+  # nil si no hay fin de tramite.
+  def final
+    descripciones = finals.collect(&:descripcion).delete_if { |d| d.empty? }
+    descripciones[0]
+  end
+
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
   # simultaneo.

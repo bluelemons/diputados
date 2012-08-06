@@ -66,13 +66,9 @@ ActiveAdmin.register Expediente do
 
       div(:id => "xtabs-1") do
         attributes_table_for expediente,
-          :numsenado, :tema,
-          :descrip, :entrada, :autor, :firmantes, :periodo,
-          :estado #,:expte, :marca, :etiq
-
-        expediente.finals.each do |final|
-          div final.descripcion
-        end
+          :tema, :descrip, :entrada, :autor, :firmantes, :periodo, :estado,
+          :final
+          #,:expte, :marca, :etiq
 
         panel "Archivos" do
           expediente.archivos_digitales.each do |archivo|
