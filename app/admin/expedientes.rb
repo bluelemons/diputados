@@ -1,46 +1,54 @@
 ActiveAdmin.register Expediente do
 
+  before_filter :only => :index do |controller|
+    @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
+  end
+
   actions :index, :show
+
+  scope :all, :default => true
+  scope :week
+  scope :month
 
   controller do
     respond_to :html, :xml, :json, :pdf
 
-    def index
-      super do |format|
-        datos = Expediente.search(params[:q])
+    def index(options={}, &block)
+      super(options) do |format|
+        block.call(format) if block
         format.pdf {
-          output = ExpedientesReport.new.index(datos,params)
-          send_data output, :filename => "expedientes.pdf",
-                            :type => "application/pdf"
-          }
+          report = ExpedientesReport.new.detalle @expedientes
+          send_file(report)
+        }
       end
     end
   end
 
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
-  filter :letra
   filter :estado
+  filter :comision, :as => :select, :collection => Comision.all
   filter :fechaentr
-  filter :autor
+  filter :autor, :as => :select,
+    :collection => Diputado.pluck(:nombre).concat(Senado.pluck(:nombre)).sort
   filter :firmantes
-  filter :descripcion
+  filter :descrip, :label => "Descripcion"
 
   index do
     column :numero
     column :tipo
-    column :letra
     column :pasada
     column :fechaentr
     column(:estado){|expediente| status_tag(expediente.estado.nombre)}
+    column :descrip, :html_descrip
     default_actions
   end
 
   member_action :print do
-    expediente = Expediente.find params[:id]
-    output = ExpedientesReport.new.show(expediente)
-    send_data output, :filename => "expediente.pdf",
-                          :type => "application/pdf"
+
+    report = ExpedientesReport.new.listado(params)
+    send_file(report)
+
   end
 
   action_item(:only =>[:show]) do
@@ -59,14 +67,16 @@ ActiveAdmin.register Expediente do
 
       div(:id => "xtabs-1") do
         attributes_table_for expediente,
-          :numsenado, :tema,
-          :descrip, :entrada, :autor, :firmantes, :periodo,
-          :estado #,:expte, :marca, :etiq
+          :tema, :descrip, :entrada, :autor, :firmantes, :periodo, :estado,
+          :final
+          #,:expte, :marca, :etiq
 
-        expediente.finals.each do |final|
-          div final.descripcion
+        panel "Archivos" do
+          expediente.archivos_digitales.each do |archivo|
+            div link_to(archivo.basename, "/#{archivo}")
+          end
         end
-        
+
       end
 
       div(:id => "xtabs-2") do
@@ -85,7 +95,7 @@ ActiveAdmin.register Expediente do
 
       div(:id => "xtabs-3") do
         expediente.estados.each do |estado|
-          panel estado.comision.name do
+          panel estado.comision.try(:name) do
             div "<b>Entrada </b> #{estado.fechaent}".html_safe
             estado.dictamenes.each do |dictamen|
               div do
@@ -120,3 +130,4 @@ ActiveAdmin.register Expediente do
   end
 
 end
+

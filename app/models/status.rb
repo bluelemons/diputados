@@ -5,6 +5,8 @@ class Status < ActiveRecord::Base
 
   has_many :expedientes
 
+  default_scope where("nombre > ''")
+
   def name
     nombre
   end

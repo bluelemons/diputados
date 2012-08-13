@@ -1,0 +1,8 @@
+production:
+  address:              smtp.gmail.com
+  port:                 587
+  user_name:            un_email@gmail.com
+  password:             una_clave
+  authentication:       plain
+  enable_starttls_auto: True
+

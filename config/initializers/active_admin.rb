@@ -6,7 +6,7 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "CAMARA DE DIPUTADOS"
-
+  config.default_per_page = 5
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -57,7 +57,7 @@ ActiveAdmin.setup do |config|
   # within the controller.
   # config.authentication_method = :authenticate_admin_user!
   # no es necesario autentificar, cualquier persona puede buscar estos datos
-  config.authentication_method = false
+  config.authentication_method = :authenticate_admin_user!
 
 
   # == Current User

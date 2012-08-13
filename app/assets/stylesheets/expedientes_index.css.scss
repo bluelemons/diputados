@@ -1,0 +1,22 @@
+.index.admin_expedientes tr {
+  td.html_descrip p {
+    max-height: 2.6em;
+    transition: all 2s;
+    -moz-transition: all 2s; /* Firefox 4 */
+    -webkit-transition: all 2s; /* Safari and Chrome */
+    -o-transition: all 2s; /* Opera */
+//    max-height: 2.6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+//    -moz-transition: all 1s ease-in-out 0s;
+  }
+  &:hover {
+    td {
+      background-color: $selected-row-color;
+    }
+    td.html_descrip p {
+      max-height: 600px;
+    }
+  }
+}
+

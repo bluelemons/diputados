@@ -1,16 +1,21 @@
 // Active Admin CSS Styles
 @import "active_admin/mixins";
 @import "active_admin/base";
-
+@import "datepicker_corrections";
 @import 'redmond/jquery-ui-1.8.9.custom';
 
+// Sitewide config
+@import 'colors';
 
 //@import 'forum';
 //@import 'datepicker_correction';
 //@import 'pases';
 @import 'mystyle';
+@import 'expedientes_index';
+@import 'token-input';
 //@import 'navigations_keys';
 
 
 // To customize the Active Admin interfaces, add your
 // styles here:
+

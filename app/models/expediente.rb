@@ -23,6 +23,10 @@ class Expediente < ActiveRecord::Base
     Periodo[read_attribute(:tipoperiod)] || "No indicado"
   end
 
+  scope :day, where("fechaentr >= ?", 1.day.ago.strftime("%Y-%m-%d"))
+  scope :week, where("fechaentr >= ?", 1.week.ago.strftime("%Y-%m-%d"))
+  scope :month, where("fechaentr >= ?", 1.month.ago.strftime("%Y-%m-%d"))
+
   belongs_to :tema
   has_many :estados
   has_many :prefers
@@ -31,6 +35,16 @@ class Expediente < ActiveRecord::Base
   has_many  :asuntos
   has_many  :finals
   has_one   :sesion
+
+  has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }
+  has_one   :comision, :through => :estado_actual
+
+  # Busca el final de tramite correspondiente y carga la descripcion o retorna
+  # nil si no hay fin de tramite.
+  def final
+    descripciones = finals.collect(&:descripcion).delete_if { |d| d.empty? }
+    descripciones[0]
+  end
 
   # Al migrar asigno directamente el numero que deberia ser guardado como
   # estado_id y que de otra forma se confunde. Asi hago que funcionen los dos en
@@ -52,9 +66,9 @@ class Expediente < ActiveRecord::Base
   end
 
   def tipo_format
-    "#{tipo} #{ley if tipo == "Ley"}"
+    "#{tipo} #{ley if tipo == "Ley" and ley > 0}"
   end
-  
+
   def entrada
     "#{fechaentr} #{hora} por: #{tipoentr}"
   end
@@ -65,6 +79,28 @@ class Expediente < ActiveRecord::Base
 
   def clave
     "#{numero} #{letra} #{tipo_format} (#{pasada})"
+  end
+
+  def html_descrip
+    pretty_descrip = descrip.mb_chars#.capitalize
+    "<p>#{pretty_descrip}</p>".html_safe
+  end
+
+  def archivos_digitales
+    base_path = Rails.root.join "public"
+    contained_files = []
+    Dir[File.join(base_path, "system", "pdf", "**", reglas_del_archivo)].each do |full_path|
+      path = Pathname.new(full_path).relative_path_from(base_path)
+      contained_files << path
+    end
+    contained_files
+  end
+
+  def reglas_del_archivo
+    #todos los archivos
+    #"*"
+    #los archivos que empiezan con el numero del expediente
+    "??#{numero}*"
   end
 
 end

@@ -1,14 +1,14 @@
 # Encoding: utf-8
-one:
-  numero: 12
-  letra: PJ
+legalizacion:
+  numero: 2132
+  letra: PC
   tipo: 1
   pasada: 1
   numsenado: 12
   tema_id: <%= ActiveRecord::Fixtures.identify("judiciales") %>
-  descrip: Habla sobre cosas interesantes
+  descrip: Sobre la legalizacion de la Mariguana
   fechaentr: 2012-03-28
-  hora: hora
+  hora: "18:30"
   autor: GOMEZ Jorge
   firmantes: GOMEZ Jorge
   tipoentr: 12
@@ -48,4 +48,34 @@ puente:
   ley: 12448
   marca: 0
   etiq: 1
+
+day:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  fechaentr: <%= Date.today %>
+  descrip: ""
+
+week:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  fechaentr: <%= 6.day.ago %>
+  descrip: ""
+
+month:
+  numero: 13732
+  letra: SEN
+  tipo: 1
+  pasada: 1
+  numsenado: 0
+  tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
+  fechaentr: <%= 8.day.ago %>
+  descrip: ""
 

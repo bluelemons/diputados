@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'activeadmin'
+gem 'cancan'
 
 gem 'jquery-rails'
 
@@ -31,12 +32,23 @@ group :development, :test do
   gem 'pry-doc'
 end
 
+group :test do
+  gem 'fakefs', :require => "fakefs/safe"
+end
+
 group :migrations do
   gem 'dbf', :git=>'https://github.com/eloyesp/dbf.git'
   gem 'seed-fu'
 end
 
-gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
-
 gem 'simplecov', :require => false, :group => :test
 
+group :deployment do
+  gem 'rvm-capistrano'
+  gem 'bundler'
+  gem 'capistrano'
+end
+
+gem 'odf-report'
+
+gem 'whenever', :require => false

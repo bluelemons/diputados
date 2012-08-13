@@ -1,11 +1,12 @@
-$header-color: lighten(#84ac49,15%);
-$header-background-color: #6A7176;
-$menu-button-color: #6A7176;
-$menu-button-background-color: #ffffff;
+#wrapper {
+  background-image: url("/assets/headermantis.png");
+  background-repeat: no-repeat;
+}
 
-$title-background: $header-color;
-$title-color: #ffffff;
-$ref-color: #ffffff;
+body.logged_out #content_wrapper {
+    width: 500px;
+    margin: 130px auto;
+}
 
 // ui-buttons
 .table_actions{
@@ -32,7 +33,7 @@ $ref-color: #ffffff;
   border-bottom: 1px solid darken($header-background-color,70%);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
   overflow: visible;
-  padding: 23px 30px;
+  padding: 10px 30px;
   text-shadow: 0 1px 0 black;
   z-index: 900;
   h1 {
@@ -67,15 +68,14 @@ $ref-color: #ffffff;
   }
 }
 
-
-
 #title_bar {
     background: -moz-linear-gradient(-90deg, $title-background, darken($title-background,20%)) repeat scroll 0 0 transparent;
     box-shadow: 0 1px 2px #244C50;
     font-size: 1em;
     font-weight: normal;
-    line-height: 140%;
+    line-height: 50%;
     text-shadow: 0 1px 0 green;
+    padding: 4px 30px;
   a{
     color: $ref-color;
   }
@@ -107,3 +107,4 @@ table.index_table th a, table.index_table th a:link, table.index_table th a:visi
     display: block;
     text-decoration: none;
 }
+
