@@ -146,17 +146,6 @@ ActiveAdmin.register Expediente do
 
     end
 
-#    div do
-#      semantic_form_for @expediente do |f|
-
-##        f.inputs "Details" do
-##          f.input :asset, :as => :file
-##        end
-
-##        f.buttons
-#      end
-#    end
-# active_admin_comments
   end
 
 end
