@@ -58,6 +58,7 @@ ActiveAdmin.register Expediente do
     div(:id => "xtabs") do
       ul do
         li link_to "Detalles", "#xtabs-1"
+        li link_to "Archivos", "#xtabs-5"
         li link_to "Asuntos entrados", "#xtabs-2"
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
@@ -69,8 +70,27 @@ ActiveAdmin.register Expediente do
           :tema, :descrip, :entrada, :autor, :firmantes, :periodo, :estado,
           :final
           #,:expte, :marca, :etiq
+      end
 
-        panel "Archivos" do
+
+      div(:id => "xtabs-5") do
+
+        div do
+          render :partial => 'pdf'
+        end
+
+        panel "Archivos Sistema" do
+          table_for expediente.assets do
+            column "Nombre" do |a|
+              link_to a.asset_file_name, a.asset.url
+            end
+            column "Borrar" do |a|
+              link_to("Borrar", admin_expediente_asset_path(expediente, a), :confirm => "seguro?", :method => :delete)
+            end
+          end
+        end
+
+        panel "Archivos Disco" do
           expediente.archivos_digitales.each do |archivo|
             div link_to(archivo.basename, "/#{archivo}")
           end
@@ -125,6 +145,17 @@ ActiveAdmin.register Expediente do
       end
 
     end
+
+#    div do
+#      semantic_form_for @expediente do |f|
+
+##        f.inputs "Details" do
+##          f.input :asset, :as => :file
+##        end
+
+##        f.buttons
+#      end
+#    end
 # active_admin_comments
   end
 

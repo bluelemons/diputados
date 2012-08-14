@@ -1,0 +1,7 @@
+<% if can? :manage, Asset %>
+  <%= semantic_form_for Asset.new, :url => admin_expediente_assets_path(@expediente) do |f| %>
+    <% f.input( :asset, :as => :file ) + %> 
+    <% f.buttons %>
+  <% end %>
+<% end %>
+
