@@ -1,6 +1,8 @@
 <% if can? :manage, Asset %>
-  <%= semantic_form_for Asset.new, :url => admin_expediente_assets_path(@expediente) do |f| %>
-    <% f.input( :asset, :as => :file ) + %> 
+  <%= semantic_form_for Asset.new, :url => admin_assets_path do |f| %>
+    <% f.input( :asset, :as => :file ) + %>
+    <% f.input( :adjuntable_id, :input_html => {:value => expediente.id}, :as => :hidden) + %>
+    <% f.input( :adjuntable_type, :input_html => {:value => "Expediente"}, :as => :hidden) + %>
     <% f.buttons %>
   <% end %>
 <% end %>
