@@ -85,7 +85,7 @@ ActiveAdmin.register Expediente do
               link_to a.asset_file_name, a.asset.url
             end
             column "Borrar" do |a|
-              link_to("Borrar", admin_expediente_asset_path(expediente, a), :confirm => "seguro?", :method => :delete)
+              link_to("Borrar", admin_asset_path(a), :confirm => "seguro?", :method => :delete)
             end
           end
         end
