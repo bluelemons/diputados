@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816190511) do
+ActiveRecord::Schema.define(:version => 20120817171115) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,6 +49,31 @@ ActiveRecord::Schema.define(:version => 20120816190511) do
   create_table "admin_users_roles", :id => false, :force => true do |t|
     t.integer  "admin_user_id"
     t.integer  "role_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.integer  "area_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_ad"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "adjuntable_id"
+    t.string   "adjuntable_type"
+  end
+
+  create_table "assets_expedientes", :id => false, :force => true do |t|
+    t.integer  "asset_id"
+    t.integer  "expediente_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -205,11 +230,26 @@ ActiveRecord::Schema.define(:version => 20120816190511) do
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
 
+  create_table "notas", :force => true do |t|
+    t.integer  "fojas"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "nota_tipos", :force => true do |t|
     t.string   "name"
     t.string   "letra"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pases", :force => true do |t|
+    t.integer  "nota_id"
+    t.integer  "area_id"
+    t.text     "descripcion"
+    t.date     "ingreso"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "prefers", :force => true do |t|
