@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+oldani:
+  name: diputado oldani pablo
+  iniciador_tipo_id: 1
+  nota_tipo_id: 1

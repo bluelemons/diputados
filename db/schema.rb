@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817171115) do
+ActiveRecord::Schema.define(:version => 20120821001822) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -230,10 +230,18 @@ ActiveRecord::Schema.define(:version => 20120817171115) do
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
 
-  create_table "notas", :force => true do |t|
-    t.integer  "fojas"
+  create_table "iniciador_tipos", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "iniciadors", :force => true do |t|
+    t.string   "name"
+    t.integer  "iniciador_tipo_id"
+    t.integer  "nota_tipo_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "nota_tipos", :force => true do |t|
@@ -241,6 +249,13 @@ ActiveRecord::Schema.define(:version => 20120817171115) do
     t.string   "letra"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "notas", :force => true do |t|
+    t.integer  "fojas"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "iniciador_id"
   end
 
   create_table "pases", :force => true do |t|
