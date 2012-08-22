@@ -3,3 +3,19 @@
 comision:
   name: Comision de Acuerdos
   area_id: null
+
+constitucionales:
+  name: Comision de asuntos constitucionales
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+
+personal:
+  name: Oficina Persona
+  area_id: null
+
+vacia:
+  name: Oficina sin notas
+  area_id: null
+
+solo_notas:
+  name: solo notas
+  area_id: null

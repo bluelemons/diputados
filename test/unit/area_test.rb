@@ -12,10 +12,20 @@ class AreaTest < ActiveSupport::TestCase
    end
 
    test "No se pueden borrar areas si hay notas que lo usan" do
-     pending "hay que hacerlo mas adelante cuando esten las relaciones"
+     @area = areas(:solo_notas)
+     assert !@area.destroy, "no se pueden borrar areas con notas"
+
+     @area = areas(:vacia)
+     assert @area.destroy
+     
    end
 
    test "No se pueden borrar areas si tiene sub areas" do
-     pending "hay que hacerlo mas adelante cuando esten las relaciones"
+     @area = areas(:comision)
+     assert !@area.destroy, "no se pueden borrar areas con subareas"
+
+     @area = areas(:vacia)
+     assert @area.destroy
+
    end
 end
