@@ -43,7 +43,7 @@ class ExpedientesReport
       r.add_field(:periodo,       @expediente.sesion.try(:periodo).to_s)
 
       r.add_section "COMISION", @expediente.estados do |s|
-        s.add_field(:nombre) { |estado| estado.comision.nombre }
+        s.add_field(:nombre) { |estado| estado.comision_nombre }
         s.add_field(:entrada) { |estado| estado.fechaent }
         s.add_field(:salida) { |estado| estado.fechasal }
         s.add_section("DICTAMEN", :dictamenes) do |ss|
