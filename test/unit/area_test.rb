@@ -17,7 +17,11 @@ class AreaTest < ActiveSupport::TestCase
   end
 
   test "No se pueden borrar areas si tiene sub areas" do
-    pending "hay que hacerlo mas adelante cuando esten las relaciones"
+    @area = areas(:informatica)
+    assert !@area.destroy, "no se pueden borrar areas con subareas"
+
+    @area = areas(:soporte)
+    assert @area.destroy
   end
 
 end

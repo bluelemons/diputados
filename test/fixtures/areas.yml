@@ -3,3 +3,10 @@
 archivo:
   name: Archivo
 
+informatica:
+  name: Oficina de Informatica
+
+soporte:
+  name: Soporte Operativo
+  area: informatica
+
