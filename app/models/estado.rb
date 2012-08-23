@@ -5,7 +5,7 @@ class Estado < ActiveRecord::Base
   belongs_to :expediente
   belongs_to :comision
 
-  delegate :nombre, :to => :estado, :prefix => true, :allow_nil => true
+  delegate :nombre, :to => :comision, :prefix => true, :allow_nil => true
 
   # dictamenes arme un array con los hashes de los distintos tipo de resultados
   # que tubo como resultado en la comision.
