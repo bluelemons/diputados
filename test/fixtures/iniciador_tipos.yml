@@ -1,4 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-ao:
-  name: administrativos oficiales
+municipios:
+  name: municipios y comunas

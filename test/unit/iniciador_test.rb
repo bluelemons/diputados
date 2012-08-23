@@ -8,7 +8,7 @@ class IniciadorTest < ActiveSupport::TestCase
     assert !iniciador.save, "El nombre no puede estar repetido"
     iniciador.name = "Eloy Espicano"
     assert !iniciador.save, "falta el tipo"
-    tipo = iniciador_tipos(:ao)
+    tipo = iniciador_tipos(:municipios)
     iniciador.iniciador_tipo = tipo
     assert iniciador.save
   end

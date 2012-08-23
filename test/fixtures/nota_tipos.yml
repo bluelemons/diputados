@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-administrativas:
+ao:
   name: Administrativas Oficiales
   letra: AO
