@@ -1,0 +1,7 @@
+admin:
+  name: admin
+  observations: Es el rol que puede hacer todo.
+
+mesa_de_entrada:
+  name: mesa_de_entrada
+  observations: Es el rol que administra las notas.
