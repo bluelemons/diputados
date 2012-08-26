@@ -44,10 +44,15 @@ ActiveAdmin.register Expediente do
   end
 
   member_action :print do
-
     report = ExpedientesReport.new.listado(params)
     send_file(report)
+  end
 
+  member_action :adjuntar, :method => :post do
+    authorize! :manage, Asset
+    asset = resource.assets.create(params[:asset])
+    flash[:notice] = "El archivo '#{asset.asset_file_name}' se a adjuntado correctamente"
+    redirect_to admin_expediente_path(resource)
   end
 
   action_item(:only =>[:show]) do
@@ -58,7 +63,6 @@ ActiveAdmin.register Expediente do
     div(:id => "xtabs") do
       ul do
         li link_to "Detalles", "#xtabs-1"
-        li link_to "Archivos", "#xtabs-5"
         li link_to "Asuntos entrados", "#xtabs-2"
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
@@ -70,32 +74,27 @@ ActiveAdmin.register Expediente do
           :tema, :descrip, :entrada, :autor, :firmantes, :periodo, :estado,
           :final
           #,:expte, :marca, :etiq
-      end
 
-
-      div(:id => "xtabs-5") do
-
-        div do
-          render :partial => 'pdf'
-        end
-
-        panel "Archivos Sistema" do
+        panel "Archivos" do
           table_for expediente.assets do
             column "Nombre" do |a|
               link_to a.asset_file_name, a.asset.url
             end
-            column "Borrar" do |a|
-              link_to("Borrar", admin_asset_path(a), :confirm => "seguro?", :method => :delete)
+            if current_ability.can? :manage, Asset
+              column "Borrar" do |a|
+# TODO: add some controller to manage this.
+# o usar la funcionalidad check_box "_delete" para borrarlos mediante nested attributes
+#                link_to("Borrar", admin_asset_path(a), :confirm => "seguro?", :method => :delete)
+              end
+            end
+          end
+
+          if can? :manage, Asset
+            div do
+              render :partial => 'pdf'
             end
           end
         end
-
-        panel "Archivos Disco" do
-          expediente.archivos_digitales.each do |archivo|
-            div link_to(archivo.basename, "/#{archivo}")
-          end
-        end
-
       end
 
       div(:id => "xtabs-2") do
