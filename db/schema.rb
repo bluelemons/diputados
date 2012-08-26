@@ -47,10 +47,8 @@ ActiveRecord::Schema.define(:version => 20120815164629) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "admin_users_roles", :id => false, :force => true do |t|
-    t.integer  "admin_user_id"
-    t.integer  "role_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer "admin_user_id"
+    t.integer "role_id"
   end
 
   create_table "assets", :force => true do |t|
