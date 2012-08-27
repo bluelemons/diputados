@@ -40,7 +40,6 @@ class Expediente < ActiveRecord::Base
   has_one   :comision, :through => :estado_actual
 
   has_many :assets, :as => :adjuntable
-  accepts_nested_attributes_for :assets, :allow_destroy => true
 
   # Busca el final de tramite correspondiente y carga la descripcion o retorna
   # nil si no hay fin de tramite.
