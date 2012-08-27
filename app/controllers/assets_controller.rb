@@ -1,15 +1,15 @@
 class AssetsController < InheritedResources::Base
 
+  actions :create, :destroy
+  belongs_to :expediente, :polymorphic => true
   authorize_resource
 
-  actions :create, :destroy
-
   def create
-    create! { [:admin, @asset.adjuntable] }
+    create! { [:admin, parent] }
   end
 
   def destroy
-    destroy! { [:admin, @asset.adjuntable] }
+    destroy! { [:admin, parent] }
   end
 
 end

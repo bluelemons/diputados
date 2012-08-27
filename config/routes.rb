@@ -1,6 +1,8 @@
 Diputados::Application.routes.draw do
 
-  resources :assets, :only => [:create, :destroy]
+  resources :expedientes, :only => [] do
+    resources :assets, :only => [:create, :destroy]
+  end
 
   ActiveAdmin.routes(self)
 

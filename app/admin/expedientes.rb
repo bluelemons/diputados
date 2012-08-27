@@ -82,14 +82,15 @@ ActiveAdmin.register Expediente do
             end
             if current_ability.can? :manage, Asset
               column "Borrar" do |asset|
-                link_to("Borrar", asset, :confirm => "seguro?", :method => :delete)
+                link_to("Borrar", [expediente, asset], :confirm => "seguro?", :method => :delete)
               end
             end
           end
 
           if can? :manage, Asset
             div do
-              render :partial => 'assets/add_form', :locals => { :asset => expediente.assets.build }
+              render :partial => 'assets/add_form',
+                     :locals => { :adjuntable => expediente, :asset => expediente.assets.build }
             end
           end
         end
