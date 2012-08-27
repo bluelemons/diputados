@@ -13,4 +13,8 @@ class Ability
   def admin
     can :manage, :all
   end
+
+  def mesa_de_entrada
+    can :manage, Asset
+  end
 end
