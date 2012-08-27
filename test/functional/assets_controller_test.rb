@@ -4,6 +4,7 @@ class AssetsControllerTest < ActionController::TestCase
 
   setup do
     @asset = assets(:escaneo_puente)
+    stub_permisive_ability
   end
 
   test "should create asset" do
