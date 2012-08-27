@@ -81,17 +81,15 @@ ActiveAdmin.register Expediente do
               link_to a.asset_file_name, a.asset.url
             end
             if current_ability.can? :manage, Asset
-              column "Borrar" do |a|
-# TODO: add some controller to manage this.
-# o usar la funcionalidad check_box "_delete" para borrarlos mediante nested attributes
-#                link_to("Borrar", admin_asset_path(a), :confirm => "seguro?", :method => :delete)
+              column "Borrar" do |asset|
+                link_to("Borrar", asset, :confirm => "seguro?", :method => :delete)
               end
             end
           end
 
           if can? :manage, Asset
             div do
-              render :partial => 'pdf'
+              render :partial => 'assets/add_form', :locals => { :asset => expediente.assets.build }
             end
           end
         end
