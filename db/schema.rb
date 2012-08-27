@@ -71,13 +71,6 @@ ActiveRecord::Schema.define(:version => 20120821001822) do
     t.string   "adjuntable_type"
   end
 
-  create_table "assets_expedientes", :id => false, :force => true do |t|
-    t.integer  "asset_id"
-    t.integer  "expediente_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "asuntos", :force => true do |t|
     t.integer  "numero"
     t.string   "letra",         :limit => 3

@@ -17,5 +17,16 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
+
+  def stub_ability
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.instance_variable_set("@current_ability", @ability)
+  end
+
+  def stub_permisive_ability
+    stub_ability
+    @ability.can :manage, :all
+  end
 end
 

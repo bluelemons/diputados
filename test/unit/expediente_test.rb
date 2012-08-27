@@ -53,7 +53,7 @@ class ExpedienteTest < ActiveSupport::TestCase
     FakeFS do
 
       archivos = ["dc1378212.pdf","dc1375212.doc"]
-      base_path = Rails.root.join "public", "assets", "pdf", "01-proyecto", "comunicacion"
+      base_path = Rails.root.join "public", "system", "pdf", "01-proyecto", "comunicacion"
       FileUtils::mkpath(base_path.join "finalizados")
       archivos.each do |archivo|
         File.open( File.join(base_path, archivo), "w" ){|file|}

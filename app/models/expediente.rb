@@ -39,6 +39,8 @@ class Expediente < ActiveRecord::Base
   has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }
   has_one   :comision, :through => :estado_actual
 
+  has_many :assets, :as => :adjuntable
+
   # Busca el final de tramite correspondiente y carga la descripcion o retorna
   # nil si no hay fin de tramite.
   def final
@@ -66,7 +68,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def tipo_format
-    "#{tipo} #{ley if tipo == "Ley" and ley > 0}"
+    "#{tipo} #{ley if tipo == "Ley" and ley and ley > 0}"
   end
 
   def entrada

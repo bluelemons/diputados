@@ -3,3 +3,4 @@ admin:
 
 mesa_de_entrada:
   name: mesa_de_entrada
+  observations: Es el rol que administra las notas.

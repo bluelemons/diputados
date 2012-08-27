@@ -44,10 +44,8 @@ ActiveAdmin.register Expediente do
   end
 
   member_action :print do
-
     report = ExpedientesReport.new.listado(params)
     send_file(report)
-
   end
 
   action_item(:only =>[:show]) do
@@ -71,11 +69,24 @@ ActiveAdmin.register Expediente do
           #,:expte, :marca, :etiq
 
         panel "Archivos" do
-          expediente.archivos_digitales.each do |archivo|
-            div link_to(archivo.basename, "/#{archivo}")
+          table_for expediente.assets do
+            column "Nombre" do |a|
+              link_to a.asset_file_name, a.asset.url
+            end
+            if current_ability.can? :manage, Asset
+              column "Borrar" do |asset|
+                link_to("Borrar", [expediente, asset], :confirm => "seguro?", :method => :delete)
+              end
+            end
+          end
+
+          if can? :manage, Asset
+            div do
+              render :partial => 'assets/add_form',
+                     :locals => { :adjuntable => expediente, :asset => expediente.assets.build }
+            end
           end
         end
-
       end
 
       div(:id => "xtabs-2") do
@@ -125,7 +136,7 @@ ActiveAdmin.register Expediente do
       end
 
     end
-# active_admin_comments
+
   end
 
 end
