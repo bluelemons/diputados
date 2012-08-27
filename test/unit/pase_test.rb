@@ -36,4 +36,12 @@ class PaseTest < ActiveSupport::TestCase
     assert @pase.destroy
   end
 
+  test "Un pase no puede tener una fecha de ingreso mayor a la del dia" do
+    pending
+  end
+
+  test "Un pase no puede tener un ingreso anterior al que tiene el pase anterior" do
+    pending
+  end
+
 end
