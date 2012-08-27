@@ -48,13 +48,6 @@ ActiveAdmin.register Expediente do
     send_file(report)
   end
 
-  member_action :adjuntar, :method => :post do
-    authorize! :manage, Asset
-    asset = resource.assets.create(params[:asset])
-    flash[:notice] = "El archivo '#{asset.asset_file_name}' se a adjuntado correctamente"
-    redirect_to admin_expediente_path(resource)
-  end
-
   action_item(:only =>[:show]) do
     link_to("Imprimir", print_admin_expediente_path(expediente))
   end
