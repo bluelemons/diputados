@@ -4,8 +4,7 @@ class Admin::NotaTiposControllerTest < ActionController::TestCase
 
   setup do
     @nota_tipo = nota_tipos(:ao)
-    @request.env["devise.mapping"] = Devise.mappings[:admin]
-    sign_in admin_users(:admin)
+    login_as :admin
   end
 
   test "should show index" do
