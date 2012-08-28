@@ -4,8 +4,7 @@ class Admin::NotasControllerTest < ActionController::TestCase
 
   setup do
     @nota = notas(:despacho)
-    @request.env["devise.mapping"] = Devise.mappings[:admin]
-    sign_in admin_users(:admin)
+    login_as :admin
   end
 
   test "should show index" do
@@ -15,7 +14,9 @@ class Admin::NotasControllerTest < ActionController::TestCase
 
   test "should show detalles" do
     get :show, id: @nota
+    assert_equal(@nota.id, assigns(:nota).id)
     assert_response :success
+    assert_template :show
   end
 
   test "should show new" do
@@ -29,6 +30,22 @@ class Admin::NotasControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should create nota" do
+     pending
+  end
+
+  test "should destroy nota" do
+     pending
+  end
+
+  test "Index view should show a table with notas" do
+    pending
+  end
+
+  test "Index view should have a form to filter data" do
+    pending
+  end
+
   test "new form has expected elements" do
     get :new
     assert_select "form[id=new_nota][action=/admin/notas]" do
@@ -40,8 +57,14 @@ class Admin::NotasControllerTest < ActionController::TestCase
     end
   end
 
+  test "edit form should not alow to edit Pase " do
+    pending "the new and edit form should be different."
+  end
+
   test "show view must show a link to create a new Pase" do
     pending
   end
+
+
 
 end
