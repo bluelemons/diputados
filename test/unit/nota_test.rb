@@ -7,7 +7,7 @@ class NotaTest < ActiveSupport::TestCase
     assert !nota.save, "la nota no se puede crear sin un primer paso."
     @area = areas(:comision)
     @iniciador = iniciadors(:oldani)
-    nota = Nota.new(:pases_attributes => [{:ingreso => Date.new, :nota => nota, :area => @area}])
+    nota = Nota.new(:pases_attributes => [{:ingreso => Date.new, :area => @area}])
     assert !nota.save, "no se puede crear notas sin iniciador"
     nota.iniciador = @iniciador
     assert nota.save
