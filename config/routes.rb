@@ -5,6 +5,7 @@ Diputados::Application.routes.draw do
   end
 
   resources :notas, :only => [] do
+    resources :assets, :only => [:create, :destroy]
     resources :pases, :only => [:create, :update, :destroy]
   end
 
