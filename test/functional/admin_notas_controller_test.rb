@@ -22,7 +22,6 @@ class Admin::NotasControllerTest < ActionController::TestCase
   test "should show new" do
     get :new
     assert_response :success
-    pending "Deberia fijarse que el form pida un pase inicial."
   end
 
   test "should show edit" do
@@ -39,11 +38,13 @@ class Admin::NotasControllerTest < ActionController::TestCase
   end
 
   test "Index view should show a table with notas" do
-    pending
+    get :index
+    assert_select "table#notas", :count => 1
   end
 
   test "Index view should have a form to filter data" do
-    pending
+    get :index
+    assert_select "form[action=/admin/notas]", :count => 1
   end
 
   test "new form has expected elements" do
@@ -58,13 +59,13 @@ class Admin::NotasControllerTest < ActionController::TestCase
   end
 
   test "edit form should not alow to edit Pase " do
+    get :edit, id: @nota
     pending "the new and edit form should be different."
   end
 
-  test "show view must show a link to create a new Pase" do
-    pending
+  test "show view must show a form to create a new Pase" do
+    get :show, id: @nota
+    assert_select "form", :count => 1
   end
-
-
 
 end

@@ -4,6 +4,10 @@ Diputados::Application.routes.draw do
     resources :assets, :only => [:create, :destroy]
   end
 
+  resources :notas, :only => [] do
+    resources :pases, :only => [:create, :update, :destroy]
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
