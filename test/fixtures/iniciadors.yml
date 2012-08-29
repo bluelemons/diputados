@@ -7,3 +7,5 @@ oldani:
 
 diputado:
   name: diputado jhon doe
+  iniciador_tipo_id: <%= ActiveRecord::Fixtures.identify("municipios") %>
+  nota_tipo_id: <%= ActiveRecord::Fixtures.identify("ao") %>

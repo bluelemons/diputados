@@ -2,3 +2,4 @@
 
 despacho:
   fojas: 1
+  iniciador_id: <%= ActiveRecord::Fixtures.identify("diputado") %>
