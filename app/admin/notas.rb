@@ -19,6 +19,7 @@ ActiveAdmin.register Nota do
   filter :iniciador_iniciador_tipo_name, :as => :select, :label => "Tipo Iniciador", :collection => IniciadorTipo.all
   filter :iniciador_nota_tipo_name, :as => :select, :label => "Tipo de nota", :collection => NotaTipo.all
   filter :pases_descripcion, :as => :string
+  filter :pases_ingreso, :as => :date_range
 
   index do
     column :id
