@@ -46,7 +46,7 @@ ActiveAdmin.register Expediente do
   member_action :print do
 
     report = ExpedientesReport.new.listado(params)
-    send_file(report)
+    send_file(report, :type => "application/vnd.oasis.opendocument.text")
 
   end
 
