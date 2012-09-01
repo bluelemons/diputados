@@ -50,7 +50,7 @@ class Admin::NotasControllerTest < ActionController::TestCase
   test "new form has expected elements" do
     get :new
     assert_select "form[id=new_nota]" do
-      assert_select "#nota_fojas", :count => 1
+      assert_select "#nota_pases_attributes_0_fojas", :count => 1
       assert_select "#nota_pases_attributes_0_area_id", :count => 1
       assert_select "#nota_pases_attributes_0_ingreso", :count => 1
       assert_select "#nota_pases_attributes_0_descripcion", :count => 1

@@ -1,4 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 despacho:
-  fojas: 1
+  id: 1

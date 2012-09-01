@@ -22,7 +22,6 @@ ActiveAdmin.register Nota do
     column :id
     column :year
     column :ingreso
-    column :fojas
 #    column :fin_tramite
     default_actions
   end
@@ -32,9 +31,6 @@ ActiveAdmin.register Nota do
   end
 
   show do
-    attributes_table_for nota,
-      :fojas
-
     panel "Pases" do
       table_for nota.pases do
         column :ingreso
