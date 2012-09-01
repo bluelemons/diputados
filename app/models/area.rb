@@ -3,7 +3,7 @@ class Area < ActiveRecord::Base
 
   has_many :areas
   has_many :pases
-  has_many :notas, :through => :pases
+  has_many :expedientes, :through => :pases
 
   validates :name, :presence => true, :uniqueness => true
 
@@ -15,7 +15,7 @@ class Area < ActiveRecord::Base
   end
 
   def chekear_sin_notas
-    if notas.count > 0
+    if expedientes.count > 0
       errors.add :base, "No se puede borrar un area que contienen notas"
       false
     end

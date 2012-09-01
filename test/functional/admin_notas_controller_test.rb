@@ -3,7 +3,7 @@ require 'test_helper'
 class Admin::NotasControllerTest < ActionController::TestCase
 
   setup do
-    @nota = notas(:despacho)
+    @nota = expedientes(:despacho)
     login_as :admin
   end
 

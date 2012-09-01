@@ -79,3 +79,6 @@ month:
   fechaentr: <%= 8.day.ago %>
   descrip: ""
 
+despacho:
+  type: Nota
+  numero: 21

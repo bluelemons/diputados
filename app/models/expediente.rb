@@ -84,7 +84,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def html_descrip
-    pretty_descrip = descrip.mb_chars#.capitalize
+    pretty_descrip = (descrip  || "").mb_chars#.capitalize
     "<p>#{pretty_descrip}</p>".html_safe
   end
 
@@ -103,6 +103,24 @@ class Expediente < ActiveRecord::Base
     #"*"
     #los archivos que empiezan con el numero del expediente
     "??#{numero}*"
+  end
+
+# New expediente
+  has_many :pases
+  has_many :assets, :as => :adjuntable
+
+  has_one :pase, :class_name => :Pase, :order => "id"
+
+  validates :pases, :presence => true
+
+  accepts_nested_attributes_for :pases
+
+  def year
+    ingreso.strftime("%Y")
+  end
+
+  def ingreso
+    pase.ingreso
   end
 
 end

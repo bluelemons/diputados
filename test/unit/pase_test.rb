@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PaseTest < ActiveSupport::TestCase
   test "Datos de pase" do
-    @nota = notas(:despacho)
+    @nota = expedientes(:despacho)
     @area = areas(:comision)
     pase = Pase.new
     assert !pase.save, "falta fecha de ingreso"
@@ -13,7 +13,7 @@ class PaseTest < ActiveSupport::TestCase
   end
 
   test "Un pase solo se puede borrar si es el ultimo pase de una nota" do
-    @nota = notas(:despacho)
+    @nota = expedientes(:despacho)
     @pase = @nota.pases.first
     assert !@pase.destroy, "no se pueden borrar pases a menos que sea el ultimo"
     @pase = @nota.pases.last

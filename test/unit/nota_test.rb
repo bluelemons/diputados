@@ -16,12 +16,12 @@ class NotaTest < ActiveSupport::TestCase
   end
 
   test "year tiene que devolver el año del primer pase" do
-    nota = notas(:despacho)
+    nota = expedientes(:despacho)
     assert_equal nota.year, "2012"
   end
 
   test "ingreso tiene que mostrar el ingreso del primer pase" do
-    nota = notas(:despacho)
+    nota = expedientes(:despacho)
     assert_equal nota.ingreso, Date.new(2012, 8, 17)
   end
 
