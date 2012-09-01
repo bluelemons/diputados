@@ -15,6 +15,6 @@ class Ability
   end
 
   def mesa_de_entrada
-    can :manage, [Asset, Nota, NotaTipo, Pase, Iniciador, IniciadorTipo, Area]
+    can :manage, [Asset, Nota, Pase, Area]
   end
 end

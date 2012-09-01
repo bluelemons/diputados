@@ -15,18 +15,12 @@ ActiveAdmin.register Nota do
   end
 
   filter :id
-  filter :iniciador_name, :as => :string
-  filter :iniciador_iniciador_tipo_name, :as => :select, :label => "Tipo Iniciador", :collection => IniciadorTipo.all
-  filter :iniciador_nota_tipo_name, :as => :select, :label => "Tipo de nota", :collection => NotaTipo.all
   filter :pases_descripcion, :as => :string
   filter :pases_ingreso, :as => :date_range
 
   index do
     column :id
     column :year
-    column :letra
-    column :iniciador
-    column :iniciador_tipo_name
     column :ingreso
     column :fojas
 #    column :fin_tramite
@@ -39,7 +33,7 @@ ActiveAdmin.register Nota do
 
   show do
     attributes_table_for nota,
-      :fojas, :iniciador, :iniciador_tipo_name, :letra
+      :fojas
 
     panel "Pases" do
       table_for nota.pases do
