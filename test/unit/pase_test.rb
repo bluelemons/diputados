@@ -1,3 +1,4 @@
+# Encoding: UTF-8
 require 'test_helper'
 
 class PaseTest < ActiveSupport::TestCase
@@ -49,6 +50,15 @@ class PaseTest < ActiveSupport::TestCase
     pase = Pase.new(:area => @area, :expediente => @nota, :ingreso => Date.new)
     assert pase.save
     assert_equal @nota.pases.last, @nota.ultimo_pase
+  end
+
+  test "cuando no se pone fecha tiene que tomar la actual" do
+    Timecop.freeze(Date.today) do
+      @area = areas(:comision)
+      pase = Pase.new(:area => @area, :expediente => @nota)
+      assert pase.save
+      assert_equal pase.ingreso, Date.today, "No esta tomando bien la fecha cuando está vacía"
+    end
   end
 
 end

@@ -1,5 +1,6 @@
 class Pase < ActiveRecord::Base
 
+  before_save :asigna_ingreso
   after_save :asigna_primer_pase, :asigna_ultimo_pase
   before_destroy :chekea_ultimo
 
@@ -7,7 +8,6 @@ class Pase < ActiveRecord::Base
   belongs_to :area
 
   validates :area, :presence => true
-  validates :ingreso, :presence => true
 
   def chekea_ultimo
     if expediente.pases.last != self
@@ -28,6 +28,10 @@ class Pase < ActiveRecord::Base
       expediente.ultimo_pase = self
       expediente.save
     end
+  end
+
+  def asigna_ingreso
+    self.ingreso = ingreso || Date.today
   end
 
 end
