@@ -1,6 +1,12 @@
 ActiveAdmin.register Nota do
   menu :if => proc{ can?(:manage, Nota) }
 
+  scope :all, :default => true
+
+  self.send(:scope, :pendientes) do |items|
+    items.joins(:areas).where("areas.id in (?)", current_admin_user.area_ids )
+  end
+
   controller do
 
     load_and_authorize_resource
