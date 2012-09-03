@@ -38,6 +38,7 @@ ActiveAdmin.register AdminUser do
       f.input :roles_tokens,
       :input_html => {
         "data-pre" => f.object.roles.to_json(:methods => :name), :only => [:id, :name] }
+      f.input :areas, :as => :check_boxes
     end
     f.buttons
   end

@@ -114,6 +114,7 @@ class Expediente < ActiveRecord::Base
 
   belongs_to :primer_pase, :class_name => Pase
   belongs_to :ultimo_pase, :class_name => Pase
+  has_many :areas, :through => :ultimo_pase
 
   validates :pases, :presence => true
 
