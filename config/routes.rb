@@ -1,4 +1,9 @@
 Diputados::Application.routes.draw do
+
+  resources :expedientes, :only => [] do
+    resources :assets, :only => [:create, :destroy]
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

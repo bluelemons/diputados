@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510145112) do
+ActiveRecord::Schema.define(:version => 20120815164629) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,10 +47,19 @@ ActiveRecord::Schema.define(:version => 20120510145112) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "admin_users_roles", :id => false, :force => true do |t|
-    t.integer  "admin_user_id"
-    t.integer  "role_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer "admin_user_id"
+    t.integer "role_id"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_ad"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "adjuntable_id"
+    t.string   "adjuntable_type"
   end
 
   create_table "asuntos", :force => true do |t|

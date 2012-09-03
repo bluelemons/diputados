@@ -21,6 +21,7 @@ config/mail.yml
 
 # Ignore productiono assets
 /public/assets
+/public/system
 
 # Ignore generated documentation
 .yardoc/

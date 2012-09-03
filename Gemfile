@@ -24,6 +24,8 @@ gem 'cancan'
 
 gem 'jquery-rails'
 
+gem "paperclip", "~> 3.0"
+
 group :development, :test do
   # database
   gem 'sqlite3'

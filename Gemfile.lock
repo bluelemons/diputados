@@ -58,6 +58,7 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     chronic (0.6.7)
+    cocaine (0.2.1)
     coderay (1.0.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -122,6 +123,12 @@ GEM
       nokogiri (~> 1.5.0)
       rubyzip (~> 0.9.4)
     orm_adapter (0.0.7)
+    paperclip (3.1.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -218,6 +225,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   odf-report
+  paperclip (~> 3.0)
   pry
   pry-doc
   rails (= 3.2.2)
