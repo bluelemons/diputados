@@ -35,6 +35,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'timecop'
   gem 'fakefs', :require => "fakefs/safe"
 end
 
