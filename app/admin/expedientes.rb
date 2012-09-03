@@ -86,6 +86,13 @@ ActiveAdmin.register Expediente do
                      :locals => { :adjuntable => expediente, :asset => expediente.assets.build }
             end
           end
+
+          # temporal acceso a los archivos del disco
+          ul do
+            expediente.archivos_digitales.each do |archivo|
+              li link_to(archivo.basename, "/#{archivo}")
+            end
+          end
         end
       end
 
