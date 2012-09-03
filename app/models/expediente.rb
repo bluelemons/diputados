@@ -109,18 +109,26 @@ class Expediente < ActiveRecord::Base
   has_many :pases
   has_many :assets, :as => :adjuntable
 
-  has_one :pase, :class_name => :Pase, :order => "id"
+#  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
+#  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
+
+  belongs_to :primer_pase, :class_name => Pase
+  belongs_to :ultimo_pase, :class_name => Pase
 
   validates :pases, :presence => true
 
   accepts_nested_attributes_for :pases
+
+  def area_actual
+    ultimo_pase.area
+  end
 
   def year
     ingreso.strftime("%Y")
   end
 
   def ingreso
-    pase.ingreso
+    primer_pase.ingreso
   end
 
 end

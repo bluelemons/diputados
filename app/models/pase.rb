@@ -1,5 +1,6 @@
 class Pase < ActiveRecord::Base
 
+  after_save :asigna_primer_pase, :asigna_ultimo_pase
   before_destroy :chekea_ultimo
 
   belongs_to :expediente
@@ -12,6 +13,20 @@ class Pase < ActiveRecord::Base
     if expediente.pases.last != self
       errors.add :base, "No se puede borrar un pase a menos que sea el ultimo"
       false
+    end
+  end
+
+  def asigna_primer_pase
+    if expediente and expediente.pases.count == 1
+      expediente.primer_pase = self
+      expediente.save
+    end
+  end
+
+  def asigna_ultimo_pase
+    if expediente
+      expediente.ultimo_pase = self
+      expediente.save
     end
   end
 

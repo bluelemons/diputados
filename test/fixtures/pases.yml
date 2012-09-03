@@ -22,7 +22,6 @@ solo_notas:
   ingreso: 2012-08-18
 
 primer:
-  id: 1
   fojas: 1
   expediente_id: <%= ActiveRecord::Fixtures.identify("despacho") %>
   area_id: <%= ActiveRecord::Fixtures.identify("comision") %>

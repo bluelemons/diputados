@@ -28,4 +28,27 @@ class PaseTest < ActiveSupport::TestCase
     pending
   end
 
+  test "si no se completa el ingreso del pase, tiene que tomar la fecha actual" do
+  end
+
+  test "cuando se crea un primer pase, se tiene que guardar en la nota" do
+#    @area = areas(:comision)
+#    @pase = Pase.new(:ingreso => Date.new, :area => @area)
+#    @pase.save
+#    @nota = Nota.new
+#    @nota.pases.push @pase
+#    binding.pry
+#    @nota.save
+#    assert_equal @nota.pases.first, @nota.primer_pase
+     pending "no se como testear esto, dejo comentado arriba mi intento"
+  end
+
+  test "cuando se crea un pase se tiene que sobre escribir como ultimo pase" do
+    @area = areas(:comision)
+    @nota = expedientes(:despacho)
+    pase = Pase.new(:area => @area, :expediente => @nota, :ingreso => Date.new)
+    assert pase.save
+    assert_equal @nota.pases.last, @nota.ultimo_pase
+  end
+
 end
