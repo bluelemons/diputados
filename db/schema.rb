@@ -214,6 +214,13 @@ ActiveRecord::Schema.define(:version => 20120815164629) do
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
 
+  create_table "personas", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
     t.string   "letra",         :limit => 3
