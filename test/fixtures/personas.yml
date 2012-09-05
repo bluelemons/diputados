@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  type: 
-
-two:
-  name: MyString
-  type: 
+john:
+  name: John
+  last_name: Doe
+  dni: 12345678
+  tipo_dni: 1
+  type: Fisica
