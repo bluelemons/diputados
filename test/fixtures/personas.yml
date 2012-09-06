@@ -5,4 +5,4 @@ john:
   last_name: Doe
   dni: 12345678
   tipo_dni: 1
-  type: Fisica
+  type: PersonaFisica

@@ -1,0 +1,2 @@
+class PersonaFisica < Persona
+end

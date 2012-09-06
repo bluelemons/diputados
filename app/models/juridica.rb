@@ -1,2 +1,0 @@
-class Juridica < Persona
-end
