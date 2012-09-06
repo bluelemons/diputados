@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+archivo:
+  name: Archivo
+
+informatica:
+  name: Oficina de Informatica
+
+soporte:
+  name: Soporte Operativo
+  area: informatica
+

@@ -9,6 +9,7 @@ user:
 
 admin:
   email: admin@example.com
+  areas: informatica, soporte
 
 other:
   email: other.user@example.com
