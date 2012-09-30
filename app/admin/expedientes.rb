@@ -18,7 +18,7 @@ ActiveAdmin.register Expediente do
         block.call(format) if block
         format.pdf {
           report = ExpedientesReport.new.detalle @expedientes
-          send_file(report)
+          send_file report, :type => "application/vnd.oasis.opendocument.text"
         }
       end
     end

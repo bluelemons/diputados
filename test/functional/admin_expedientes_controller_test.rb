@@ -21,11 +21,13 @@ class Admin::ExpedientesControllerTest < ActionController::TestCase
   test "Se puede imprimir la busqueda" do
     get :index, format: :pdf
     assert_response :success
+    assert_equal "application/vnd.oasis.opendocument.text", response.content_type, "an odt file was expected"
   end
 
   test "Se puede imprimir el expediente" do
     get :print, id: @expediente
     assert_response :success
+    assert_equal "application/vnd.oasis.opendocument.text", response.content_type, "an odt file was expected"
   end
 
 end
