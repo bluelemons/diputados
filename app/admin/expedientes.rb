@@ -56,7 +56,7 @@ ActiveAdmin.register Expediente do
     div(:id => "xtabs") do
       ul do
         li link_to "Detalles", "#xtabs-1"
-        li link_to "Asuntos entrados", "#xtabs-2"
+        li link_to "Asunto entrado", "#xtabs-2"
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
         li link_to "Preferencia", "#xtabs-5" if expediente.prefers.count > 0
@@ -98,14 +98,12 @@ ActiveAdmin.register Expediente do
 
       div(:id => "xtabs-2") do
 
-        expediente.asuntos.each do |asunto|
-          attributes_table_for asunto,
-            :asuntoentr, :numreunion, :numsesion
+        attributes_table_for expediente.asunto,
+          :asuntoentr, :numreunion, :numsesion
 
-          panel "Comisiones Asignadas" do
-            asunto.comisiones.each do |comision|
-              div comision.nombre
-            end
+        panel "Comisiones Asignadas" do
+          expediente.comisiones_asignadas.each do |comision|
+            div comision.nombre
           end
         end
       end
