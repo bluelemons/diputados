@@ -75,9 +75,9 @@ end
 namespace :legacy  do
   desc "Link db/legacy for current deploy to the shared location"
   task :update_symlink, :roles => [:db] do
-    run "ln -nfs #{shared_path}/legacy #{release_path}/db/legacy"
+    run "ln -nfs #{shared_path}/legacy #{current_path}/db/legacy"
   end
 end
 
-after "deploy:restart", "legacy:update_symlink"
+after "deploy:finalize_update", "legacy:update_symlink"
 
