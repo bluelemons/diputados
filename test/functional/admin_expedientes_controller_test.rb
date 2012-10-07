@@ -18,6 +18,11 @@ class Admin::ExpedientesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "no se rompe si no tiene asunto" do
+    get :show, id: expedientes(:legalizacion).to_param
+    assert_response :success
+  end
+
   test "Se puede imprimir la busqueda" do
     get :index, format: :pdf
     assert_response :success

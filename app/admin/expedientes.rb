@@ -56,7 +56,7 @@ ActiveAdmin.register Expediente do
     div(:id => "xtabs") do
       ul do
         li link_to "Detalles", "#xtabs-1"
-        li link_to "Asunto entrado", "#xtabs-2"
+        li link_to "Asunto entrado", "#xtabs-2" if expediente.asunto
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
         li link_to "Preferencia", "#xtabs-5" if expediente.prefers.count > 0
@@ -106,7 +106,7 @@ ActiveAdmin.register Expediente do
             div comision.nombre
           end
         end
-      end
+      end if expediente.asunto
 
       div(:id => "xtabs-3") do
         expediente.estados.each do |estado|
