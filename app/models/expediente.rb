@@ -32,7 +32,7 @@ class Expediente < ActiveRecord::Base
   has_many :prefers
 
   # puede ser un has_one, pero no estoy seguro.
-  has_many  :asuntos
+  has_one   :asunto
   has_many  :finals
   has_one   :sesion
 
@@ -103,6 +103,12 @@ class Expediente < ActiveRecord::Base
     #"*"
     #los archivos que empiezan con el numero del expediente
     "??#{numero}*"
+  end
+
+  # las comisiones asignadas en el asunto entrado.
+
+  def comisiones_asignadas
+    asunto.comisiones if asunto
   end
 
 end
