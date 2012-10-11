@@ -9,8 +9,10 @@ class Final < ActiveRecord::Base
   #dependiendo que campos se guardaron, el expediente tiene una descripcion distinta.
   def descripcion
     t = ""
-    t = "Fin de tramite parlamentario. Nota: #{nronota} del #{promu}" if promu
-    t = "Nota N:#{nronota} Archivado:#{archi}" if archi
+    t = "Fin de tramite parlamentario. Nota: #{nronota} del #{promu}, en #{fechanota} " if promu
+    t += "Repuesta: #{respu} " if respu
+    t += "Archivado: #{archi} " if archi
+
     t
   end
 
