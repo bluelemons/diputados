@@ -17,20 +17,17 @@ set :output, "log/cron_log.log"
 
 # Lunes, Martes y Viernes, cada 2 horas.
 every '30 5-23/2 * * mon,tue,fri' do
-  command "/usr/bin/rsync --archive /datos/compartir/smbtramite/01-PROYECTOS/ /datos/local_pdf/"
-  rake "db:seed"
+  rake "db:legacy:migrate"
 end
 
 # Miercoles (cada hora).
 every '30 6-23 * * wed' do
-  command "/usr/bin/rsync --archive /datos/compartir/smbtramite/01-PROYECTOS/ /datos/local_pdf/"
-  rake "db:seed"
+  rake "db:legacy:migrate"
 end
 
 # los jueves cada media hora entre las 6:20 y las 23:50
-every '20-59/30 6-23 * * thu' do
-  command "/usr/bin/rsync --archive /datos/compartir/smbtramite/01-PROYECTOS/ /datos/local_pdf/"
-  rake "db:seed"
+every '20,50 6-23 * * thu' do
+  rake "db:legacy:migrate"
 end
 
 # Learn more: http://github.com/javan/whenever
