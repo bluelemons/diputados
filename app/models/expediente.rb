@@ -45,7 +45,7 @@ class Expediente < ActiveRecord::Base
   # nil si no hay fin de tramite.
   def final
     descripciones = finals.collect(&:descripcion).delete_if { |d| d.empty? }
-    descripciones[0]
+    descripciones.last
   end
 
   # Al migrar asigno directamente el numero que deberia ser guardado como
