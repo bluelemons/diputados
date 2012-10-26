@@ -14,11 +14,11 @@ class Final < ActiveRecord::Base
   private
 
   def descripcion_nota
-   "Nota: #{nronota}, en #{I18n.l fechanota}" if nronota?
+   "Nota: #{nronota} del #{I18n.l fechanota}" if nronota?
   end
 
   def descripcion_promulgado
-    "Fin de tramite parlamentario. del #{I18n.l promu}" if promu?
+    "Fin de tramite parlamentario el #{I18n.l promu}" if promu?
   end
 
   def descripcion_respuesta
