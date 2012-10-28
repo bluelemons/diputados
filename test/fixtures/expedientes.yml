@@ -19,6 +19,7 @@ legalizacion:
   ley: 12
   marca: 12
   etiq: 12
+  type: Proyecto
 
 two:
   numero: 118
@@ -26,6 +27,7 @@ two:
   tipo: 1
   pasada: 1
   descrip: estoy relacionado con un estado
+  type: Proyecto
 
 puente:
   numero: 13782
@@ -48,6 +50,7 @@ puente:
   ley: 12448
   marca: 0
   etiq: 1
+  type: Proyecto
 
 day:
   numero: 13732
@@ -58,6 +61,7 @@ day:
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
   fechaentr: <%= Date.today %>
   descrip: ""
+  type: Proyecto
 
 week:
   numero: 13732
@@ -68,6 +72,7 @@ week:
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
   fechaentr: <%= 6.day.ago %>
   descrip: ""
+  type: Proyecto
 
 month:
   numero: 13732
@@ -78,4 +83,5 @@ month:
   tema_id: <%= ActiveRecord::Fixtures.identify("constitucionales") %>
   fechaentr: <%= 8.day.ago %>
   descrip: ""
+  type: Proyecto
 

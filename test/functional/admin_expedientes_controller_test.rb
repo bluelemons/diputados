@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class Admin::ExpedientesControllerTest < ActionController::TestCase
+class Admin::ProyectosControllerTest < ActionController::TestCase
 
   setup do
-    @expediente = expedientes(:puente)
+    @proyecto = expedientes(:puente)
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     sign_in admin_users(:admin)
   end
@@ -14,7 +14,7 @@ class Admin::ExpedientesControllerTest < ActionController::TestCase
   end
 
   test "should show detalles" do
-    get :show, id: @expediente
+    get :show, id: @proyecto
     assert_response :success
   end
 
@@ -29,8 +29,8 @@ class Admin::ExpedientesControllerTest < ActionController::TestCase
     assert_equal "application/vnd.oasis.opendocument.text", response.content_type, "an odt file was expected"
   end
 
-  test "Se puede imprimir el expediente" do
-    get :print, id: @expediente
+  test "Se puede imprimir el proyecto" do
+    get :print, id: @proyecto
     assert_response :success
     assert_equal "application/vnd.oasis.opendocument.text", response.content_type, "an odt file was expected"
   end
