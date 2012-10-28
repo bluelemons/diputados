@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903025225) do
+ActiveRecord::Schema.define(:version => 20121028173935) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -194,11 +194,13 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
     t.datetime "updated_at",               :null => false
     t.integer  "estado_id"
     t.integer  "tema_id"
+    t.string   "type"
   end
 
   add_index "expedientes", ["estado_id"], :name => "index_expedientes_on_estado_id"
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
   add_index "expedientes", ["tema_id"], :name => "index_expedientes_on_tema_id"
+  add_index "expedientes", ["type"], :name => "index_expedientes_on_type"
 
   create_table "finals", :force => true do |t|
     t.integer  "numero"
