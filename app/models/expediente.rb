@@ -24,6 +24,8 @@ class Expediente < ActiveRecord::Base
   has_many :prefers
 
   # puede ser un has_one, pero no estoy seguro.
+  has_many  :pases
+  # TODO: estados y finals son en realidad pases
   has_one   :asunto
   has_many  :finals
   has_one   :sesion

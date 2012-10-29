@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+penultimo:
+  fojas: 1
+  expediente: despacho
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  ingreso: 2012-08-17
+
+ultimo:
+  fojas: 1
+  expediente: despacho
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  ingreso: 2012-08-18
+
+solo_notas:
+  fojas: 1
+  expediente: despacho
+  area_id: <%= ActiveRecord::Fixtures.identify("solo_notas") %>
+  ingreso: 2012-08-18
+
+entrada:
+  fojas: 1
+  expediente: despacho
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  ingreso: 2012-08-17
+
