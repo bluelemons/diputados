@@ -85,3 +85,6 @@ month:
   descrip: ""
   type: Proyecto
 
+despacho:
+  type: Nota
+

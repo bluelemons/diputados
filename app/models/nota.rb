@@ -1,0 +1,3 @@
+class Nota < Expediente
+end
+
