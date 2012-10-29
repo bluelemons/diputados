@@ -10,3 +10,6 @@ soporte:
   name: Soporte Operativo
   area: informatica
 
+mesa_de_entrada:
+  name: Mesa de entrada
+

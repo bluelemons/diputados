@@ -85,6 +85,6 @@ month:
   descrip: ""
   type: Proyecto
 
-despacho:
-  type: Nota
+solicitud:
+  descrip: Solicitud de informacion sobre el sistema de expedientes.
 
