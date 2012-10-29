@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029002824) do
+ActiveRecord::Schema.define(:version => 20121029005414) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -228,6 +228,18 @@ ActiveRecord::Schema.define(:version => 20121029002824) do
 
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
+
+  create_table "pases", :force => true do |t|
+    t.integer  "expediente_id"
+    t.integer  "area_id"
+    t.date     "ingreso"
+    t.integer  "fojas"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "pases", ["area_id"], :name => "index_pases_on_area_id"
+  add_index "pases", ["expediente_id"], :name => "index_pases_on_expediente_id"
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
