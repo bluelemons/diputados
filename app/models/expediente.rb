@@ -88,6 +88,10 @@ class Expediente < ActiveRecord::Base
     "<p>#{pretty_descrip}</p>".html_safe
   end
 
+  def status_tag
+    estado.status_tag
+  end
+
   def archivos_digitales
     base_path = Rails.root.join "public"
     contained_files = []
