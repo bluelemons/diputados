@@ -4,7 +4,9 @@ class Admin::ProyectosControllerTest < ActionController::TestCase
 
   setup do
     @proyecto = expedientes(:puente)
-    stub_permisive_ability
+#    stub_permisive_ability
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    sign_in admin_users(:admin)
   end
 
   test "should show index" do
