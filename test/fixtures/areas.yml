@@ -19,3 +19,13 @@ vacia:
 solo_notas:
   name: solo notas
   area_id: null
+
+archivo:
+  name: Archivo
+
+informatica:
+  name: Oficina de Informatica
+
+soporte:
+  name: Soporte Operativo
+  area: informatica

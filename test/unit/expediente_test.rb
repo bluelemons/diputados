@@ -11,7 +11,7 @@ class ExpedienteTest < ActiveSupport::TestCase
     assert_equal "Mesa de entrada", @expediente.tipoentr, "la entrada no se muestra correctamente"
     assert_equal "De prorroga", @expediente.tipoperiod, "el periodo no se muestra correctamente"
     assert_equal 6, @expediente.estados.count, "No tiene los estados"
-    assert_equal asuntos(:puente), @expediente.asuntos.first, "El asunto no está asociado"
+    assert_equal asuntos(:puente), @expediente.asunto, "El asunto no está asociado"
     assert_equal finals(:puente), @expediente.finals.first, "El final no esta asociado"
   end
 

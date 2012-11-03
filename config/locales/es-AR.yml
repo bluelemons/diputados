@@ -99,9 +99,9 @@ es-AR:
       - noviembre
       - diciembre
     formats:
-      short: "%d de %b"
-      default: "%d/%m/%Y"
-      long: "%A, %d de %B de %Y"
+      short: "%-d de %b"
+      default: "%-d/%-m/%Y"
+      long: "%A, %-d de %B de %Y"
   time:
     formats:
       short: "%d de %b a las %H:%M hrs"

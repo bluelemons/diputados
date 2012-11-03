@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class AreaTest < ActiveSupport::TestCase
+
    test "El nombre no puede estar en blanco" do
      area = Area.new(:name => "")
      assert !area.save, "No se pueden guardar areas sin nombre"
@@ -17,15 +18,15 @@ class AreaTest < ActiveSupport::TestCase
 
      @area = areas(:vacia)
      assert @area.destroy
-     
-   end
-
-   test "No se pueden borrar areas si tiene sub areas" do
-     @area = areas(:comision)
-     assert !@area.destroy, "no se pueden borrar areas con subareas"
-
-     @area = areas(:vacia)
-     assert @area.destroy
 
    end
+
+  test "No se pueden borrar areas si tiene sub areas" do
+    @area = areas(:informatica)
+    assert !@area.destroy, "no se pueden borrar areas con subareas"
+
+    @area = areas(:soporte)
+    assert @area.destroy
+  end
+
 end

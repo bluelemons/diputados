@@ -14,7 +14,7 @@ admin:
 gallego:
   email: unmail@example.com
   roles: mesa_de_entrada
+  areas: informatica, soporte
 
 other:
   email: other.user@example.com
-

@@ -17,8 +17,8 @@ ActiveAdmin.register Proyecto do
       super(options) do |format|
         block.call(format) if block
         format.pdf {
-          report = ExpedientesReport.new.detalle @proyectos
-          send_file(report)
+          report = ExpedientesReport.new.detalle @expedientes
+          send_file report, :type => "application/vnd.oasis.opendocument.text"
         }
       end
     end
@@ -45,7 +45,7 @@ ActiveAdmin.register Proyecto do
 
   member_action :print do
     report = ExpedientesReport.new.listado(params)
-    send_file(report)
+    send_file(report, :type => "application/vnd.oasis.opendocument.text")
   end
 
   action_item(:only =>[:show]) do
@@ -56,7 +56,7 @@ ActiveAdmin.register Proyecto do
     div(:id => "xtabs") do
       ul do
         li link_to "Detalles", "#xtabs-1"
-        li link_to "Asuntos entrados", "#xtabs-2"
+        li link_to "Asunto entrado", "#xtabs-2" if expediente.asunto
         li link_to "Pase por comisiones", "#xtabs-3"
         li link_to "Tratamiento en Sesion", "#xtabs-4"
         li link_to "Preferencia", "#xtabs-5" if proyecto.prefers.count > 0
@@ -86,6 +86,13 @@ ActiveAdmin.register Proyecto do
                      :locals => { :adjuntable => proyecto, :asset => proyecto.assets.build }
             end
           end
+
+          # temporal acceso a los archivos del disco
+          ul do
+            expediente.archivos_digitales.each do |archivo|
+              li link_to(archivo.basename, "/#{archivo}")
+            end
+          end
         end
       end
 
@@ -95,13 +102,12 @@ ActiveAdmin.register Proyecto do
           attributes_table_for asunto,
             :asuntoentr, :numreunion, :numsesion
 
-          panel "Comisiones Asignadas" do
-            asunto.comisiones.each do |comision|
-              div comision.nombre
-            end
+        panel "Comisiones Asignadas" do
+          expediente.comisiones_asignadas.each do |comision|
+            div comision.nombre
           end
         end
-      end
+      end if expediente.asunto
 
       div(:id => "xtabs-3") do
         proyecto.estados.each do |estado|
@@ -140,4 +146,3 @@ ActiveAdmin.register Proyecto do
   end
 
 end
-

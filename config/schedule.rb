@@ -8,7 +8,7 @@
 set :output, "log/cron_log.log"
 
 every 1.hours do
-  command "/usr/bin/rsync --archive '/datos/compartir/smbtramite/01-PROYECTOS/' '/datos/local_pdf/'"
+  command "/usr/bin/rsync --archive /datos/compartir/smbtramite/01-PROYECTOS/ /datos/local_pdf/"
 end
 
 every 2.hours do

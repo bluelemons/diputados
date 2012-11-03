@@ -32,7 +32,7 @@ class Expediente < ActiveRecord::Base
   has_many :prefers
 
   # puede ser un has_one, pero no estoy seguro.
-  has_many  :asuntos
+  has_one   :asunto
   has_many  :finals
   has_one   :sesion
 
@@ -40,12 +40,38 @@ class Expediente < ActiveRecord::Base
   has_one   :comision, :through => :estado_actual
 
   has_many :assets, :as => :adjuntable
+# New expediente
+  has_many :pases
+  has_many :assets, :as => :adjuntable
+
+#  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
+#  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
+
+  belongs_to :primer_pase, :class_name => Pase
+  belongs_to :ultimo_pase, :class_name => Pase
+  has_many :areas, :through => :ultimo_pase
+
+  validates :pases, :presence => true
+
+  accepts_nested_attributes_for :pases
+
+  def area_actual
+    ultimo_pase.area
+  end
+
+  def year
+    ingreso.strftime("%Y")
+  end
+
+  def ingreso
+    primer_pase.ingreso
+  end
 
   # Busca el final de tramite correspondiente y carga la descripcion o retorna
   # nil si no hay fin de tramite.
   def final
     descripciones = finals.collect(&:descripcion).delete_if { |d| d.empty? }
-    descripciones[0]
+    descripciones.last
   end
 
   # Al migrar asigno directamente el numero que deberia ser guardado como
@@ -105,32 +131,10 @@ class Expediente < ActiveRecord::Base
     "??#{numero}*"
   end
 
-# New expediente
-  has_many :pases
-  has_many :assets, :as => :adjuntable
+  # las comisiones asignadas en el asunto entrado.
 
-#  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
-#  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
-
-  belongs_to :primer_pase, :class_name => Pase
-  belongs_to :ultimo_pase, :class_name => Pase
-  has_many :areas, :through => :ultimo_pase
-
-  validates :pases, :presence => true
-
-  accepts_nested_attributes_for :pases
-
-  def area_actual
-    ultimo_pase.area
-  end
-
-  def year
-    ingreso.strftime("%Y")
-  end
-
-  def ingreso
-    primer_pase.ingreso
+  def comisiones_asignadas
+    asunto.comisiones if asunto
   end
 
 end
-
