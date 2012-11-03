@@ -2,6 +2,7 @@ class Area < ActiveRecord::Base
   before_destroy :chekear_sin_subareas, :chekear_sin_notas
 
   has_many :areas
+  belongs_to :area
   has_many :pases
   has_many :expedientes, :through => :pases
 

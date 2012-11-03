@@ -6,7 +6,7 @@ comision:
 
 constitucionales:
   name: Comision de asuntos constitucionales
-  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  area: comision
 
 personal:
   name: Oficina Persona
