@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
   end
 
   create_table "admin_users_roles", :id => false, :force => true do |t|
+    t.integer "admin_user_id"
+    t.integer "area_id"
+  end
+
+  create_table "admin_users_roles", :id => false, :force => true do |t|
     t.integer  "admin_user_id"
     t.integer  "role_id"
     t.datetime "created_at",    :null => false
@@ -61,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
   create_table "areas", :force => true do |t|
     t.string   "name"
     t.integer  "area_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.integer  "area_id"
+    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

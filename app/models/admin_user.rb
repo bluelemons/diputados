@@ -8,11 +8,9 @@ class AdminUser < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation,
                   :remember_me, :role_ids, :roles_tokens, :area_ids
 
-
   has_and_belongs_to_many :roles, :uniq => true
 
   attr_reader :roles_tokens
-
 
   has_and_belongs_to_many :areas, :uniq => true
 

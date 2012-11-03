@@ -132,7 +132,6 @@ class Expediente < ActiveRecord::Base
   end
 
   # las comisiones asignadas en el asunto entrado.
-
   def comisiones_asignadas
     asunto.comisiones if asunto
   end

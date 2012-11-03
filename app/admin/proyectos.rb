@@ -93,14 +93,20 @@ ActiveAdmin.register Proyecto do
               li link_to(archivo.basename, "/#{archivo}")
             end
           end
+
+          # temporal acceso a los archivos del disco
+          ul do
+            expediente.archivos_digitales.each do |archivo|
+              li link_to(archivo.basename, "/#{archivo}")
+            end
+          end
         end
       end
 
       div(:id => "xtabs-2") do
 
-        proyecto.asuntos.each do |asunto|
-          attributes_table_for asunto,
-            :asuntoentr, :numreunion, :numsesion
+        attributes_table_for expediente.asunto,
+          :asuntoentr, :numreunion, :numsesion
 
         panel "Comisiones Asignadas" do
           expediente.comisiones_asignadas.each do |comision|
