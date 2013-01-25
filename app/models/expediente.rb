@@ -2,6 +2,10 @@
 
 class Expediente < ActiveRecord::Base
 
+  # TODO Add Tags
+  # TODO Add recursive relation
+  # TODO Move everything that belong to proyect there.
+
   LEGACY_CONSTRAINTS = [:numero, :letra, :pasada, :tipo]
 
   Tipos = { 1 => "Ley", 2 => "Comunicación", 3 => "Declaración",
