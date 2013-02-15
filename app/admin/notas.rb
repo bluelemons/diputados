@@ -22,13 +22,15 @@ ActiveAdmin.register Nota do
 
   filter :id
   filter :pases_descripcion, :as => :string
+  filter :primer_pase_area_name, as: :string
+  filter :ultimo_pase_area_name, as: :string
   filter :pases_ingreso, :as => :date_range
 
   index do
     column :id
     column :year
     column :ingreso
-#    column :fin_tramite
+    column :area_actual
     default_actions
   end
 
