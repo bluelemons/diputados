@@ -10,7 +10,7 @@ module Legacy
     {:model=> Comision, :legacy=>"comision.dbf"},
     {:model=> Tema, :legacy=>"temas.dbf"},
     {:model=> Status, :legacy=>"status.dbf"},
-    {:model=> Expediente, :legacy=>"proyecto.dbf"},
+    {:model=> Proyecto, :legacy=>"proyecto.dbf"},
     {:model=> Final, :legacy=>"final.dbf"},
     {:model=> Asunto, :legacy=>"asunto.dbf"},
     {:model=> Estado, :legacy=>"estado.dbf"},
