@@ -4,10 +4,9 @@ gem 'rails', '3.2.2'
 
 gem 'rails-i18n'
 
-gem 'mysql2'
-
 group :production do
   gem 'thin', :require => false
+  gem 'mysql2'
 end
 
 # Gems used only for assets and not required
