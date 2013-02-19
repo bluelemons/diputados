@@ -1,7 +1,8 @@
 class AssetsController < InheritedResources::Base
 
   actions :create, :destroy
-  belongs_to :expediente, :polymorphic => true
+  belongs_to :expediente, :polymorphic => true, :optional => true
+  belongs_to :nota, :polymorphic => true, :optional => true
   authorize_resource
 
   def create

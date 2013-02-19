@@ -4,6 +4,11 @@ Diputados::Application.routes.draw do
     resources :assets, :only => [:create, :destroy]
   end
 
+  resources :notas, :only => [] do
+    resources :assets, :only => [:create, :destroy]
+    resources :pases, :only => [:create, :update, :destroy]
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -57,7 +62,7 @@ Diputados::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'admin/expedientes#index'
+  root :to => 'admin/proyectos#index'
 
   # See how all your routes lay out with "rake routes"
 

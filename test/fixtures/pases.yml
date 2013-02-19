@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+penultimo:
+  fojas: 1
+  expediente_id: <%= ActiveRecord::Fixtures.identify("despacho") %>
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  descripcion:
+  ingreso: 2012-08-17
+
+ultimo:
+  fojas: 1
+  expediente_id: <%= ActiveRecord::Fixtures.identify("despacho") %>
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  descripcion:
+  ingreso: 2012-08-18
+
+solo_notas:
+  fojas: 1
+  expediente_id: <%= ActiveRecord::Fixtures.identify("despacho") %>
+  area_id: <%= ActiveRecord::Fixtures.identify("solo_notas") %>
+  descripcion:
+  ingreso: 2012-08-18
+
+primer:
+  fojas: 1
+  expediente_id: <%= ActiveRecord::Fixtures.identify("despacho") %>
+  area_id: <%= ActiveRecord::Fixtures.identify("comision") %>
+  descripcion: Es el primer pase que se hace en la nota
+  ingreso: 2012-08-17

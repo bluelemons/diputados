@@ -79,3 +79,8 @@ month:
   fechaentr: <%= 8.day.ago %>
   descrip: ""
 
+despacho:
+  type: Nota
+  numero: 21
+  primer_pase_id: <%= ActiveRecord::Fixtures.identify("primer") %>
+  ultimo_pase_id: <%= ActiveRecord::Fixtures.identify("ultimo") %>

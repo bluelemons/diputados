@@ -2,6 +2,10 @@
 
 class Expediente < ActiveRecord::Base
 
+  # TODO Add Tags
+  # TODO Add recursive relation
+  # TODO Move everything that belong to proyect there.
+
   LEGACY_CONSTRAINTS = [:numero, :letra, :pasada, :tipo]
 
   Tipos = { 1 => "Ley", 2 => "Comunicación", 3 => "Declaración",
@@ -40,6 +44,10 @@ class Expediente < ActiveRecord::Base
   has_one   :comision, :through => :estado_actual
 
   has_many :assets, :as => :adjuntable
+  has_many :pases
+
+#  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
+#  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
 
   # Busca el final de tramite correspondiente y carga la descripcion o retorna
   # nil si no hay fin de tramite.
@@ -84,7 +92,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def html_descrip
-    pretty_descrip = descrip.mb_chars#.capitalize
+    pretty_descrip = (descrip  || "").mb_chars#.capitalize
     "<p>#{pretty_descrip}</p>".html_safe
   end
 
@@ -106,10 +114,8 @@ class Expediente < ActiveRecord::Base
   end
 
   # las comisiones asignadas en el asunto entrado.
-
   def comisiones_asignadas
     asunto.comisiones if asunto
   end
 
 end
-
