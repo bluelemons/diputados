@@ -28,5 +28,10 @@ class ActionController::TestCase
     stub_ability
     @ability.can :manage, :all
   end
+
+  def login_as role
+    @request.env["devise.mapping"] = Devise.mappings[role]
+    sign_in admin_users(role)
+  end
 end
 

@@ -172,28 +172,31 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
 
   create_table "expedientes", :force => true do |t|
     t.integer  "numero"
-    t.string   "letra",      :limit => 3
+    t.string   "letra",          :limit => 3
     t.integer  "tipo"
     t.integer  "pasada"
     t.integer  "numsenado"
     t.integer  "tema"
     t.text     "descrip"
     t.date     "fechaentr"
-    t.string   "hora",       :limit => 5
-    t.string   "autor",      :limit => 30
+    t.string   "hora",           :limit => 5
+    t.string   "autor",          :limit => 30
     t.text     "firmantes"
     t.integer  "tipoentr"
     t.integer  "tipoperiod"
     t.integer  "numperiodo"
-    t.string   "expte",      :limit => 10
+    t.string   "expte",          :limit => 10
     t.integer  "estado"
     t.integer  "ley"
     t.integer  "marca"
     t.integer  "etiq"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "estado_id"
     t.integer  "tema_id"
+    t.string   "type"
+    t.integer  "primer_pase_id"
+    t.integer  "ultimo_pase_id"
   end
 
   add_index "expedientes", ["estado_id"], :name => "index_expedientes_on_estado_id"
@@ -226,6 +229,16 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
 
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
+
+  create_table "pases", :force => true do |t|
+    t.integer  "area_id"
+    t.text     "descripcion"
+    t.date     "ingreso"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "fojas"
+    t.integer  "expediente_id"
+  end
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"

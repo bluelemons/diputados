@@ -10,15 +10,15 @@ class LegacyMigrationTest < ActiveSupport::TestCase
 
   def test_attributes
     assert_kind_of DBF::Table, migration.legacy_table, "I have not access to legacy table"
-    assert_equal Expediente, migration.model, "Model not accesible"
+    assert_equal Proyecto, migration.model, "Model not accesible"
   end
 
   def test_single_migration
-    Expediente.delete_all
+    Proyecto.delete_all
     migration.run(:count => 1)
-    assert_equal Expediente.all.count, 1, "should create a single record"
+    assert_equal Proyecto.all.count, 1, "should create a single record"
     [:numero, :letra, :tipo, :pasada, :numsenado, :tema, :descrip, :autor].each do |attr|
-      refute_nil Expediente.first.send(attr), "El expediente no fue bien cargado: Expediente##{attr}: nil"
+      refute_nil Proyecto.first.send(attr), "El expediente no fue bien cargado: Proyecto##{attr}: nil"
     end
   end
 
@@ -49,7 +49,7 @@ class LegacyMigrationTest < ActiveSupport::TestCase
 
   def migration()
     @migration ||=
-      Legacy::Migration.new :legacy => "proyecto.dbf", :model => Expediente
+      Legacy::Migration.new :legacy => "proyecto.dbf", :model => Proyecto
   end
 
   def migration=(new_migration)
