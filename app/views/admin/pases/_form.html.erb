@@ -1,9 +1,9 @@
 <%= semantic_form_for [nota, pase] do |f| %>
     <%= f.inputs do %>
-      <%= f.input( :fojas ) %>
-      <%= f.input( :area ) %>
-      <%= f.input :ingreso, :as=>:string, :input_html => {:class => 'datepicker'} %>
-      <%= f.input( :descripcion ) %>
+      <%= f.input :fojas %>
+      <%= f.input :area %>
+      <%= f.input :ingreso, as: :string, input_html: { class: 'datepicker' } %>
+      <%= f.input :descripcion, :input_html => { rows: 4 } %>
   <% end %>
   <%= f.actions %>
 <% end %>

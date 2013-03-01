@@ -36,9 +36,9 @@ end
 
 def sign_in
   visit '/admin/login'
-  fill_in "Email", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  click_button "admin_user_submit"
+  fill_in 'Email', :with => @visitor[:email]
+  fill_in 'Password', :with => @visitor[:password]
+  click_button 'iniciar sesión'
 end
 
 ### GIVEN ###

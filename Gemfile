@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.12'
 
 gem 'rails-i18n'
 
@@ -14,11 +14,12 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer'
+  gem 'coffee-script-source', '~> 1.4.0'
+  gem 'therubyracer', '~> 0.10.2'
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', '0.5.0'
 gem 'cancan'
 
 gem 'jquery-rails'
