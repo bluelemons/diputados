@@ -7,14 +7,6 @@
 // Sitewide config
 @import 'colors';
 
-//@import 'forum';
-//@import 'datepicker_correction';
-//@import 'pases';
-@import 'mystyle';
-@import 'expedientes_index';
-@import 'token-input';
-//@import 'navigations_keys';
-
 @import "chosen";
 @import "active_admin/chosen";
 @import "active_admin/numeric_range";
@@ -22,6 +14,8 @@
 // To customize the Active Admin interfaces, add your
 // styles here:
 
+@import 'expedientes_index';
+@import 'token-input';
 .hidden {
   display: none;
 }
