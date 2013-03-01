@@ -1,10 +1,10 @@
-<%= semantic_form_for @nota, :url => admin_notas_path do |f| %>
-  <%= f.inputs "Detalles generales" do %>
+<%= semantic_form_for nota, :url => admin_notas_path do |f| %>
+  <%= f.inputs 'Detalles generales' do %>
     <%= f.semantic_fields_for :pases do |pase| %>
-      <%= pase.input :fojas %>
       <%= pase.input :area %>
-      <%= pase.input :ingreso, :as=>:string, :input_html => {:class => 'datepicker'} %>
-      <%= pase.input :descripcion %>
+      <%= pase.input :fojas %>
+      <%= pase.input :ingreso, as: :string, input_html: { class: 'datepicker' } %>
+      <%= pase.input :descripcion, :input_html => { rows: 4 } %>
     <% end %>
   <% end %>
   <%= f.actions %>

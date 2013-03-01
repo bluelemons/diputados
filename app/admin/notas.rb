@@ -8,16 +8,8 @@ ActiveAdmin.register Nota do
   end
 
   controller do
-
     load_and_authorize_resource
     skip_load_resource :only => :index
-
-    def new
-      @nota = Nota.new
-      @nota.pases.build
-      new!
-    end
-
   end
 
   filter :id
@@ -34,8 +26,8 @@ ActiveAdmin.register Nota do
     default_actions
   end
 
-  form do |f|
-    render :partial => 'form'
+  form do
+    render partial: 'form', locals: { pases: nota.pases.build, nota: nota }
   end
 
   show do
