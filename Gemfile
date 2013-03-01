@@ -23,6 +23,7 @@ gem 'activeadmin', '0.5.0'
 gem 'cancan'
 
 gem 'jquery-rails'
+gem 'chosen-rails'
 
 gem "paperclip", "~> 3.0"
 

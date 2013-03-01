@@ -15,7 +15,10 @@
 @import 'token-input';
 //@import 'navigations_keys';
 
-
+@import "chosen";
+@import "active_admin/chosen";
+@import "active_admin/numeric_range";
+@import "active_admin/sortable_forms";
 // To customize the Active Admin interfaces, add your
 // styles here:
 
