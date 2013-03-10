@@ -134,7 +134,7 @@ ActiveAdmin.register Proyecto do
       div(:id => "xtabs-4") do
         if proyecto.sesion
           proyecto.sesions.each do |sesion|
-            h2 sesion.periodo
+            h2 "Periodo: #{sesion.periodo}"
             attributes_table_for sesion,
               :ordendia, :fechaordia, :numreunion, :numsesion,
               :fechases, :tratamiento, :resultado
