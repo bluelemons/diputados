@@ -18,7 +18,7 @@ class Sesion < ActiveRecord::Base
     Resultado[read_attribute(:resuvotac)] || "No indicado"
   end
 
-  Tratamiento = { 1 => "Orden del dia", 2 => "Sobre tablas", 3 => "Preferencial"}
+  Tratamiento = { 1 => "Orden del dia", 2 => "Sobre tablas", 3 => "Preferencial", 4 => "Solicitud"}
   def tratamiento
     Tratamiento[read_attribute(:tratamient)] || "No indicado"
   end
