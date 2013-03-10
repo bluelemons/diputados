@@ -38,6 +38,7 @@ class Expediente < ActiveRecord::Base
   # puede ser un has_one, pero no estoy seguro.
   has_one   :asunto
   has_many  :finals
+  has_many  :sesions
   has_one   :sesion
 
   has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }

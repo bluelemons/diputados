@@ -133,9 +133,11 @@ ActiveAdmin.register Proyecto do
 
       div(:id => "xtabs-4") do
         if proyecto.sesion
-          attributes_table_for proyecto.sesion,
-            :periodo, :ordendia, :fechaordia, :numreunion, :numsesion,
-            :fechases, :tratamiento, :resultado
+          proyecto.sesions.each do |sesion|
+            attributes_table_for sesion,
+              :periodo, :ordendia, :fechaordia, :numreunion, :numsesion,
+              :fechases, :tratamiento, :resultado
+          end
         else
           "Este proyecto no ha sido tratado en sesion"
         end
