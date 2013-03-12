@@ -11,4 +11,5 @@
 //= require jquery.ui.datepicker-customDefaults
 
 //= require si_en_comision
+//= require filtro_de_ley
 
