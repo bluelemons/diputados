@@ -26,6 +26,7 @@ ActiveAdmin.register Proyecto do
 
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
+  filter :ley
   filter :estado
   filter :comision, :as => :select, :collection => Proc.new { Comision.all }
   filter :fechaentr
