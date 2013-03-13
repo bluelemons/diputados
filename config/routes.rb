@@ -4,6 +4,10 @@ Diputados::Application.routes.draw do
     resources :assets, :only => [:create, :destroy]
   end
 
+  resources :proyectos, :only => [] do
+    resources :assets, :only => [:create, :destroy]
+  end
+
   resources :notas, :only => [] do
     resources :assets, :only => [:create, :destroy]
     resources :pases, :only => [:create, :update, :destroy]
@@ -70,3 +74,4 @@ Diputados::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
+
