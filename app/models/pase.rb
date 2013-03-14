@@ -7,7 +7,7 @@ class Pase < ActiveRecord::Base
   belongs_to :expediente
   belongs_to :area
   belongs_to :session
-  has_many :dictamens
+  has_many :resolutions
 
   validates :area, :presence => true
 

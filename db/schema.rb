@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310222259) do
+ActiveRecord::Schema.define(:version => 20130314181823) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,15 +116,6 @@ ActiveRecord::Schema.define(:version => 20130310222259) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "dictamen", :force => true do |t|
-    t.text     "cuerpo"
-    t.integer  "pase_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "dictamen", ["pase_id"], :name => "index_dictamen_on_pase_id"
 
   create_table "diputados", :force => true do |t|
     t.integer  "codigo"
@@ -269,6 +260,15 @@ ActiveRecord::Schema.define(:version => 20130310222259) do
 
   add_index "prefers", ["expediente_id"], :name => "index_prefers_on_expediente_id"
   add_index "prefers", ["numero"], :name => "index_prefers_on_numero"
+
+  create_table "resolutions", :force => true do |t|
+    t.text     "body"
+    t.integer  "pase_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "resolutions", ["pase_id"], :name => "index_resolutions_on_pase_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
