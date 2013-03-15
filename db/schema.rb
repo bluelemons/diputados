@@ -333,6 +333,7 @@ ActiveRecord::Schema.define(:version => 20130314181823) do
   create_table "sessions", :force => true do |t|
     t.date     "fecha"
     t.integer  "numero_de_periodo"
+    t.integer  "numero_de_sesion"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end

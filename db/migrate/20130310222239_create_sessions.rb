@@ -3,6 +3,7 @@ class CreateSessions < ActiveRecord::Migration
     create_table :sessions do |t|
       t.date :fecha
       t.integer :numero_de_periodo
+      t.integer :numero_de_sesion
 
       t.timestamps
     end
