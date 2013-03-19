@@ -37,7 +37,7 @@ ActiveAdmin.register Proyecto do
 
   index do
     column :numero
-    column :tipo
+    column("Tipo"){ |x| x.tipo_format }
     column :pasada
     column :fechaentr
     column :descrip, :html_descrip
