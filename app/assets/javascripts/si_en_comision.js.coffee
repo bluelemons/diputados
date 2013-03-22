@@ -7,5 +7,5 @@ toggle_comision = (event) ->
 
 jQuery ->
   $("#filters_sidebar_section").on('change', '#q_estado_id', toggle_comision)
-    .find("#q_estado_id").change()
+  $("#q_comision_id").parent().hide()
 

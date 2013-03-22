@@ -26,6 +26,7 @@ ActiveAdmin.register Proyecto do
 
   filter :numero
   filter :tipo, :as => :select, :collection => Expediente::TiposColection
+  filter :ley
   filter :estado
   filter :comision, :as => :select, :collection => Proc.new { Comision.all }
   filter :fechaentr
@@ -36,7 +37,7 @@ ActiveAdmin.register Proyecto do
 
   index do
     column :numero
-    column :tipo
+    column("Tipo"){ |x| x.tipo_format }
     column :pasada
     column :fechaentr
     column :descrip, :html_descrip

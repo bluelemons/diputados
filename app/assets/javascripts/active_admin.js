@@ -10,6 +10,7 @@
 //= require jquery-ui
 //= require jquery
 //= require jquery.ui.datepicker-es
+
 //= require chosen-jquery
 //= require_tree ./active_admin
 //= require_self

@@ -4,87 +4,87 @@
 }
 
 body.logged_out #content_wrapper {
-    width: 500px;
-    margin: 130px auto;
+    width: 500px !important;
+    margin: 130px auto !important;
 }
 
 // ui-buttons
 .table_actions{
-  width: 220px;
+  width: 220px !important;
 }
 .ui-button-icon-only .ui-icon {
-    left: -70%;
+    left: -70% !important;
 }
 .ui-button-text{
-    font-size: 80%;
-    margin-left: 15px;
+    font-size: 80% !important;
+    margin-left: 15px !important;
 }
 .ui-button-icon-only{
-    height: 1.5em;
-    width: 1.5em;
+    height: 1.5em !important;
+    width: 1.5em !important;
 }
 .member_link{
-  float: left;
+  float: left !important;
 }
 // ends ui buttons
 
 #header {
-  background: -moz-linear-gradient(-90deg, darken($header-background-color,10%), darken($header-background-color,40%)) repeat scroll 0 0 transparent;
-  border-bottom: 1px solid darken($header-background-color,70%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-  overflow: visible;
-  padding: 10px 30px;
-  text-shadow: 0 1px 0 black;
-  z-index: 900;
+  background: -moz-linear-gradient(-90deg, darken($header-background-color,10%), darken($header-background-color,40%)) repeat scroll 0 0 transparent !important;
+  border-bottom: 1px solid darken($header-background-color,70%) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37) !important;
+  overflow: visible !important;
+  padding: 10px 30px !important;
+  text-shadow: 0 1px 0 black !important;
+  z-index: 900 !important;
   h1 {
-    color: $header-color;
-    display: inline-block;
-    font-size: 1.5em;
-    font-weight: normal;
-    margin-bottom: 0;
-    margin-right: 20px;
+    color: $header-color !important;
+    display: inline-block !important;
+    font-size: 1.5em !important;
+    font-weight: normal !important;
+    margin-bottom: 0 !important;
+    margin-right: 20px !important;
   }
   ul#tabs{
     li.current > a, li.has_nested.current > a{
-      text-shadow: 0 1px 0 white;
-      background: none repeat scroll 0 0 $header-color;
-      color: black;
+      text-shadow: 0 1px 0 white !important;
+      background: none repeat scroll 0 0 $header-color !important;
+      color: black !important;
     }
     li:hover > a{
-      background: none repeat scroll 0 0 lighten($header-color,10%);
-      color: black;
+      background: none repeat scroll 0 0 lighten($header-color,10%) !important;
+      color: black !important;
     }
     li.has_nested:hover > a {
-      text-shadow: 0 1px 0 white;
-      background: url("/assets/active_admin/nested_menu_arrow_dark.gif") no-repeat scroll 89% 50% lighten($header-color,10%);
-      border-bottom: 5px solid lighten($header-color,10%);
-      border-radius: 10px 10px 0 0;
+      text-shadow: 0 1px 0 white !important;
+      background: url("/assets/active_admin/nested_menu_arrow_dark.gif") no-repeat scroll 89% 50% lighten($header-color,10%) !important;
+      border-bottom: 5px solid lighten($header-color,10%) !important;
+      border-radius: 10px 10px 0 0 !important;
     }
     li ul,li ul li a{
-      text-shadow: 0 1px 0 white;
-      background: none repeat scroll 0 0 lighten($header-color,10%);
-      color: black;
+      text-shadow: 0 1px 0 white !important;
+      background: none repeat scroll 0 0 lighten($header-color,10%) !important;
+      color: black !important;
     }
   }
 }
 
 #title_bar {
-    background: -moz-linear-gradient(-90deg, $title-background, darken($title-background,20%)) repeat scroll 0 0 transparent;
-    box-shadow: 0 1px 2px #244C50;
-    font-size: 1em;
-    font-weight: normal;
-    line-height: 50%;
-    text-shadow: 0 1px 0 green;
-    padding: 4px 30px;
+    background: -moz-linear-gradient(-90deg, $title-background, darken($title-background,20%)) repeat scroll 0 0 transparent !important;
+    box-shadow: 0 1px 2px #244C50 !important;
+    font-size: 1em !important;
+    font-weight: normal !important;
+    line-height: 50% !important;
+    text-shadow: 0 1px 0 green !important;
+    padding: 4px 30px !important;
   a{
     color: $ref-color;
   }
   h2 {
-    color: $title-color;
-    font-size: 2.6em;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
+    color: $title-color  !important;
+    font-size: 2.6em !important;
+    font-weight: normal !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
 
@@ -92,19 +92,19 @@ $table-th-color: lighten($header-color,20%);
 
 
 table.index_table th.sorted-asc, table.index_table th.sorted-desc{
-  color: darken($table-th-color,70%);
-  background: -moz-linear-gradient(-90deg, darken($table-th-color,20%), darken($table-th-color,30%)) repeat scroll 0 0 transparent;
-  border-bottom: 1px solid darken($table-th-color,20%);
+  color: darken($table-th-color,70%) !important;
+  background: -moz-linear-gradient(-90deg, darken($table-th-color,20%), darken($table-th-color,30%)) repeat scroll 0 0 transparent !important;
+  border-bottom: 1px solid darken($table-th-color,20%) !important;
 }
 table.index_table th, .sidebar_section h3, .section h3, .panel h3{
-  color: darken($table-th-color,70%);
-  background: -moz-linear-gradient(-90deg, $table-th-color, darken($table-th-color,20%)) repeat scroll 0 0 transparent;
-  border-bottom: 1px solid darken($table-th-color,20%);
+  color: darken($table-th-color,70%) !important;
+  background: -moz-linear-gradient(-90deg, $table-th-color, darken($table-th-color,20%)) repeat scroll 0 0 transparent !important;
+  border-bottom: 1px solid darken($table-th-color,20%) !important;
 }
 
 table.index_table th a, table.index_table th a:link, table.index_table th a:visited {
-    color: darken($table-th-color,70%);
-    display: block;
-    text-decoration: none;
+    color: darken($table-th-color,70%) !important;
+    display: block !important;
+    text-decoration: none !important;
 }
 
