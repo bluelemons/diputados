@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'activeadmin'
+gem 'activeadmin', '~> 0.5.0'
 gem 'cancan'
 
 gem 'jquery-rails'
