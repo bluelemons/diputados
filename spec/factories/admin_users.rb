@@ -2,14 +2,13 @@
 
 FactoryGirl.define do
   factory :admin_user do
-    email "admin@example.com"
-    password "password"
+    email 'admin@example.com'
+    password 'password'
+
+    factory :user_mesa_de_entrada do
+      after(:create) do |user, evaluator|
+        user.roles << FactoryGirl.create(:role_mesa_de_entrada)
+      end
+    end
   end
-
-#  factory :admin, class: AdminUser do
-#    email "superadmin@example.com"
-#    password "password"
-##    p.association :roles, :factory => :admin
-#  end
-
 end

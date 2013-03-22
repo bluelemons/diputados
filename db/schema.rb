@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903025225) do
+ActiveRecord::Schema.define(:version => 20130314181823) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
     t.string   "name"
     t.integer  "area_id"
     t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "tratamiento"
   end
 
   create_table "assets", :force => true do |t|
@@ -238,7 +239,10 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
     t.datetime "updated_at",    :null => false
     t.integer  "fojas"
     t.integer  "expediente_id"
+    t.integer  "session_id"
   end
+
+  add_index "pases", ["session_id"], :name => "index_pases_on_session_id"
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"
@@ -256,6 +260,15 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
 
   add_index "prefers", ["expediente_id"], :name => "index_prefers_on_expediente_id"
   add_index "prefers", ["numero"], :name => "index_prefers_on_numero"
+
+  create_table "resolutions", :force => true do |t|
+    t.text     "body"
+    t.integer  "pase_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "resolutions", ["pase_id"], :name => "index_resolutions_on_pase_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -316,6 +329,14 @@ ActiveRecord::Schema.define(:version => 20120903025225) do
 
   add_index "sesions", ["expediente_id"], :name => "index_sesions_on_expediente_id"
   add_index "sesions", ["numero"], :name => "index_sesions_on_numero"
+
+  create_table "sessions", :force => true do |t|
+    t.date     "fecha"
+    t.integer  "numero_de_periodo"
+    t.integer  "numero_de_sesion"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "status", :force => true do |t|
     t.integer  "estado"

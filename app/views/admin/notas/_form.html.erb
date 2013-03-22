@@ -1,10 +1,7 @@
-<%= semantic_form_for @nota, :url => admin_notas_path do |f| %>
-  <%= f.inputs "Detalles generales" do %>
+<%= semantic_form_for nota, :url => admin_notas_path do |f| %>
+  <%= f.inputs 'Detalles generales' do %>
     <%= f.semantic_fields_for :pases do |pase| %>
-      <%= pase.input :fojas %>
-      <%= pase.input :area %>
-      <%= pase.input :ingreso, :as=>:string, :input_html => {:class => 'datepicker'} %>
-      <%= pase.input :descripcion %>
+      <%= render partial: 'admin/pases/form_inputs', locals: { pase: pase }%>
     <% end %>
   <% end %>
   <%= f.actions %>
