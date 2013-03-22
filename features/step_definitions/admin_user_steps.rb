@@ -10,10 +10,10 @@ def find_user
   @user ||= AdminUser.where(:email => @visitor[:email]).first
 end
 
-def create_user
+def create_user factory = :admin_user
   create_visitor
   delete_user
-  @user = FactoryGirl.create(:admin_user, email: @visitor[:email])
+  @user = FactoryGirl.create(factory, email: @visitor[:email])
 end
 
 def delete_user
@@ -36,9 +36,9 @@ end
 
 def sign_in
   visit '/admin/login'
-  fill_in "Email", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  click_button "admin_user_submit"
+  fill_in 'Email', :with => @visitor[:email]
+  fill_in 'Password', :with => @visitor[:password]
+  click_button 'iniciar sesión'
 end
 
 ### GIVEN ###
