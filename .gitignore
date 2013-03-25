@@ -28,3 +28,6 @@ config/mail.yml
 doc/
 coverage/
 
+Editor config
+*.komodoproject
+
