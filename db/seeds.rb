@@ -1,4 +1,10 @@
 # encoding: UTF-8
+puts 'Tipos de sessions'
+sessions = ['Ordinario', 'Extraordinario', 'Prórroga']
+if SessionType.count == 0
+  sessions.each { |session| SessionType.create({ name: session })}
+end
+
 require 'legacy'
 
 puts 'Inicia importación de datos'

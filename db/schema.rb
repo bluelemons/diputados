@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314181823) do
+ActiveRecord::Schema.define(:version => 20130327211024) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -204,6 +204,11 @@ ActiveRecord::Schema.define(:version => 20130314181823) do
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
   add_index "expedientes", ["tema_id"], :name => "index_expedientes_on_tema_id"
 
+  create_table "expedientes_connections", :id => false, :force => true do |t|
+    t.integer "expediente_a_id", :null => false
+    t.integer "expediente_b_id", :null => false
+  end
+
   create_table "finals", :force => true do |t|
     t.integer  "numero"
     t.string   "letra",         :limit => 3
@@ -330,13 +335,23 @@ ActiveRecord::Schema.define(:version => 20130314181823) do
   add_index "sesions", ["expediente_id"], :name => "index_sesions_on_expediente_id"
   add_index "sesions", ["numero"], :name => "index_sesions_on_numero"
 
+  create_table "session_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sessions", :force => true do |t|
     t.date     "fecha"
     t.integer  "numero_de_periodo"
     t.integer  "numero_de_sesion"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "numero_de_reunion"
+    t.integer  "session_type_id"
   end
+
+  add_index "sessions", ["session_type_id"], :name => "index_sessions_on_session_type_id"
 
   create_table "status", :force => true do |t|
     t.integer  "estado"

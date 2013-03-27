@@ -2,6 +2,8 @@ ActiveAdmin.register Session do
   menu :if => proc{ can?(:manage, Session) }
 
   filter :numero_de_periodo
+  filter :numero_de_reunion
+  filter :session_type
   filter :numero_de_sesion
   filter :fecha, :as => :date_range
   filter :area
@@ -22,9 +24,11 @@ ActiveAdmin.register Session do
   
   form do |f|
     f.inputs "" do
-      f.input :numero_de_sesion    
-      f.input :fecha, as: :string, input_html: { class: 'datepicker' }
+      f.input :numero_de_sesion
       f.input :numero_de_periodo
+      f.input :session_type
+      f.input :numero_de_reunion
+      f.input :fecha, as: :string, input_html: { class: 'datepicker' }
     end
     f.buttons
   end
