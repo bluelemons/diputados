@@ -204,11 +204,6 @@ ActiveRecord::Schema.define(:version => 20130327211024) do
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
   add_index "expedientes", ["tema_id"], :name => "index_expedientes_on_tema_id"
 
-  create_table "expedientes_connections", :id => false, :force => true do |t|
-    t.integer "expediente_a_id", :null => false
-    t.integer "expediente_b_id", :null => false
-  end
-
   create_table "finals", :force => true do |t|
     t.integer  "numero"
     t.string   "letra",         :limit => 3
