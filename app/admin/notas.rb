@@ -27,12 +27,12 @@ ActiveAdmin.register Nota do
   end
 
   form do
-    render partial: 'form', locals: { pases: nota.pases.build, nota: nota }
+    render partial: 'form', locals: { pases: nota.build_pases, nota: nota }
   end
 
   show do
     columns do
-      column do
+      column do        
         panel 'Pases' do
           table_for nota.pases do
             column :ingreso
