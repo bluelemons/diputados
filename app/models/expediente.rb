@@ -8,6 +8,14 @@ class Expediente < ActiveRecord::Base
 
   LEGACY_CONSTRAINTS = [:numero, :letra, :pasada, :tipo]
 
+  has_and_belongs_to_many :tags, :uniq => true
+
+  attr_reader :tags_tokens
+  
+  def tags_tokens=(ids)
+    self.tag_ids = ids.split(",")
+  end
+
   Tipos = { 1 => "Ley", 2 => "Comunicación", 3 => "Declaración",
     4 => "Resolución", 5 => "Decreto", 6 => "Mensaje" }
   TiposColection = Tipos.invert
