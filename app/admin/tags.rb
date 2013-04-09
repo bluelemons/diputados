@@ -1,3 +1,3 @@
 ActiveAdmin.register Tag do
-  menu :if => proc{ can?(:create, Tag) }, :parent => "Notas"
+  menu :if => proc{ can?(:create, Tag) }, :parent => "Configuraciones"
 end

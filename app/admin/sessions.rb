@@ -1,5 +1,5 @@
 ActiveAdmin.register Session do
-  menu :if => proc{ can?(:manage, Session) }
+  menu :if => proc{ can?(:manage, Session) }, :parent => "Configuraciones"
 
   filter :numero_de_periodo
   filter :numero_de_reunion
