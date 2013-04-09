@@ -1,12 +1,12 @@
 <%= semantic_form_for nota, :url => admin_notas_path do |f| %>
   <%= f.inputs 'Detalles generales' do %>
+    <%= f.semantic_fields_for :pases do |pase| %>
+      <%= render partial: 'admin/pases/form_inputs', locals: { pase: pase }%>
+    <% end %>
     <%= f.input :tags_tokens,
       :input_html => {
         "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
 
-    <%= f.semantic_fields_for :pases do |pase| %>
-      <%= render partial: 'admin/pases/form_inputs', locals: { pase: pase }%>
-    <% end %>
   <% end %>
   <%= f.actions %>
 <% end %>
