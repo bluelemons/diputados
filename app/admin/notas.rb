@@ -11,8 +11,11 @@ ActiveAdmin.register Nota do
     load_and_authorize_resource
     skip_load_resource :only => :index
   end
-
+        
   filter :id
+  filter :numero
+  filter :autor
+  filter :tags_id, as: :multiple_select, collection: Tag.all
   filter :pases_descripcion, :as => :string
   filter :primer_pase_area_name, as: :string
   filter :ultimo_pase_area_name, as: :string
@@ -27,13 +30,16 @@ ActiveAdmin.register Nota do
   end
 
   form do
-    render partial: 'form', locals: { pases: nota.build_pases, nota: nota }
+    url = admin_notas_path
+    url = admin_nota_path(nota.id) if action_name == "edit"
+    render partial: 'form', locals: { pases: nota.build_pases, nota: nota, url: url }
   end
 
   show do
     columns do
       column do        
-        panel 'Pases' do
+        attributes_table_for nota, :numero, :autor, :tags_list
+        panel 'Historico De Pases' do
           table_for nota.pases do
             column :ingreso
             column :area

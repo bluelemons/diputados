@@ -127,4 +127,8 @@ class Expediente < ActiveRecord::Base
     asunto.comisiones if asunto
   end
 
+  def tags_list
+    tags.pluck :name
+  end
+
 end
