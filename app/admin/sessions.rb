@@ -34,7 +34,7 @@ ActiveAdmin.register Session do
   end
 
   action_item :only => :show do
-    link_to "Expedientes de la sesión", admin_session_pases_path(session)
+    link_to "Expedientes de la sesion", admin_session_pases_path(session)
   end
 end
 
