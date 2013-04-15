@@ -15,7 +15,7 @@ ActiveAdmin.register Nota do
   filter :id
   filter :numero
   filter :autor
-  filter :tags_id, as: :multiple_select, collection: Tag.all
+  filter :tags_id, as: :multiple_select, collection: Proc.new { Tag.all }
   filter :pases_descripcion, :as => :string
   filter :primer_pase_area_name, as: :string
   filter :ultimo_pase_area_name, as: :string
