@@ -14,7 +14,11 @@ class Ability
     can :manage, :all
   end
 
+  def manger
+    can :manage, [Session, Area, Tag]
+  end
+
   def mesa_de_entrada
-    can :manage, [Asset, Nota, Pase, Area]
+    can :manage, [Asset, Nota, Pase]
   end
 end
