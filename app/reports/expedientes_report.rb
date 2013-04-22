@@ -1,5 +1,5 @@
 class ExpedientesReport
-  def detalle(expedientes)
+  def listado(expedientes)
 
     report = ODFReport::Report.new(Rails.root.join("app/reports/expedientes.odt")) do |r|
       r.add_section "EXPEDIENTES", expedientes do |s|
@@ -18,7 +18,7 @@ class ExpedientesReport
 
   end
 
-  def listado(params)
+  def detalle(params)
 
     @expediente = Expediente.find(params[:id])
 
