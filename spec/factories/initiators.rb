@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :initiator do
-    name "MyString"
-    initiators_kind nil
+    name "He-man"
+    initiators_kind
   end
 end

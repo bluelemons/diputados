@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :initiators_kind do
-    name "MyString"
+    name "Amos del universo"
   end
 end
