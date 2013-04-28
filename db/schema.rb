@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428195751) do
+ActiveRecord::Schema.define(:version => 20130428200955) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -198,9 +198,11 @@ ActiveRecord::Schema.define(:version => 20130428195751) do
     t.string   "type"
     t.integer  "primer_pase_id"
     t.integer  "ultimo_pase_id"
+    t.integer  "initiator_id"
   end
 
   add_index "expedientes", ["estado_id"], :name => "index_expedientes_on_estado_id"
+  add_index "expedientes", ["initiator_id"], :name => "index_expedientes_on_initiator_id"
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
   add_index "expedientes", ["tema_id"], :name => "index_expedientes_on_tema_id"
 

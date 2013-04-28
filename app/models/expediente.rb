@@ -54,6 +54,7 @@ class Expediente < ActiveRecord::Base
 
   has_many :assets, :as => :adjuntable
   has_many :pases
+  belongs_to :initiator
 
 #  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
 #  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
