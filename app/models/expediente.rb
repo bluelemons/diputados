@@ -132,4 +132,9 @@ class Expediente < ActiveRecord::Base
     tags.pluck :name
   end
 
+  def initiator_attributes=(attrs)
+    init = Initiator.where(attrs).first_or_create
+    self.initiator = init
+  end
+
 end
