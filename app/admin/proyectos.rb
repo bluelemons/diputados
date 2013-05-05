@@ -17,7 +17,7 @@ ActiveAdmin.register Proyecto do
       super(options) do |format|
         block.call(format) if block
         format.pdf {
-          report = ExpedientesReport.new.detalle @proyectos
+          report = ExpedientesReport.new.listado @proyectos
           send_file report, :type => "application/vnd.oasis.opendocument.text"
         }
       end
@@ -45,7 +45,7 @@ ActiveAdmin.register Proyecto do
   end
 
   member_action :print do
-    report = ExpedientesReport.new.listado(params)
+    report = ExpedientesReport.new.detalle(params)
     send_file(report, :type => "application/vnd.oasis.opendocument.text")
   end
 
