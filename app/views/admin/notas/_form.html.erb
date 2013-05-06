@@ -1,8 +1,11 @@
 <%= semantic_form_for nota, :url => url || admin_notas_path do |f| %>
   <%= f.inputs 'Detalles generales' do %>
     <%= f.input :numero %>
-    <%= f.input :autor %>
     <% if f.object.new_record? %>
+      <%= f.semantic_fields_for :initiators do |initiator| %>
+        <%= initiator.input :initiators_kind_id, :as => :select, :collection => InitiatorsKind.all, :label => "Tipo de iniciador"%>
+        <%= initiator.input :name, :label => "Iniciador"%>
+      <% end %>
       <%= f.semantic_fields_for :pases do |pase| %>
         <%= render partial: 'admin/pases/form_inputs', locals: { pase: pase }%>
       <% end %>
@@ -10,7 +13,6 @@
     <%= f.input :tags_tokens,
       :input_html => {
         "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
-
   <% end %>
   <%= f.actions %>
 <% end %>
