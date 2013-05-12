@@ -38,7 +38,7 @@ ActiveAdmin.register Nota do
   show do
     columns do
       column do        
-        attributes_table_for nota, :numero, :autor, :tags_list
+        attributes_table_for nota, :numero, :initiator, :tags_list
         panel 'Historico De Pases' do
           table_for nota.pases do
             column :ingreso
