@@ -8,7 +8,7 @@ describe Nota do
       nota = FactoryGirl.create :nota
       kind = FactoryGirl.create :initiators_kind
       Initiator.where(name: 'judicial').count.should == 0
-      nota.initiator_attributes = {name: 'judicial', initiators_kind_id: kind.id}
+      nota.initiators = {name: 'judicial', initiators_kind_id: kind.id}
       Initiator.where(name: 'judicial').count.should == 1
     end
 
@@ -16,9 +16,9 @@ describe Nota do
       nota = FactoryGirl.create :nota
       kind = FactoryGirl.create :initiators_kind
       Initiator.where(name: 'judicial').count.should == 0
-      nota.initiator_attributes = {name: 'judicial', initiators_kind_id: kind.id}
+      nota.initiators = {name: 'judicial', initiators_kind_id: kind.id}
       Initiator.where(name: 'judicial').count.should == 1
-      nota.initiator_attributes = {name: 'judicial', initiators_kind_id: kind.id}
+      nota.initiators = {name: 'judicial', initiators_kind_id: kind.id}
       Initiator.where(name: 'judicial').count.should == 1
     end
   end
