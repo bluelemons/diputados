@@ -131,8 +131,8 @@ class Expediente < ActiveRecord::Base
   def tags_list
     tags.pluck :name
   end
-
-  def initiator_attributes=(attrs)
+  
+  def initiators=(attrs)
     init = Initiator.where(attrs).first_or_create
     self.initiator = init
   end
