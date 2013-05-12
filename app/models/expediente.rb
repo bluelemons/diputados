@@ -56,6 +56,7 @@ class Expediente < ActiveRecord::Base
   has_many :pases, dependent: :destroy
   belongs_to :initiator
 
+  accepts_nested_attributes_for :initiator
 #  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
 #  has_one :ultimo_pase, :class_name => :Pase, :order => "id desc", :conditions => "1=1"
 
@@ -131,7 +132,7 @@ class Expediente < ActiveRecord::Base
   def tags_list
     tags.pluck :name
   end
-  
+
   def initiators=(attrs)
     init = Initiator.where(attrs).first_or_create
     self.initiator = init
