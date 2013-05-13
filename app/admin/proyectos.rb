@@ -110,8 +110,10 @@ ActiveAdmin.register Proyecto do
           :asuntoentr, :numreunion, :numsesion
 
         panel "Comisiones Asignadas" do
-          proyecto.comisiones_asignadas.each do |comision|
-            div comision.nombre
+          ol do
+            proyecto.comisiones_asignadas.each do |comision|
+              li comision.nombre
+            end
           end
         end
       end if proyecto.asunto
