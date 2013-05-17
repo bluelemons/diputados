@@ -94,13 +94,6 @@ ActiveAdmin.register Proyecto do
               li link_to(archivo.basename, "/#{archivo}")
             end
           end
-
-          # temporal acceso a los archivos del disco
-          ul do
-            proyecto.archivos_digitales.each do |archivo|
-              li link_to(archivo.basename, "/#{archivo}")
-            end
-          end
         end
       end
 
