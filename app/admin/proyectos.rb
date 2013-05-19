@@ -4,7 +4,7 @@ ActiveAdmin.register Proyecto do
     @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
   end
 
-  actions :index, :show
+  actions :index, :show, :destroy
 
   scope :all, :default => true
   scope :week
@@ -94,13 +94,6 @@ ActiveAdmin.register Proyecto do
               li link_to(archivo.basename, "/#{archivo}")
             end
           end
-
-          # temporal acceso a los archivos del disco
-          ul do
-            proyecto.archivos_digitales.each do |archivo|
-              li link_to(archivo.basename, "/#{archivo}")
-            end
-          end
         end
       end
 
@@ -110,8 +103,10 @@ ActiveAdmin.register Proyecto do
           :asuntoentr, :numreunion, :numsesion
 
         panel "Comisiones Asignadas" do
-          proyecto.comisiones_asignadas.each do |comision|
-            div comision.nombre
+          ol do
+            proyecto.comisiones_asignadas.each do |comision|
+              li comision.nombre
+            end
           end
         end
       end if proyecto.asunto

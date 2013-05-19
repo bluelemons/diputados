@@ -40,21 +40,21 @@ class Expediente < ActiveRecord::Base
   scope :month, where("fechaentr >= ?", 1.month.ago.strftime("%Y-%m-%d"))
 
   belongs_to :tema
-  has_many :estados
-  has_many :prefers
+  has_many :estados, dependent: :destroy
+  has_many :prefers, dependent: :destroy
 
   # puede ser un has_one, pero no estoy seguro.
   has_one   :asunto
-  has_many  :finals
-  has_many  :sesions, order: :id
+  has_many  :finals, dependent: :destroy
+  has_many  :sesions, order: :id, dependent: :destroy
   has_one   :sesion
 
   has_one   :estado_actual, :class_name => :Estado, :conditions => { :fechasal => nil }
   has_one   :comision, :through => :estado_actual
 
-  has_many :assets, :as => :adjuntable
-  has_many :pases
   belongs_to :initiator
+  has_many :assets, :as => :adjuntable, dependent: :destroy
+  has_many :pases, dependent: :destroy
 
   accepts_nested_attributes_for :initiator
 #  has_one :primer_pase, :class_name => :Pase, :order => "id asc", :conditions => "1=1"
