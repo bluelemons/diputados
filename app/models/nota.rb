@@ -10,6 +10,7 @@ class Nota < Expediente
 
   delegate :area, to: :ultimo_pase, prefix: true
   delegate :ingreso, to: :primer_pase
+  delegate :initiators_kind_name, to: :initiator, allow_nil: true
 
   def year
     ingreso.strftime("%Y")
