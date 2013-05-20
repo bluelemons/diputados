@@ -4,7 +4,7 @@ ActiveAdmin.register Proyecto do
     @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
   end
 
-  actions :index, :show, :destroy
+  actions :index, :show#, :destroy
 
   scope :all, :default => true
   scope :week
