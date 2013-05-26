@@ -109,6 +109,17 @@ ActiveAdmin.register Proyecto do
             end
           end
         end
+
+        proyecto.reasigned_comisions.each do |reasignment|
+          panel "Vuelta a comisión" do
+            ol do
+              reasignment.each do |comision|
+                li comision.nombre
+              end
+            end
+          end
+        end
+
       end if proyecto.asunto
 
       div(:id => "xtabs-3") do
