@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 ActiveAdmin.register Proyecto do
   menu :label => "Expedientes"
   before_filter :only => :index do |controller|
