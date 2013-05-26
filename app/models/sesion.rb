@@ -33,4 +33,9 @@ class Sesion < ActiveRecord::Base
   def periodo
     "#{tipoperiod} Numero: #{numperiodo}"
   end
+
+  def return_to_comision?
+    resuvotac == 3
+  end
+
 end
