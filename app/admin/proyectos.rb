@@ -112,7 +112,7 @@ ActiveAdmin.register Proyecto do
           end
         end
 
-        proyecto.reasigned_comisions.each do |reasignment|
+        proyecto.reasignments.each do |reasignment|
           panel "Vuelta a comisión" do
             ol do
               reasignment.each do |comision|
