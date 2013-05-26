@@ -4,8 +4,10 @@ class Proyecto < Expediente
     sesions.any? { |sesion| sesion.return_to_comision? }
   end
 
-  def reasigned_comisions
-    sesion.comisiones if return_to_comision?
+  def reasignments
+    sesions.map do |sesion|
+      sesion.comisiones if sesion.return_to_comision?
+    end.compact
   end
 
 end

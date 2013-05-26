@@ -16,7 +16,8 @@ describe Proyecto do
     comision = create :comision
     sesion = create :sesion, resuvotac: 3, comision1: comision.id
     subject.sesions << sesion
-    expect(subject.reasigned_comisions).to include comision
+    expect(subject.reasignments).to have(1).items
+    expect(subject.reasignments.first).to include comision
   end
 
 end
