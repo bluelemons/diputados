@@ -1,4 +1,6 @@
 class Sesion < ActiveRecord::Base
+  include Comisionable
+
   LEGACY_CONSTRAINTS = [:numero, :tipo, :letra, :pasada, :tipoperiod,
        :numperiodo, :ordendia, :fechaordia, :numreunion, :numsesion, :asunto,
        :fechases, :tratamient, :resuvotac, :comision1, :comision2, :comision3,
