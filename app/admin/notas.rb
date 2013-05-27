@@ -38,14 +38,8 @@ ActiveAdmin.register Nota do
   show do
     columns do
       column do        
-        attributes_table_for nota, :numero, :autor, :tags_list
-        panel 'Historico De Pases' do
-          table_for nota.pases do
-            column :ingreso
-            column :area
-            column :descripcion
-          end
-        end
+        attributes_table_for nota, :numero, :initiator,
+         :initiators_kind_name, :tags_list
 
         panel 'Archivos' do
           table_for nota.assets do
@@ -75,6 +69,15 @@ ActiveAdmin.register Nota do
                    :locals => { pase: nota.pases.build, nota: nota }
           end
         end
+      end
+    end
+
+    panel 'Historico De Pases' do
+      table_for nota.pases do
+        column :ingreso
+        column :area
+        column :session        
+        column :descripcion
       end
     end
   end

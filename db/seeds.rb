@@ -1,4 +1,8 @@
 # encoding: UTF-8
+initiators_kind = ['Particular', 'Poder judicial']
+initiators_kind.each do |initiator|
+  InitiatorsKind.where(name: initiator).first_or_create
+end
 puts 'Tipos de sessions'
 sessions = ['Ordinario', 'Extraordinario', 'Prórroga']
 if SessionType.count == 0
