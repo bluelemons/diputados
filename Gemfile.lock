@@ -1,4 +1,18 @@
 GIT
+  remote: git://github.com/olvap/rails_backend.git
+  revision: ee81c0a2d85913b3b35953fc298145a6cc0a6b55
+  specs:
+    rails_backend (0.0.1.alfa.1)
+      inherited_resources (>= 1.3.1)
+      less-rails
+      rails (>= 3.0.0)
+      ransack
+      simple_form
+      therubyracer
+      twitter-bootstrap-rails (~> 2.2.7)
+      will_paginate (~> 3.0)
+
+GIT
   remote: https://github.com/eloyesp/dbf.git
   revision: baaa7a195a19934c7fbf27e7fe141b8f0e61925d
   specs:
@@ -89,6 +103,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
+    commonjs (0.2.6)
     cucumber (1.3.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -144,6 +159,11 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     libv8 (3.3.10.4)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -214,6 +234,10 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
+    ransack (0.7.2)
+      actionpack (~> 3.0)
+      activerecord (~> 3.0)
+      polyamorous (~> 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     responders (0.9.3)
@@ -240,6 +264,9 @@ GEM
     seed-fu (2.2.0)
       activerecord (~> 3.1)
       activesupport (~> 3.1)
+    simple_form (2.1.0)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -263,6 +290,11 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.7)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.0)
       execjs (>= 0.3.0)
@@ -272,6 +304,7 @@ GEM
     whenever (0.8.2)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
     yard (0.8.6.1)
@@ -295,8 +328,10 @@ DEPENDENCIES
   factory_girl_rails
   fakefs
   fakeweb
+  inherited_resources (>= 1.3.1)
   jquery-rails
   launchy (>= 2.1.2)
+  less-rails
   mysql2
   newrelic_rpm
   odf-report
@@ -306,14 +341,19 @@ DEPENDENCIES
   pry-doc
   rails (= 3.2.13)
   rails-i18n
+  rails_backend!
+  ransack
   rspec-rails (>= 2.11.0)
   rvm-capistrano
   sass-rails (~> 3.2.3)
   seed-fu
+  simple_form
   simplecov
   sqlite3
   therubyracer (~> 0.10.2)
   thin
   timecop
+  twitter-bootstrap-rails (~> 2.2.7)
   uglifier (>= 1.0.3)
   whenever
+  will_paginate (~> 3.0)
