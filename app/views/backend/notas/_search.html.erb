@@ -1,7 +1,22 @@
 <%= search_form_for @q, url: collection_path do |f| %>
-  <% attributes.each do |attr| %>
-    <%= f.label "#{attr}_cont".to_sym %>
-    <%= f.text_field "#{attr}_cont".to_sym %>
-  <% end %>
+
+  <%= f.label :id_eq, 'ID igual a' %>
+  <%= f.text_field :id_eq %>
+  <%= f.label :numero_eq %>
+  <%= f.text_field :numero_eq %>
+  <%= f.label :autor_eq %>
+  <%= f.text_field :autor_eq %>
+  <%= f.label :tags_id_eq, 'Tags NO anda' %>
+  <%= f.text_field :tags_id_eq %>
+  <%= f.label :pases_descripcion_cont %>
+  <%= f.text_field :pases_descripcion_cont %>
+  <%= f.label :primer_pase_area_name_cont %>
+  <%= f.text_field :primer_pase_area_name_cont %>
+  <%= f.label :ultimo_pase_area_name_cont %>
+  <%= f.text_field :ultimo_pase_area_name_cont %>
+  <%= f.label :pases_ingreso_gteq %>
+  <%= f.text_field :pases_ingreso_gteq %>
+
   <%= f.submit %>
 <% end %>
+
