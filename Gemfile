@@ -30,9 +30,10 @@ gem "paperclip", "~> 3.0"
 group :development, :test do
   # database
   gem 'sqlite3'
-  # debugger
+  #gem 'debugger'
   gem 'pry'
   gem 'pry-doc'
+  gem 'pry-byebug'
   gem "rspec-rails", ">= 2.11.0"
   gem "cucumber-rails", ">= 1.3.0", :require => false
   gem "factory_girl_rails"
@@ -66,3 +67,12 @@ gem 'odf-report'
 gem 'whenever', :require => false
 gem 'newrelic_rpm'
 
+gem 'rails_backend', git: 'git://github.com/olvap/rails_backend.git'
+# Cuando esten arregladas las dependencias hay que sacar estas gemas de aca
+  gem 'inherited_resources', '>= 1.3.1'
+  gem 'will_paginate', '~> 3.0'
+  gem 'ransack'
+  gem 'simple_form'
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem "twitter-bootstrap-rails", '~> 2.2.7'
+# hasta aca
