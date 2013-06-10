@@ -15,6 +15,10 @@ class Nota < Expediente
     ingreso.strftime("%Y")
   end
 
+  def año
+    year
+  end
+
   def build_pases
     pases.build if pases.empty?
     pases
