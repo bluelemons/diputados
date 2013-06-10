@@ -1,0 +1,7 @@
+<%= search_form_for @q, url: collection_path do |f| %>
+  <% attributes.each do |attr| %>
+    <%= f.label "#{attr}_cont".to_sym %>
+    <%= f.text_field "#{attr}_cont".to_sym %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

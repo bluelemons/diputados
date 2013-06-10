@@ -1,0 +1,10 @@
+<%= simple_form_for [ :backend, resource ], :html => { :class => 'form-horizontal' } do |f| %>
+  <% attributes.each do |attr| %>
+    <%= f.input attr %>
+  <% end %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'save_button' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                {action: :index}, :class => 'cancel_button' %>
+  </div>
+<% end %>
