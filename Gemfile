@@ -76,3 +76,6 @@ gem 'rails_backend', git: 'git://github.com/olvap/rails_backend.git'
   gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem "twitter-bootstrap-rails", '~> 2.2.7'
 # hasta aca
+
+  gem 'guard'
+  gem 'guard-livereload'
