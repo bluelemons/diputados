@@ -3,18 +3,23 @@
   <%= f.text_field :numero %>
   <%= f.label :autor %>
   <%= f.text_field :autor %>
-<!--   <%#= f.label :area %>
-  <%#= f.text_field :area %> -->
-  <%= f.label :sesion %>
-  <%= f.text_field :sesion %>
-<!-- <!--   <%#= f.label :fojas %>
-  <%#= f.text_field :fojas %>  -->
-  <%= f.label :ingreso %>
-  <%= f.text_field :ingreso %>
+
+<!--
+  <%#= f.label :area %>
+  <%#= f.text_field :area %>
+  <%#= f.label :sesion %>
+  <%#= f.text_field :sesion %>
+  <%#= f.label :fojas %>
+  <%#= f.text_field :fojas %>
+  <%#= f.label :tags_id %>
+  <%#= f.text_field :tags_id %>
+  <%#= f.label :ingreso %>
+  <% #= f.text_field :ingreso %>
+    -->
+
   <%= f.label :descripcion %>
-  <%= f.text_field :descripcion %>
-  <%= f.label :tags_id %>
-  <%= f.text_field :tags_id %>
+  <%= f.text_area :descripcion %>
+
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'save_button' %>

@@ -20,9 +20,4 @@ class Nota < Expediente
     pases
   end
 
-  def area
-    self.ultimo_pase.area.name
-
-  end
-
 end
