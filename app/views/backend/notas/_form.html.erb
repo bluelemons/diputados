@@ -1,12 +1,24 @@
 <%= simple_form_for [ :backend, resource ], :html => { :class => 'form-horizontal' } do |f| %>
-  <% attributes.each do |attr| %>
-    <%= f.input attr %>
-  <% end %>
+  <%= f.label :numero %>
+  <%= f.text_field :numero %>
+  <%= f.label :autor %>
+  <%= f.text_field :autor %>
+<!--   <%#= f.label :area %>
+  <%#= f.text_field :area %> -->
+  <%= f.label :sesion %>
+  <%= f.text_field :sesion %>
+<!-- <!--   <%#= f.label :fojas %>
+  <%#= f.text_field :fojas %>  -->
+  <%= f.label :ingreso %>
+  <%= f.text_field :ingreso %>
+  <%= f.label :descripcion %>
+  <%= f.text_field :descripcion %>
+  <%= f.label :tags_id %>
+  <%= f.text_field :tags_id %>
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'save_button' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 {action: :index}, :class => 'cancel_button' %>
   </div>
 <% end %>
-
-<%= #TODO form hay que hacerlo a pata, no con attr %>
