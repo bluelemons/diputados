@@ -30,14 +30,16 @@ gem "paperclip", "~> 3.0"
 group :development, :test do
   # database
   gem 'sqlite3'
-  #gem 'debugger'
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-byebug'
+  gem 'debugger'
+  #gem 'pry'
+  #gem 'pry-doc'
+  #gem 'pry-byebug'
   gem "rspec-rails", ">= 2.11.0"
   gem "cucumber-rails", ">= 1.3.0", :require => false
   gem "factory_girl_rails"
   gem 'fakeweb'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
