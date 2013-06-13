@@ -1,5 +1,7 @@
 Diputados::Application.routes.draw do
 
+  namespace :backend do resources :pases end
+
   namespace :backend do resources :notas end
 
   resources :expedientes, :only => [] do
