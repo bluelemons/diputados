@@ -1,29 +1,16 @@
-<%= simple_form_for [ :backend, resource ], :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.label :numero %>
-  <%= f.text_field :numero %>
-  <%= f.label :autor %>
-  <%= f.text_field :autor %>
+<%= semantic_form_for  [:backend, resource] do |f| %>
+  <%= f.inputs 'Detalles generales' do %>
+    <%= f.input :numero, :label =>"Numero" %>
+    <%= f.input :autor %>
+    <% if f.object.new_record? %>
+      <%= f.semantic_fields_for :pases do |pase| %>
+        <%= render partial: 'backend/pases/form_inputs', locals: { pase: pase }%>
+      <% end %>
+    <% end %>
 
-<!--
-  <%#= f.label :area %>
-  <%#= f.text_field :area %>
-  <%#= f.label :sesion %>
-  <%#= f.text_field :sesion %>
-  <%#= f.label :fojas %>
-  <%#= f.text_field :fojas %>
-  <%#= f.label :tags_id %>
-  <%#= f.text_field :tags_id %>
-  <%#= f.label :ingreso %>
-  <% #= f.text_field :ingreso %>
-    -->
-
-  <%= f.label :descripcion %>
-  <%= f.text_area :descripcion %>
-
-
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'save_button' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                {action: :index}, :class => 'cancel_button' %>
-  </div>
+    <%= f.input :tags_tokens,
+      :input_html => {
+        "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
+  <% end %>
+  <%= f.actions %>
 <% end %>
