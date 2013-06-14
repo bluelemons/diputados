@@ -10,7 +10,6 @@
     <%= f.input :tags_tokens,
       :input_html => {
         "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
-
   <% end %>
   <%= f.actions %>
 <% end %>
