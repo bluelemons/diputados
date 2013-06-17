@@ -16,9 +16,9 @@
   <%= f.text_field :ultimo_pase_area_name_cont %>
   Fecha de ingreso: <br>
   <%= f.label :pases_ingreso_gteq, 'entre:'%>
-  <%= f.text_field :pases_ingreso_gteq %>
+  <%= f.text_field :pases_ingreso_gteq, :class => 'datepicker hasDatepicker' %>
   <%= f.label :pases_ingreso_lteq, 'y' %>
-  <%= f.text_field :pases_ingreso_lteq %>
+  <%= f.text_field :pases_ingreso_lteq, :class => 'datepicker hasDatepicker' %>
 
   <%= f.submit %>
 <% end %>
