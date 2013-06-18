@@ -1,0 +1,24 @@
+<table>
+  <tbody>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:numero) %>:
+          <%= @nota.numero %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:autor) %>:
+          <%= @nota.autor %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:tag).pluralize %>:
+            <% @nota.tags.each do |t| %>
+            <%= t.name %>
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>
