@@ -1,11 +1,17 @@
 <div class="row-fluid">
+  <div class="span3"> Detalle
+    <%= render 'nota' %>
+    </div>
+</div>
 
-  <div class="span3"> Detalles  <%= render 'nota' %> </div>
+<div class="row-fluid">
 
-  <div class="span3"> Pases
-    <%= render 'backend/pases/pase', :collection => @nota.pases %>
+  <div class="span6"> Historico de Pases
+    <%= render @nota.pases %>
   </div>
 
-  <div class="span3"> Archivos</div>
+  <div class="span3"> Archivos
+    <% #TODO: agregar Archivos" %>
+  </div>
 
 </div>
