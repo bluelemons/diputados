@@ -1,2 +1,17 @@
-<%= pase %>
-<hr>
+<table class="well">
+  <tbody>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:ingreso) %>:
+          <%= pase.ingreso %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:descripcion) %>:
+          <%= pase.descripcion %>
+        </td>
+      </tr>
+      <% #TODO: agregar Area, con link al area en cuestion" %>
+  </tbody>
+</table>
