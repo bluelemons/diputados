@@ -1,10 +1,34 @@
-<table>
-  <tbody>
-    <% resource_class.attribute_names.each do |attr| %>
-      <tr>
-        <td class="field_name"><%= resource_class.human_attribute_name(attr) %></td>
-        <td class="field_value"><%= resource.public_send(attr) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row-fluid">
+
+  <div class="span3">
+    <table>
+      <tbody>
+          <tr>
+            <td class="field_name">
+              <%= resource_class.human_attribute_name(:numero) %>:
+              <%= @nota.numero %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field_name">
+              <%= resource_class.human_attribute_name(:autor) %>:
+              <%= @nota.autor %>
+            </td>
+          </tr>
+          <tr>
+            <td class="field_name">
+              <%= resource_class.human_attribute_name(:tag).pluralize %>:
+                <% @nota.tags.each do |t| %>
+                <%= t.name %>
+              <% end %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="span3"> Pases</div>
+
+  <div class="span3"> Archivos</div>
+
+</div>
