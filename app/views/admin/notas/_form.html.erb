@@ -3,8 +3,8 @@
     <%= f.input :numero %>
     <% if f.object.new_record? %>
       <%= f.semantic_fields_for :initiator, Initiator.new do |initiator| %>
-        <%= initiator.input :name, :label => "Iniciador"%>
         <%= initiator.input :initiators_kind, collection: InitiatorsKind.all %>
+        <%= initiator.input :name, :label => "Iniciador"%>
       <% end %>
       <%= f.semantic_fields_for :pases do |pase| %>
         <%= render partial: 'admin/pases/form_inputs', locals: { pase: pase }%>
