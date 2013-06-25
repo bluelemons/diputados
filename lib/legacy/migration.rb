@@ -117,6 +117,10 @@ module Legacy
         relation = relation.where(a => seed_attributes[a.to_sym])
       end
       relation.limit(1).pluck(:id)[0]
+    rescue NameError
+      # LEGACY_CONSTRAINTS are not defined, so this is not a relation we can
+      # build on.
+      nil
     end
 
     def downcase_and_symbolize_attributes(attributes)
