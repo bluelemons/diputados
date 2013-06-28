@@ -1,5 +1,7 @@
 Diputados::Application.routes.draw do
 
+  namespace :backend do resources :areas end
+
   namespace :backend do resources :sessions end
 
   namespace :backend do resources :tags end
