@@ -7,16 +7,16 @@
   <%= f.label :autor_eq %>
   <%= f.text_field :autor_eq %>
   <% #TODO: Add tags to this form with the javascript part %>
-  <%#= f.label :tags_id_eq, 'Tags NO anda' %>
-  <%#= f.select :tags_id_eq , :class  => 'chzn-select' %>
+  <%= f.label :tags_id_eq, 'Tags' %>
+  <%= f.select(:tags_id_eq, Tag.all.map { |t| [t.name, t.id] }, {:multiple => true}, {:class  => 'chzn-select'}) %>
   <%= f.label :pases_descripcion_cont %>
   <%= f.text_field :pases_descripcion_cont %>
   <%= f.label :primer_pase_area_name_cont %>
   <%= f.text_field :primer_pase_area_name_cont %>
   <%= f.label :ultimo_pase_area_name_cont %>
   <%= f.text_field :ultimo_pase_area_name_cont %>
-  Fecha de ingreso: <br>
-  <%= f.label :pases_ingreso_gteq, 'entre:'%>
+
+  <%= f.label :pases_ingreso_gteq, 'Ingresada entre:'%>
   <%= f.text_field :pases_ingreso_gteq, :class => 'datepicker' %>
   <%= f.label :pases_ingreso_lteq, 'y' %>
   <%= f.text_field :pases_ingreso_lteq, :class => 'datepicker' %>
