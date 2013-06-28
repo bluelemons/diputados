@@ -12,6 +12,11 @@
           <%= pase.descripcion %>
         </td>
       </tr>
-      <% #TODO: agregar Area, con link al area en cuestion" %>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:area) %>:
+          <%= link_to pase.area.name, backend_area_path(pase.area) %>
+        </td>
+      </tr>
   </tbody>
 </table>
