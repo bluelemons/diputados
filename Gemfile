@@ -70,7 +70,7 @@ gem 'whenever', :require => false
 gem 'newrelic_rpm'
 
 gem 'rails_backend', git: 'git://github.com/olvap/rails_backend.git'
-# Cuando esten arregladas las dependencias hay que sacar estas gemas de aca
+# TODO Arreglar dependencias y sacar estas gemas de aca
   gem 'inherited_resources', '>= 1.3.1'
   gem 'will_paginate', '~> 3.0'
   gem 'ransack'
