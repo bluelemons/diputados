@@ -18,5 +18,11 @@
           <%= link_to pase.area.name, backend_area_path(pase.area) %>
         </td>
       </tr>
+      <tr>
+        <td class="field_name">
+          <%= link_to 'Editar pase', edit_backend_pase_path(pase),
+            class: "edit_button pull-right" %>
+        </td>
+      </tr>
   </tbody>
 </table>
