@@ -1,16 +1,13 @@
-<%= semantic_form_for  [:backend, resource] do |f| %>
-  <%= f.inputs 'Detalles generales' do %>
-    <%= f.input :numero, :label =>"Numero" %>
-    <%= f.input :autor %>
-    <% if f.object.new_record? %>
-      <%= f.semantic_fields_for :pases do |pase| %>
-        <%= render partial: 'backend/pases/form_inputs', locals: { pase: pase }%>
-      <% end %>
-    <% end %>
-
-    <%= f.input :tags_tokens,
-      :input_html => {
-        "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
+<%= simple_form_for  [:backend, resource] do |f| %>
+  <%= f.input :numero, :label =>"Numero" %>
+  <%= f.input :autor %>
+  <%= f.simple_fields_for :pases do |pases_form| %>
+    <%= pases_form.input :area %>
+    <%= pases_form.input :ingreso, as: :datepicker %>
+    <%= pases_form.input :fojas %>
   <% end %>
-  <%= f.actions %>
+  <%= f.input :tags_tokens,
+    :input_html => {
+      "data-pre" => f.object.tags.to_json(:methods => :name), :only => [:id, :name] } %>
+<%= f.submit %>
 <% end %>
