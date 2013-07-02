@@ -8,7 +8,8 @@
   <%= f.text_field :autor_eq %>
   <% #TODO: Add tags to this form with the javascript part %>
   <%= f.label :tags_id_eq, 'Tags' %>
-  <%= f.select(:tags_id_eq, Tag.all.map { |t| [t.name, t.id] }, {:multiple => true}, {:class  => 'chzn-select'}) %>
+  <%= f.select :tags_id_in, options_from_collection_for_select(Tag.all, :id, :name),
+      {}, class: 'chzn-select', multiple: true %>
   <%= f.label :pases_descripcion_cont %>
   <%= f.text_field :pases_descripcion_cont %>
   <%= f.label :primer_pase_area_name_cont %>
