@@ -1,13 +1,18 @@
 <div class="row-fluid">
-  <div class="span3"> Detalle
+  <div class="span3"> <h4>Detalle</h4>
     <%= render 'nota' %>
     </div>
 </div>
 
 <div class="row-fluid">
 
-  <div class="span6"> Historico de Pases
-    <%= render @nota.pases %>
+    <% #TODO: centrar texto historico de pases" %>
+  <div class="span6"> <hr> <h4>Historico de Pases</h4> <hr>
+    <% @nota.pases.each do |pase| %>
+      <%= render pase %>
+
+      <hr>
+    <% end %>
   </div>
 
   <div class="span3"> Archivos
