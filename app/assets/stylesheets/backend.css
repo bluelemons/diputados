@@ -6,4 +6,5 @@
  *= require backend/style
  *= require jquery.ui.datepicker
  *= require chosen
+ *= require signing
 */
