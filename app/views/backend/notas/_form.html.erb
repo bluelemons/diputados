@@ -1,14 +1,16 @@
-<% #TODO: generar distintas vistas en new y edit  %>
+<% #TODO: Session necesita mostrarse como en AA en vez de mostrar el id  %>
+<% #TODO: Autocompletar: AREA Y SESSION  %>
 <% #TODO: Arreglar los datepicker que estan de mas  %>
 <%= simple_form_for  [:backend, resource] do |f| %>
   <%= f.input :numero, :label =>"Numero" %>
   <%= f.input :autor %>
   <%= f.simple_fields_for :pases do |pases_form| %>
     <%= pases_form.association :area %>
-    <%= pases_form.input :ingreso, as: :datepicker %>
+    <%= pases_form.input :ingreso, as: :date_picker %>
     <%= pases_form.input :fojas %>
   <% end %>
   <%= f.association :tags, input_html: {multiple: true, class: 'chzn-select',
       "data-pre"  => f.object.tags.to_json(methods: :name), only: [:id, :name]} %>
+<br>
 <%= f.submit %>
 <% end %>
