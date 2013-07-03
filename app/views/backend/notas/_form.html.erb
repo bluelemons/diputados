@@ -6,10 +6,11 @@
   <%= f.input :autor %>
   <%= f.simple_fields_for :pases do |pases_form| %>
     <%= pases_form.association :area %>
-    <%= pases_form.input :ingreso, as: :datepicker %>
+    <%= pases_form.input :ingreso, as: :date_picker %>
     <%= pases_form.input :fojas %>
   <% end %>
   <%= f.association :tags, input_html: {multiple: true, class: 'chzn-select',
       "data-pre"  => f.object.tags.to_json(methods: :name), only: [:id, :name]} %>
+<br>
 <%= f.submit %>
 <% end %>
