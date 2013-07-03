@@ -1,3 +1,3 @@
-class Backend::TagsController < Backend::ApplicationController
-respond_to :html, :xml, :json
+class Backend::TagsController < Backend::AuthenticatedApplicationController
+  respond_to :html, :xml, :json
 end

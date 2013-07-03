@@ -1,2 +1,2 @@
-class Backend::PasesController < Backend::ApplicationController
+class Backend::PasesController < Backend::AuthenticatedApplicationController
 end

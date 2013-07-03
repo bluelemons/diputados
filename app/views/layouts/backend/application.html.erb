@@ -37,15 +37,15 @@
   </head>
   <body>
     <div id="wrap">
-      <%= render 'navigation' %>
-      <%= render 'action_bar'%>
+      <%= render 'navigation' rescue nil %>
+      <%= render 'action_bar' rescue nil %>
 
       <div class="container-fluid">
         <%= bootstrap_flash %>
         <%= yield %>
       </div>
     </div> <!-- /container -->
-    <%= render 'footer'%>
+    <%= render 'footer' rescue nil %>
 
     <!-- Javascripts
     ================================================== -->

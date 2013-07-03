@@ -1,4 +1,4 @@
-class Backend::NotasController < Backend::ApplicationController
+class Backend::NotasController < Backend::AuthenticatedApplicationController
 
   def new
     @nota = Nota.new

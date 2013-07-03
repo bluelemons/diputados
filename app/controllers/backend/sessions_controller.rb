@@ -1,2 +1,3 @@
-class Backend::SessionsController < Backend::ApplicationController
+class Backend::SessionsController < Devise::SessionsController
+  layout "/backend/application"
 end
