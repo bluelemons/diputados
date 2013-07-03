@@ -7,6 +7,7 @@ Diputados::Application.routes.draw do
     resources :pases
     resources :notas
     devise_for :admin_users
+    root :to => 'notas#index'
   end
 
   resources :expedientes, :only => [] do
@@ -25,6 +26,8 @@ Diputados::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  root :to => 'backend/proyectos#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -72,10 +75,9 @@ Diputados::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  #root :to => 'admin/proyectos#index'
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'admin/proyectos#index'
 
   # See how all your routes lay out with "rake routes"
 
