@@ -1,6 +1,6 @@
 # Diputados
 
-Es una aplicación prototipo para la cámara de diputaos de la provincia de Santa
+Es una aplicación prototipo para la cámara de diputados de la provincia de Santa
 Fe que usará los datos de un sistema en dbf.
 
 
