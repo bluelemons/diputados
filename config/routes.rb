@@ -1,14 +1,13 @@
 Diputados::Application.routes.draw do
 
-  namespace :backend do resources :areas end
-
-  namespace :backend do resources :sessions end
-
-  namespace :backend do resources :tags end
-
-  namespace :backend do resources :pases end
-
-  namespace :backend do resources :notas end
+  namespace :backend do
+    resources :areas
+    resources :sessions
+    resources :tags
+    resources :pases
+    resources :notas
+    devise_for :admin_users
+  end
 
   resources :expedientes, :only => [] do
     resources :assets, :only => [:create, :destroy]
@@ -84,4 +83,3 @@ Diputados::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
-
