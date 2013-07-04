@@ -32,3 +32,6 @@ form.form-inline div.control-group div.controls { display: inline-block; }
 #home_sign_up .btn { width: 10%; min-width: 160px;}
 .home .hero-unit {margin-top: 50px; padding-top: 150px; padding-bottom: 200px;}
 .home .hero-unit img { margin-top: -50px;}
+body.sessions{
+  background-color: #F2F1F0;
+}
