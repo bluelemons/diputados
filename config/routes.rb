@@ -27,7 +27,7 @@ Diputados::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  root :to => 'backend/proyectos#index'
+  root :to => 'backend::notas#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

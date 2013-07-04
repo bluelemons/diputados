@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
   def current_user
     current_admin_user
   end
+
+  def after_sign_in_path_for(resource)
+    backend_root_path
+  end
 end
