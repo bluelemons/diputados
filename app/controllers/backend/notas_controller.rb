@@ -5,6 +5,16 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
     @nota.build_pases
   end
 
+  def show
+    @tags = []
+    @nota = Nota.find(params[:id])
+    @nota.build_pases
+
+    @nota.tags.each do |t|
+      @tags.push t.name
+    end
+  end
+
   def edit
     @nota = Nota.find(params[:id])
     @nota.build_pases
