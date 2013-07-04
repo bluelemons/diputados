@@ -1,2 +1,2 @@
-class Backend::AreasController < Backend::AuthenticatedAppliationController
+class Backend::AreasController < Backend::AuthenticatedApplicationController
 end
