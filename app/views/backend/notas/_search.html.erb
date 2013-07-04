@@ -6,7 +6,6 @@
   <%= f.text_field :numero_eq %>
   <%= f.label :autor_eq %>
   <%= f.text_field :autor_eq %>
-  <% #TODO: Add tags to this form with the javascript part %>
   <%= f.label :tags_id_eq, 'Tags' %>
   <%= f.select :tags_id_in, options_from_collection_for_select(Tag.all, :id, :name),
       {}, class: 'chzn-select', multiple: true %>
