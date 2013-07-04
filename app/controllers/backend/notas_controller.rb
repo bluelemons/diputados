@@ -5,6 +5,12 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
     @nota.build_pases
   end
 
+  def edit
+    @nota = Nota.find(params[:id])
+    @nota.build_pases
+    render 'edit'
+  end
+
   def attributes
     [:id, :year, :ingreso, :area]
   end

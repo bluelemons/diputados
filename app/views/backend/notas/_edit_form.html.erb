@@ -1,0 +1,8 @@
+<%= simple_form_for  [:backend, resource] do |f| %>
+  <%= f.input :numero, :label =>"Numero" %>
+  <%= f.input :autor %>
+  <%= f.association :tags, input_html: {multiple: true, class: 'chzn-select',
+      "data-pre"  => f.object.tags.to_json(methods: :name), only: [:id, :name]} %>
+<br>
+<%= f.submit %>
+<% end %>
