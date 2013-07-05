@@ -1,6 +1,7 @@
 <%= nav_bar brand: "BACKEND", responsive: true do %>
     <%= menu_group do %>
-      <%= menu_item "notas", backend_notas_path %>
+      <%= menu_item "Notas", backend_notas_path %>
+      <%= menu_item "Usuarios", backend_admin_users_path %>
     <% end %>
     <%= menu_group :pull => :right do %>
       <%- if backend_admin_user_signed_in? %>
