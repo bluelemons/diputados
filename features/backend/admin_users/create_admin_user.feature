@@ -3,7 +3,6 @@ Feature: Create
   A backend admin user
   Should be able to create new users
 
-    @wip
     Scenario: New User
       Given I am logged in backend as admin
       When I go to the new admin user page
