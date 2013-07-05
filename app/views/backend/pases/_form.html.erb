@@ -2,7 +2,7 @@
 <% #TODO: Session necesita mostrarse como en AA en vez de mostrar el id  %>
 
 <%= simple_form_for  [:backend, resource] do |f| %>
-  <%= f.association :area  %>
+  <%= f.association :area, input_html: {class: 'select2'} %>
   <%= f.input :descripcion, input_html: {rows: "10"} %>
   <%= f.input :ingreso, as: :date_picker %>
   <%= f.input :fojas  %>
