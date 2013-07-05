@@ -5,6 +5,12 @@ FactoryGirl.define do
     email 'admin@example.com'
     password 'password'
 
+    factory :backend do
+      after(:create) do |user, evaluator|
+        user.roles << FactoryGirl.create(:admin)
+      end
+    end
+
     factory :user_mesa_de_entrada do
       after(:create) do |user, evaluator|
         user.roles << FactoryGirl.create(:role_mesa_de_entrada)

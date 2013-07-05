@@ -1,0 +1,7 @@
+<%= simple_form_for [:backend, resource] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.input :email %>
+  <%= f.association :roles, input_html: {multiple: true, class: 'chzn-select',
+      "data-pre"  => f.object.roles.to_json(methods: :name), only: [:id, :name]} %>
+  <%= f.submit 'Crear Usuario' %>
+<% end %>

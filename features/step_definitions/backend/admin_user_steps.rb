@@ -21,6 +21,10 @@ def delete_user
   @user.destroy unless @user.nil?
 end
 
+def create_role name = :name
+  @role = FactoryGirl.create(name)
+end
+
 def sign_up
   delete_user
   visit '/users/sign_up'
@@ -64,6 +68,11 @@ Given(/^I am logged in$/) do
   sign_in
 end
 
+Given(/^I am logged in backend as admin$/) do
+  create_user :backend
+  sign_in
+end
+
 ### WHEN ###
 When /^I sign in with valid credentials$/ do
   create_visitor
@@ -88,6 +97,18 @@ When(/^I sign out$/) do
   sign_out
 end
 
+When(/^I go to the new admin user page$/) do
+  create_role :role_mesa_de_entrada
+  visit new_backend_admin_user_path
+end
+
+When(/^I submit the admin user form$/) do
+  fill_in 'Email', :with => "new_user@mail.com"
+  save_and_open_page
+  select(@role.name, :from => 'admin_user_role_ids')
+  click_button 'Crear Usuario'
+end
+
 ### THEN ###
 Then /^I should see an invalid login message$/ do
   page.should have_content "Email o contraseña inválidos."
@@ -107,4 +128,9 @@ Then(/^I should be signed in$/) do
   page.should have_content "Salir"
   page.should_not have_content "Sign up"
   page.should_not have_content "Login"
+end
+
+Then(/^I should see the user created$/) do
+  page.should have_content "new_user@mail.com"
+  page.should have_content @role.name
 end

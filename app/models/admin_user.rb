@@ -14,8 +14,13 @@ class AdminUser < ActiveRecord::Base
 
   has_and_belongs_to_many :areas, :uniq => true
 
+  after_create { |admin| admin.send_reset_password_instructions }
+
   def roles_tokens=(ids)
     self.role_ids = ids.split(",")
   end
 
+  def password_required?
+    new_record? ? false : super
+  end
 end

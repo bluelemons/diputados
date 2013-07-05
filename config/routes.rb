@@ -7,6 +7,7 @@ Diputados::Application.routes.draw do
     resources :pases
     resources :notas
     devise_for :admin_users
+    resources :admin_users
     root :to => 'notas#index'
   end
 
