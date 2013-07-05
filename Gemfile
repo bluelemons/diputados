@@ -82,3 +82,4 @@ gem 'rails_backend', git: 'git://github.com/olvap/rails_backend.git'
 
   gem 'guard'
   gem 'guard-livereload'
+  gem "select2-rails"

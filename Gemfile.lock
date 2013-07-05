@@ -295,6 +295,9 @@ GEM
     seed-fu (2.2.0)
       activerecord (~> 3.1)
       activesupport (~> 3.1)
+    select2-rails (3.4.3)
+      sass-rails
+      thor (~> 0.14)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -380,6 +383,7 @@ DEPENDENCIES
   rvm-capistrano
   sass-rails (~> 3.2.3)
   seed-fu
+  select2-rails
   simple_form
   simplecov
   sqlite3
