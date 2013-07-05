@@ -11,7 +11,7 @@ class Expediente < ActiveRecord::Base
   has_and_belongs_to_many :tags, :uniq => true
 
   attr_reader :tags_tokens
-  
+
   def tags_tokens=(ids)
     self.tag_ids = ids.split(",")
   end
@@ -129,6 +129,10 @@ class Expediente < ActiveRecord::Base
 
   def tags_list
     tags.pluck :name
+  end
+
+  def descripcion
+    descrip
   end
 
 end

@@ -1,0 +1,28 @@
+<table class="well">
+  <tbody>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:ingreso) %>:
+          <%= pase.ingreso %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:descripcion) %>:
+          <%= pase.descripcion %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= resource_class.human_attribute_name(:area) %>:
+          <%= link_to pase.area.name, backend_area_path(pase.area) %>
+        </td>
+      </tr>
+      <tr>
+        <td class="field_name">
+          <%= link_to 'Editar pase', edit_backend_pase_path(pase),
+            class: "edit_button pull-right" %>
+        </td>
+      </tr>
+  </tbody>
+</table>

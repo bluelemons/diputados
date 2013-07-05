@@ -1,6 +1,6 @@
 Feature: Sign in
   In order to get access to protected sections of the site
-  A admin user
+  A backend admin user
   Should be able to sign in
 
     Scenario: User is not signed up
