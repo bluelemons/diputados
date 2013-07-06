@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if request.path.split("/")[1] == "backend"
-      backend_root_path
-    else
-      admin_notas_path
-    end
+    admin_notas_path
   end
 end
