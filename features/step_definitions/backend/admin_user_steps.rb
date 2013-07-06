@@ -104,7 +104,6 @@ end
 
 When(/^I submit the admin user form$/) do
   fill_in 'Email', :with => "new_user@mail.com"
-  save_and_open_page
   select(@role.name, :from => 'admin_user_role_ids')
   click_button 'Crear Usuario'
 end
