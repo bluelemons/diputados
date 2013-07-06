@@ -2,6 +2,7 @@ Diputados::Application.routes.draw do
 
   namespace :backend do
     resources :areas
+    resources :roles
     resources :sessions
     resources :tags
     resources :pases
