@@ -5,8 +5,11 @@ require "whenever/capistrano"
 
 # RVM Setup
 
-set :rvm_ruby_string, "2.0.0"
-set :rvm_type, :system  # Copy the exact line. I really mean :system here
+set :rvm_ruby_string, :local
+set :rvm_autolibs_flag, "read-only"       # more info: rvm help autolibs
+
+before 'deploy:setup', 'rvm:install_rvm'  # install RVM
+before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset
 
 require "rvm/capistrano"
 
