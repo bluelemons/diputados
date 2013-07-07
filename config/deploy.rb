@@ -10,7 +10,7 @@ set :rvm_type, :system  # Copy the exact line. I really mean :system here
 
 require "rvm/capistrano"
 
-set :application, "diputatres"
+set :application, "diputados"
 set :repository,  "https://github.com/BlueLemon/diputados.git"
 
 set :scm, :git
@@ -18,9 +18,9 @@ set :scm, :git
 
 set :deploy_to, "/home/diputados"
 
-role :web, "diputados"                          # Your HTTP server, Apache/etc
-role :app, "diputados"                          # This may be the same as your `Web` server
-role :db,  "diputados", :primary => true        # This is where Rails migrations will run
+role :web, "diputatres"                          # Your HTTP server, Apache/etc
+role :app, "diputatres"                          # This may be the same as your `Web` server
+role :db,  "diputatres", :primary => true        # This is where Rails migrations will run
 
 set :user, "diputados"
 
