@@ -5,7 +5,8 @@
   <%= f.input :numero, :label =>"Numero" %>
   <%= f.input :autor %>
   <%= f.simple_fields_for :pases do |pases_form| %>
-    <%= pases_form.association :area %>
+    <%= pases_form.association :area, input_html: {class: 'select2'} %>
+    <%= pases_form.association :session, input_html: {class: 'select2'} %>
     <%= pases_form.input :ingreso, as: :date_picker %>
     <%= pases_form.input :fojas %>
   <% end %>
