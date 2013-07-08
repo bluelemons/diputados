@@ -1,5 +1,19 @@
 Diputados::Application.routes.draw do
 
+  namespace :backend do
+    resources :areas
+    resources :roles
+    resources :weekly_sessions
+    resources :tags
+    resources :notas do
+      resources :pases
+      resources :assets, :only => [:create, :destroy]
+    end
+    devise_for :admin_users
+    resources :admin_users
+    root :to => 'notas#index'
+  end
+
   resources :expedientes, :only => [] do
     resources :assets, :only => [:create, :destroy]
   end
@@ -16,6 +30,8 @@ Diputados::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  root :to => 'backend::notas#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -63,10 +79,9 @@ Diputados::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  #root :to => 'admin/proyectos#index'
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'admin/proyectos#index'
 
   # See how all your routes lay out with "rake routes"
 
@@ -74,4 +89,3 @@ Diputados::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
-

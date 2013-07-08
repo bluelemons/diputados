@@ -3,8 +3,8 @@ class Ability
 
   @@user
   def initialize(user)
-    @@user = user || User.new # Guest user
-    can :read, AdminUser, :id => @@user.id
+    @@user = user || AdminUser.new # Guest user
+    can :read, :all
     @@user.roles.each do |r|
       self.send(r.name.downcase)
     end

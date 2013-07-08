@@ -5,8 +5,11 @@ require "whenever/capistrano"
 
 # RVM Setup
 
-set :rvm_ruby_string, "1.9.3"
-set :rvm_type, :system  # Copy the exact line. I really mean :system here
+set :rvm_ruby_string, :local
+set :rvm_autolibs_flag, "read-only"       # more info: rvm help autolibs
+
+before 'deploy:setup', 'rvm:install_rvm'  # install RVM
+before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset
 
 require "rvm/capistrano"
 
@@ -18,9 +21,9 @@ set :scm, :git
 
 set :deploy_to, "/home/diputados"
 
-role :web, "diputados"                          # Your HTTP server, Apache/etc
-role :app, "diputados"                          # This may be the same as your `Web` server
-role :db,  "diputados", :primary => true        # This is where Rails migrations will run
+role :web, "diputatres"                          # Your HTTP server, Apache/etc
+role :app, "diputatres"                          # This may be the same as your `Web` server
+role :db,  "diputatres", :primary => true        # This is where Rails migrations will run
 
 set :user, "diputados"
 

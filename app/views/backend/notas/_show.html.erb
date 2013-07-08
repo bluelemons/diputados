@@ -1,0 +1,36 @@
+<div class="row-fluid">
+  <div class="span6"> <h4>Detalle</h4>
+    <%= render 'nota' %>
+
+    <div>
+      <h4>Archivos</h4>
+      <table>
+        <% @nota.assets.each do |asset| %>
+          <tr>
+            <td>
+              <%= link_to asset.asset_file_name, asset.asset.url %>
+            </td>
+            <td>
+              <%= link_to('Borrar', [@nota, asset],
+                confirm: 'seguro?',
+                method: :delete,
+                class: 'btn btn-mini btn-danger') %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <%= render :partial => 'backend/assets/form',
+        :locals => { adjuntable: @nota, asset: @nota.assets.build } %>
+    </div>
+  </div>
+
+    <% #TODO: centrar texto historico de pases" %>
+  <div class="span6">
+    <%= link_to 'Crear Pase', new_backend_nota_pase_path(@nota),
+                class: "btn btn-primary pull-right" %>
+    <h4>Historico de Pases</h4>
+    <% @nota.pases.each do |pase| %>
+      <%= render pase %>
+    <% end %>
+  </div>
+</div>

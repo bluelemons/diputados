@@ -1,0 +1,22 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:numero) %>:</b>
+        <%= @nota.numero %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:autor) %>:</b>
+        <%= @nota.autor %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:tag).pluralize %>:</b>
+        <%= @tags.join(", ") %>
+      </td>
+    </tr>
+  </tbody>
+</table>

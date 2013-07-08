@@ -11,7 +11,7 @@ class Expediente < ActiveRecord::Base
   has_and_belongs_to_many :tags, :uniq => true
 
   attr_reader :tags_tokens
-  
+
   def tags_tokens=(ids)
     self.tag_ids = ids.split(",")
   end
@@ -136,6 +136,10 @@ class Expediente < ActiveRecord::Base
   def initiators=(attrs)
     init = Initiator.where(attrs).first_or_create
     self.initiator = init
+  end
+
+  def descripcion
+    descrip
   end
 
 end

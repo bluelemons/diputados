@@ -1,0 +1,17 @@
+<%= nav_bar brand: "BACKEND", responsive: true do %>
+    <%= menu_group do %>
+      <%= menu_item "Notas", backend_notas_path %>
+    <%= drop_down_with_submenu "Administracion" do %>
+      <%= menu_item "Usuarios", backend_admin_users_path %>
+      <%= menu_item "Roles", backend_roles_path %>
+      <%= menu_item "Areas", backend_areas_path %>
+      <%= menu_item "Sesiones", backend_weekly_sessions_path %>
+    <% end %>
+
+    <% end %>
+    <%= menu_group :pull => :right do %>
+      <%- if backend_admin_user_signed_in? %>
+        <%= menu_item 'Salir', destroy_backend_admin_user_session_path %>
+      <% end %>
+    <% end %>
+<% end %>

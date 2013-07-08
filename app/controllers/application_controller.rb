@@ -18,4 +18,12 @@ class ApplicationController < ActionController::Base
   def current_user
     current_admin_user
   end
+
+  def after_sign_in_path_for(resource)
+    if request.path.split("/")[1] == "backend"
+      backend_root_path
+    else
+      admin_notas_path
+    end
+  end
 end

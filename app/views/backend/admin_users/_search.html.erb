@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: collection_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email_cont %>
+
+  <%= f.submit %>
+<% end %>

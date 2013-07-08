@@ -1,0 +1,27 @@
+<% #TODO: Labels que tengan sentido %>
+<%= search_form_for @q, url: collection_path do |f| %>
+
+  <%= f.label :id_eq, 'ID:' %>
+  <%= f.text_field :id_eq %>
+  <%= f.label :numero_eq, 'Numero:' %>
+  <%= f.text_field :numero_eq %>
+  <%= f.label :autor_eq, 'Autor:' %>
+  <%= f.text_field :autor_eq %>
+  <%= f.label :tags_id_eq, 'Tags' %>
+  <%= f.select :tags_id_in, options_from_collection_for_select(Tag.all, :id, :name),
+      {}, class: 'chzn-select', multiple: true %>
+  <br><br> <h5>Pases</h5>
+  <%= f.label :primer_pase_area_name_cont, 'Primer area' %>
+  <%= f.text_field :primer_pase_area_name_cont %>
+  <%= f.label :ultimo_pase_area_name_cont, 'Ultima area'%>
+  <%= f.text_field :ultimo_pase_area_name_cont %>
+  <%= f.label :pases_descripcion_cont, 'Descripcion de pase(s) contiene:' %>
+  <%= f.text_field :pases_descripcion_cont %>
+
+  <p>Ingresada entre:</p>
+  <%= f.text_field :pases_ingreso_gteq, class: 'datepicker search_field' %>
+  Y
+  <%= f.text_field :pases_ingreso_lteq, class: 'datepicker search_field' %>
+
+  <%= f.submit %>
+<% end %>
