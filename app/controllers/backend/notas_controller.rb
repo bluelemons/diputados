@@ -14,6 +14,11 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
     end
   end
 
+  def edit
+    @nota = Nota.find params[:id]
+    @nota.build_initiator unless @nota.initiator
+  end
+
   def attributes
     [:id, :year, :ingreso, :area]
   end

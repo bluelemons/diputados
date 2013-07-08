@@ -12,3 +12,4 @@
 //= require select2
 //= require_tree ./plugin_calls
 //= require buttonize
+//= require_tree ./backend

@@ -5,6 +5,7 @@ Diputados::Application.routes.draw do
     resources :roles
     resources :weekly_sessions
     resources :tags
+    resources :initiators
     resources :notas do
       resources :pases
       resources :assets, :only => [:create, :destroy]
