@@ -53,7 +53,7 @@ group :test do
 end
 
 group :migrations do
-  gem 'dbf', :git=>'https://github.com/eloyesp/dbf.git'
+  gem 'dbf', git: 'https://github.com/eloyesp/dbf.git'
   gem 'seed-fu'
 end
 
@@ -70,7 +70,7 @@ gem 'odf-report'
 gem 'whenever', :require => false
 gem 'newrelic_rpm'
 
-gem 'rails_backend', git: 'git://github.com/olvap/rails_backend.git'
+gem 'rails_backend', git: 'https://github.com/olvap/rails_backend.git'
 # TODO Arreglar dependencias y sacar estas gemas de aca
   gem 'inherited_resources', '>= 1.3.1'
   gem 'will_paginate', '~> 3.0'
