@@ -3,10 +3,12 @@ Diputados::Application.routes.draw do
   namespace :backend do
     resources :areas
     resources :roles
-    resources :sessions
+    resources :weekly_sessions
     resources :tags
-    resources :pases
-    resources :notas
+    resources :notas do
+      resources :pases
+      resources :assets, :only => [:create, :destroy]
+    end
     devise_for :admin_users
     resources :admin_users
     root :to => 'notas#index'

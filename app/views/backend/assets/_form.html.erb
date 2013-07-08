@@ -1,0 +1,6 @@
+<%= simple_form_for [:backend, adjuntable, asset], html: { multipart: true } do |f| %>
+  <%= f.input :asset, label: false %>
+
+  <%= f.submit "Subir Archivo" %>
+
+<% end %>
