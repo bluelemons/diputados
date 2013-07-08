@@ -40,6 +40,8 @@ class Expediente < ActiveRecord::Base
   scope :month, where("fechaentr >= ?", 1.month.ago.strftime("%Y-%m-%d"))
 
   belongs_to :tema
+  belongs_to :organization
+
   has_many :estados, dependent: :destroy
   has_many :prefers, dependent: :destroy
 
