@@ -9,6 +9,7 @@
     <%= pases_form.association :session, input_html: {class: 'select2'} %>
     <%= pases_form.input :ingreso, as: :date_picker %>
     <%= pases_form.input :fojas %>
+    <%= pases_form.input :descripcion %>
   <% end %>
   <%= f.association :tags, input_html: {multiple: true, class: 'chzn-select',
       "data-pre"  => f.object.tags.to_json(methods: :name), only: [:id, :name]} %>

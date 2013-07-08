@@ -13,6 +13,10 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "backend", :media => "all" %>
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "backend" %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -37,20 +41,15 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="wrap">
-      <%= render 'navigation' rescue nil %>
-      <%= render 'action_bar' rescue nil %>
+      <%= render 'navigation' %>
+      <%= render 'action_bar' %>
 
       <div class="container-fluid">
         <%= bootstrap_flash %>
         <%= yield %>
       </div>
     </div> <!-- /container -->
-    <%= render 'footer' rescue nil %>
-
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "backend" %>
+    <%= render 'footer' %>
 
   </body>
 </html>

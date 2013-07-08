@@ -1,18 +1,22 @@
-<table class="well">
+<table>
   <tbody>
-    <tr> <td class="field_name">
-      <%= resource_class.human_attribute_name(:numero) %>:
-      <%= @nota.numero %>
-    </td> </tr>
-
-    <tr> <td class="field_name">
-      <%= resource_class.human_attribute_name(:autor) %>:
-      <%= @nota.autor %>
-    </td> </tr>
-
-    <tr> <td class="field_name">
-      <%= resource_class.human_attribute_name(:tag).pluralize %>:
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:numero) %>:</b>
+        <%= @nota.numero %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:autor) %>:</b>
+        <%= @nota.autor %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= resource_class.human_attribute_name(:tag).pluralize %>:</b>
         <%= @tags.join(", ") %>
-    </td> </tr>
+      </td>
+    </tr>
   </tbody>
 </table>
