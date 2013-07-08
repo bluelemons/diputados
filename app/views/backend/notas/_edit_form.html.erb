@@ -1,7 +1,9 @@
 <%= simple_form_for  [:backend, resource] do |f| %>
   <%= f.input :numero, :label =>"Numero" %>
-  <%= f.association :organization %>
-  <%= f.input :autor %>
+  <%= f.association :organization, input_html: {class: 'select2'}, label: "Tipo de iniciador" %>
+  <%= f.simple_fields_for :initiator do |initiator_form| %>
+    <%= initiator_form.input :name, :label => "Iniciador" %>
+  <% end %>
   <%= f.association :tags, input_html: {multiple: true, class: 'chzn-select',
       "data-pre"  => f.object.tags.to_json(methods: :name), only: [:id, :name]} %>
 <br>

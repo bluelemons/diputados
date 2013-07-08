@@ -41,6 +41,7 @@ class Expediente < ActiveRecord::Base
 
   belongs_to :tema
   belongs_to :organization
+  belongs_to :initiator
 
   has_many :estados, dependent: :destroy
   has_many :prefers, dependent: :destroy
@@ -62,6 +63,9 @@ class Expediente < ActiveRecord::Base
 
   # Busca el final de tramite correspondiente y carga la descripcion o retorna
   # nil si no hay fin de tramite.
+
+  accepts_nested_attributes_for :initiator
+
   def final
     descripciones = finals.collect(&:descripcion).delete_if { |d| d.empty? }
     descripciones.last
@@ -135,6 +139,11 @@ class Expediente < ActiveRecord::Base
 
   def descripcion
     descrip
+  end
+
+  def initiator=(attrs)
+    init = Initiator.where(name: attrs[:name]).first_or_create
+    self.initiator_id = init.id
   end
 
 end

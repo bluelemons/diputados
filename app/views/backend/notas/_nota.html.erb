@@ -8,8 +8,14 @@
     </tr>
     <tr>
       <td>
+        <b>Tipo de iniciador:</b>
+        <%= @nota.organization %>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <b><%= resource_class.human_attribute_name(:autor) %>:</b>
-        <%= @nota.autor %>
+        <%= @nota.initiator %>
       </td>
     </tr>
     <tr>

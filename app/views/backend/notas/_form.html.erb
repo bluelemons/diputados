@@ -4,7 +4,9 @@
 <%= simple_form_for  [:backend, resource] do |f| %>
   <%= f.input :numero, :label =>"Numero" %>
   <%= f.association :organization, input_html: {class: 'select2'}, label: "Tipo de iniciador" %>
-  <%= f.input :autor %>
+  <%= f.simple_fields_for :initiator do |initiator| %>
+    <%= initiator.input :name, :label => "Iniciador"%>
+  <% end %>
   <%= f.simple_fields_for :pases do |pases_form| %>
     <%= pases_form.association :area, input_html: {class: 'select2'} %>
     <%= pases_form.association :session, input_html: {class: 'select2'} %>

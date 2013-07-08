@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708171450) do
+ActiveRecord::Schema.define(:version => 20130708173656) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -199,9 +199,11 @@ ActiveRecord::Schema.define(:version => 20130708171450) do
     t.integer  "primer_pase_id"
     t.integer  "ultimo_pase_id"
     t.integer  "organization_id"
+    t.integer  "initiator_id"
   end
 
   add_index "expedientes", ["estado_id"], :name => "index_expedientes_on_estado_id"
+  add_index "expedientes", ["initiator_id"], :name => "index_expedientes_on_initiator_id"
   add_index "expedientes", ["numero", "pasada", "letra", "tipo"], :name => "index_expedientes_on_legacy_id"
   add_index "expedientes", ["organization_id"], :name => "index_expedientes_on_organization_id"
   add_index "expedientes", ["tema_id"], :name => "index_expedientes_on_tema_id"
@@ -237,6 +239,12 @@ ActiveRecord::Schema.define(:version => 20130708171450) do
 
   add_index "finals", ["expediente_id"], :name => "index_finals_on_expediente_id"
   add_index "finals", ["numero"], :name => "index_finals_on_numero"
+
+  create_table "initiators", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
