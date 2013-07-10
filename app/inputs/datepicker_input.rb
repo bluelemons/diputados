@@ -1,4 +1,4 @@
-class DatePickerInput < SimpleForm::Inputs::StringInput
+class DatepickerInput < SimpleForm::Inputs::StringInput
   def input
     input_html_options[:type] = "text"
     value = input_html_options[:value]

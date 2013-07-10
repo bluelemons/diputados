@@ -1,6 +1,3 @@
-<% #TODO: Session necesita mostrarse como en AA en vez de mostrar el id  %>
-<% #TODO: Autocompletar: AREA Y SESSION  %>
-<% #TODO: Arreglar los datepicker que estan de mas  %>
 <%= simple_form_for  [:backend, resource] do |f| %>
   <div>
     <div class="span6">
@@ -16,7 +13,7 @@
       <%= f.simple_fields_for :pases do |pases_form| %>
         <%= pases_form.association :area, input_html: { class: 'select2' } %>
         <%= pases_form.association :session, input_html: { class: 'select2' } %>
-        <%= pases_form.input :ingreso, as: :date_picker %>
+        <%= pases_form.input :ingreso, :as: :datepicker %>
         <%= pases_form.input :fojas %>
         <%= pases_form.input :descripcion, input_html: { rows: 6 } %>
       <% end %>
