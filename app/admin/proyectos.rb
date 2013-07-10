@@ -47,7 +47,8 @@ ActiveAdmin.register Proyecto do
   end
 
   member_action :print do
-    report = ExpedientesReport.new.detalle(params)
+    @expediente = Expediente.find(params[:id])
+    report = ExpedientesReport.new.detalle @expediente
     send_file(report, :type => "application/vnd.oasis.opendocument.text")
   end
 
