@@ -13,7 +13,7 @@
       <%= f.simple_fields_for :pases do |pases_form| %>
         <%= pases_form.association :area, input_html: { class: 'select2' } %>
         <%= pases_form.association :session, input_html: { class: 'select2' } %>
-        <%= pases_form.input :ingreso, :as: :datepicker %>
+        <%= pases_form.input :ingreso, as: :datepicker %>
         <%= pases_form.input :fojas %>
         <%= pases_form.input :descripcion, input_html: { rows: 6 } %>
       <% end %>
