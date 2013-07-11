@@ -23,17 +23,18 @@ class ExpedientesReport
       EXPEDIENTE_DETAILED_ATTRIBUTES.each do |attribute|
         r.add_field(attribute, expediente.send(attribute).to_s)
       end
-      # debugger
-        EXPEDIENTE_MAY_HAVE.each do |possible_attribute|
-          if expediente.sesion
-            r.add_field(possible_attribute, expediente.sesion[possible_attribute].to_s)
-          else
-            r.add_field(possible_attribute, '-')
-          end
+
+      EXPEDIENTE_MAY_HAVE.each do |possible_attribute|
+        if expediente.sesion
+          r.add_field(possible_attribute, expediente.sesion[possible_attribute].to_s)
+        else
+          r.add_field(possible_attribute, '-')
         end
+      end
+
       r.add_section "COMISION", expediente.estados do |s|
         COMISION.each do |attribute|
-          s.add_field(attribute) { |item| item.send(attribute).to_s }
+          s.add_field(attribute) { |estado| estado[attribute].to_s }
         end
         s.add_section("DICTAMEN", :dictamenes) do |ss|
           DICTAMEN.each do |attribute|
