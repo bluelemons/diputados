@@ -148,7 +148,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def descripcion
-    descrip
+    descrip.mb_chars.capitalize
   end
 
   def initiator=(attrs)
