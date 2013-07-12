@@ -2,7 +2,7 @@ class ExpedientesReport
   EXPEDIENTE_ATTRIBUTES = [ :clave, :autor, :entrada,  :firmantes, :descripcion, :estado, :tema ]
   EXPEDIENTE_DETAILED_ATTRIBUTES =  [:clave, :autor, :tema, :estado, :descripcion, :firmantes, :fechaentr, :tipoentr, :hora, :tipoperiod, :numperiodo]
   EXPEDIENTE_MAY_HAVE = [:tratamiento, :resultado, :fechases, :periodo]
-  COMISION = [:comision_nombre, :fechaentr, :fechasal]
+  COMISION = [:nombre_comision, :fechaentr, :fechasal]
   DICTAMEN = [:tipo, :fecha, :dictamen]
 
   def listado(expedientes)
@@ -34,7 +34,7 @@ class ExpedientesReport
 
       r.add_section "COMISION", expediente.estados do |s|
         COMISION.each do |attribute|
-          s.add_field(attribute) { |estado| estado[attribute].to_s }
+          s.add_field(attribute) { |item| item[attribute].to_s }
         end
         s.add_section("DICTAMEN", :dictamenes) do |ss|
           DICTAMEN.each do |attribute|
