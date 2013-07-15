@@ -6,7 +6,7 @@ class ExpedientesReport
   EXPEDIENTE_MAY_HAVE = [:tratamiento, :resultado, :fechases, :periodo]
 
   DICTAMEN = [:tipo, :fecha, :dictamen]
-  COMISION = [:comision_nombre, :fechaent, :fechasal]
+  COMISION = [:nombre, :entrada, :salida]
 
   def listado(expedientes)
     report = ODFReport::Report.new(REPORTS_PATH.join("expedientes.odt")) do |r|
@@ -20,25 +20,21 @@ class ExpedientesReport
   end
 
   def detalle expediente
-
     report = ODFReport::Report.new(REPORTS_PATH.join("expediente.odt")) do |r|
-
       EXPEDIENTE_DETAILED_ATTRIBUTES.each do |attribute|
         r.add_field(attribute, expediente.send(attribute).to_s)
       end
 
       r.add_section "COMISION", expediente.estados do |s|
-        s.add_field(:nombre) { |estado| estado.comision_nombre }
-        s.add_field(:entrada) { |estado| estado.fechaent }
-        s.add_field(:salida) { |estado| estado.fechasal }
+        COMISION.each do |attribute|
+          s.add_field(attribute) { |estado| estado.send(attribute).to_s }
+        end
         s.add_section("DICTAMEN", :dictamenes) do |ss|
-
-          ss.add_field(:tipo) { |n| n[:tipo].to_s }
-          ss.add_field(:fecha) { |n| n[:fecha].to_s }
-          ss.add_field(:dictamen) { |n| n[:dictamen].to_s }
+          DICTAMEN.each do |attribute|
+            ss.add_field(attribute) { |n| n.send(attribute).to_s || '-' }
+          end
         end
       end
-
 
       EXPEDIENTE_MAY_HAVE.each do |possible_attribute|
         if expediente.sesion
@@ -47,8 +43,8 @@ class ExpedientesReport
           r.add_field(possible_attribute, '-')
         end
       end
-
     end
+
   report.generate
   end
 
