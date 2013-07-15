@@ -19,9 +19,17 @@ class Estado < ActiveRecord::Base
     )].delete_if {|x| x == nil}
   end
 
-  def nombre_comision
+  def nombre
+    # Needed in ODF report
     comision.nombre
   end
 
+  def entrada
+    fechaent
+  end
+
+  def salida
+    fechasal
+  end
 end
 
