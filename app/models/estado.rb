@@ -19,5 +19,9 @@ class Estado < ActiveRecord::Base
     )].delete_if {|x| x == nil}
   end
 
+  def nombre_comision
+    comision.nombre
+  end
+
 end
 
