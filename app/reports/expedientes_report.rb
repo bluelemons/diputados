@@ -1,12 +1,12 @@
 class ExpedientesReport
 
   REPORTS_PATH = Rails.root.join("app/reports/")
-  EXPEDIENTE_ATTRIBUTES = [ :clave, :autor, :entrada,  :firmantes, :descripcion, :estado, :tema ]
-  EXPEDIENTE_DETAILED_ATTRIBUTES =  [:clave, :autor, :tema, :estado, :descripcion, :firmantes, :fechaentr, :tipoentr, :hora, :tipoperiod, :numperiodo]
-  EXPEDIENTE_MAY_HAVE = [:tratamiento, :resultado, :fechases, :periodo]
 
+  EXPEDIENTE_ATTRIBUTES = [ :clave, :autor, :entrada,  :firmantes, :descripcion, :estado, :tema ]
+  EXPEDIENTE_DETAILED =  [:clave, :autor, :tema, :estado, :descripcion, :firmantes, :fechaentr, :tipoentr, :hora, :tipoperiod, :numperiodo]
   DICTAMEN = [:tipo, :fecha, :dictamen]
   COMISION = [:nombre, :entrada, :salida]
+  EXPEDIENTE_MAY_HAVE = [:tratamiento, :resultado, :fechases, :periodo]
 
   def listado(expedientes)
     report = ODFReport::Report.new(REPORTS_PATH.join("expedientes.odt")) do |r|
@@ -21,7 +21,7 @@ class ExpedientesReport
 
   def detalle expediente
     report = ODFReport::Report.new(REPORTS_PATH.join("expediente.odt")) do |r|
-      EXPEDIENTE_DETAILED_ATTRIBUTES.each do |attribute|
+      EXPEDIENTE_DETAILED.each do |attribute|
         r.add_field(attribute, expediente.send(attribute).to_s)
       end
 
