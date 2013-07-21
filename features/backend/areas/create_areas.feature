@@ -6,7 +6,6 @@ Feature: Create
   Background:
     Given I am logged in backend as admin
 
-    @wip
-    Scenario: New Area     
+    Scenario: New Area
       When I create an new area
       Then I should see the created area

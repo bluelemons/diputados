@@ -15,4 +15,3 @@ end
 Then(/^I should see the created area$/) do
   page.should have_content "New Area"
 end
-
