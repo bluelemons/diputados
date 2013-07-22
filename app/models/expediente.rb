@@ -46,6 +46,18 @@ class Expediente < ActiveRecord::Base
   has_many :estados, dependent: :destroy
   has_many :prefers, dependent: :destroy
 
+  has_and_belongs_to_many :referred,
+    class_name:               'Expediente',
+    foreign_key:              'to_id',
+    association_foreign_key:  'from_id',
+    join_table:               'references'
+
+  has_and_belongs_to_many :references_to,
+    class_name:               'Expediente',
+    foreign_key:              'from_id',
+    association_foreign_key:  'to_id',
+    join_table:               'references'
+
   # puede ser un has_one, pero no estoy seguro.
   has_one   :asunto
   has_many  :finals, dependent: :destroy
