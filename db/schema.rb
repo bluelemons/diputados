@@ -365,18 +365,6 @@ ActiveRecord::Schema.define(:version => 20130722002927) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "sessions", :force => true do |t|
-    t.date     "fecha"
-    t.integer  "numero_de_periodo"
-    t.integer  "numero_de_sesion"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "numero_de_reunion"
-    t.integer  "session_type_id"
-  end
-
-  add_index "sessions", ["session_type_id"], :name => "index_sessions_on_session_type_id"
-
   create_table "status", :force => true do |t|
     t.integer  "estado"
     t.string   "nombre",     :limit => 20
@@ -396,5 +384,16 @@ ActiveRecord::Schema.define(:version => 20130722002927) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  create_table "weekly_sessions", :force => true do |t|
+    t.integer  "numero_de_sesion"
+    t.integer  "numero_de_periodo"
+    t.integer  "session_type_id"
+    t.integer  "numero_de_reunion"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "weekly_sessions", ["session_type_id"], :name => "index_weekly_sessions_on_session_type_id"
 
 end
