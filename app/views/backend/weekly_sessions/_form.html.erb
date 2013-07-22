@@ -1,0 +1,7 @@
+<%= simple_form_for  [:backend, resource] do |f| %>
+	<%= f.input :numero_de_sesion %>
+	<%= f.input :numero_de_periodo %>
+	<%= f.input :numero_de_reunion %>
+	<%= f.input :session_type_id, label: "tipo de session", collection: SessionType.all, input_html: { class: 'select2' } %>
+	<%= f.button :submit, 'Crear Sesion', :class => 'btn-primary' %>
+<% end %>
