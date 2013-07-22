@@ -6,7 +6,7 @@ class Pase < ActiveRecord::Base
 
   belongs_to :expediente
   belongs_to :area
-  belongs_to :session
+  belongs_to :weekly_session
   has_many :resolutions
 
   validates :area, :presence => true

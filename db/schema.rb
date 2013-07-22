@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722002927) do
+ActiveRecord::Schema.define(:version => 20130722011740) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -256,14 +256,14 @@ ActiveRecord::Schema.define(:version => 20130722002927) do
     t.integer  "area_id"
     t.text     "descripcion"
     t.date     "ingreso"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "fojas"
     t.integer  "expediente_id"
-    t.integer  "session_id"
+    t.integer  "weekly_session_id"
   end
 
-  add_index "pases", ["session_id"], :name => "index_pases_on_session_id"
+  add_index "pases", ["weekly_session_id"], :name => "index_pases_on_session_id"
 
   create_table "prefers", :force => true do |t|
     t.integer  "numero"

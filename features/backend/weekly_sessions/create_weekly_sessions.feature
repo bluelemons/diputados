@@ -5,7 +5,7 @@ Feature: Create
 
   Background:
     Given I am logged in backend as admin
-    And exits a session type
+    And a session type exists
 
     Scenario: New weekly sessions
       When I create an new weekly session
