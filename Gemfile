@@ -31,16 +31,15 @@ gem "paperclip", "~> 3.0"
 group :development, :test do
   # database
   gem 'sqlite3'
-  gem 'debugger'
-  #gem 'pry'
-  #gem 'pry-doc'
-  #gem 'pry-byebug'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'pry-byebug'
   gem "rspec-rails", ">= 2.11.0"
   gem "cucumber-rails", ">= 1.3.0", :require => false
   gem "factory_girl_rails"
-  gem 'fakeweb'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'pry-rails'
 end
 
 group :test do
@@ -50,6 +49,7 @@ group :test do
   gem "email_spec", ">= 1.2.1"
   gem "database_cleaner", ">= 0.8.0"
   gem "launchy", ">= 2.1.2"
+  gem 'simplecov', :require => false
 end
 
 group :migrations do
@@ -57,12 +57,12 @@ group :migrations do
   gem 'seed-fu'
 end
 
-gem 'simplecov', :require => false, :group => :test
-
 group :deployment do
   gem 'rvm-capistrano'
   gem 'bundler'
   gem 'capistrano'
+  gem 'guard'
+  gem 'guard-livereload'
 end
 
 gem 'odf-report'
@@ -80,6 +80,4 @@ gem 'rails_backend', git: 'https://github.com/olvap/rails_backend.git'
   gem "twitter-bootstrap-rails", '~> 2.2.7'
 # hasta aca
 
-  gem 'guard'
-  gem 'guard-livereload'
-  gem "select2-rails"
+gem "select2-rails"
