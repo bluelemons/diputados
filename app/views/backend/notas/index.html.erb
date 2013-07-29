@@ -5,7 +5,7 @@
       <%=t '.title', :default => controller_name.titleize %>
     <% end %>
     <%= content_for :action_buttons do%>
-      <%= link_to 'Descargar Lista', backend_notas_path, format: :pdf  %>
+       <%= link_to 'Descargar Lista', backend_notas_path(format: :pdf, params: params)  %>
     <% end %>
     <%= will_paginate %>
     <%= render 'table' %>
