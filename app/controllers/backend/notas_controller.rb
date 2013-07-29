@@ -25,12 +25,16 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
   end
 
   def index
-    @notas = Nota.all
 
     respond_to do |format|
-      format.html
+      format.html {super}
       format.pdf do
-        report = NotasReport.new.listado @notas
+        @notas = end_of_association_chain.search(params[:q])
+        @notas =  @notas.result(distinct: true)
+
+        report = NotasReport.listado @notas
+
+
         send_file report, :type => "application/vnd.oasis.opendocument.text"
       end
     end
