@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="span9">
+
+    <%= content_for :page_title do%>
+      <%=t '.title', :default => controller_name.titleize %>
+    <% end %>
+    <%= content_for :action_buttons do%>
+      <%= link_to 'Descargar Lista', backend_notas_path, format: :pdf  %>
+    <% end %>
+    <%= will_paginate %>
+    <%= render 'table' %>
+  </div>
+  <div class="span3">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="nav-header"><%=t '.filters', :default => "filters" %></li>
+      </ul>
+      <%= render 'search' %>
+    </div>
+  </div>
+</div>
