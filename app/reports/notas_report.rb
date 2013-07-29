@@ -8,10 +8,11 @@ class NotasReport
   # end
 
   def self.listado (notas)
+    @notas = notas
 
     report = ODFReport::Report.new(Rails.root.join("app/reports/notas.odt")) do |r|
-      r.add_section "NOTAS", notas do |n|
-        # binding.pry
+      r.add_section "NOTAS", @notas do |n|
+        n.add_field(:nada, :numero)
         n.add_field(:numero) { |item| item.numero.to_s }
         n.add_field(:organizacion) { |item| item.organization.to_s }
         n.add_field(:autor) { |item| item.initiator.to_s }

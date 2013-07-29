@@ -31,7 +31,6 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
       format.pdf do
         @notas = end_of_association_chain.search(params[:q])
         @notas =  @notas.result(distinct: true)
-
         report = NotasReport.listado @notas
 
 
