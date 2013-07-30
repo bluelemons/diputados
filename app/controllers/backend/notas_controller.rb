@@ -1,5 +1,5 @@
 class Backend::NotasController < Backend::AuthenticatedApplicationController
-  respond_to :html, :pdf
+  respond_to :html, :odf
 
   def new
     @nota = Nota.new
@@ -28,12 +28,11 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
 
     respond_to do |format|
       format.html {super}
-      format.pdf do
+      format.odf do
         @notas = end_of_association_chain.search(params[:q])
         @notas =  @notas.result(distinct: true)
-        report = NotasReport.listado @notas
-
-
+        report = NotasReport.new  @notas
+        report = report.listado
         send_file report, :type => "application/vnd.oasis.opendocument.text"
       end
     end
