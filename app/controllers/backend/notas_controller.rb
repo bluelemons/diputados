@@ -1,5 +1,5 @@
 class Backend::NotasController < Backend::AuthenticatedApplicationController
-  respond_to :html, :odf
+  respond_to :html, :pdf
 
   def new
     @nota = Nota.new
@@ -28,7 +28,7 @@ class Backend::NotasController < Backend::AuthenticatedApplicationController
 
     respond_to do |format|
       format.html {super}
-      format.odf do
+      format.pdf do
         @notas = end_of_association_chain.search(params[:q])
         @notas =  @notas.result(distinct: true)
         report = NotasReport.new  @notas
