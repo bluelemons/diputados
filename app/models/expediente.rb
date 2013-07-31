@@ -105,7 +105,7 @@ class Expediente < ActiveRecord::Base
   end
 
   def entrada
-    "#{fechaentr} #{hora} por: #{tipoentr}"
+    "#{fechaentr.strftime "%d-%m-%Y"} #{hora} por: #{tipoentr}"
   end
 
   def periodo
