@@ -3,13 +3,14 @@ class Pase < ActiveRecord::Base
   before_save :asigna_ingreso
   after_save :asigna_primer_pase, :asigna_ultimo_pase
   before_destroy :chekea_ultimo
-
   belongs_to :expediente
   belongs_to :area
   belongs_to :weekly_session
   has_many :resolutions
 
   validates :area, :presence => true
+
+  delegate :name, to: :area, allow_nil: true, prefix: true
 
   def chekea_ultimo
     if expediente.pases.last != self
