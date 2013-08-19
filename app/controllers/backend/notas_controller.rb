@@ -1,4 +1,17 @@
 class Backend::NotasController < Backend::AuthenticatedApplicationController
+  respond_to :pdf, :html
+  def index
+
+    respond_to do |format|
+      format.html { super }
+      format.pdf do
+        Nota.per_page = 200
+        report = NotasReport.new(collection)
+        report = report.listado_notas
+        send_file report, :type => "application/vnd.oasis.opendocument.text"
+      end
+    end
+  end
 
   def new
     @nota = Nota.new

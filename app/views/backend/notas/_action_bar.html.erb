@@ -1,0 +1,22 @@
+<div id="action_bar">
+  <%= render 'breadcrumbs' %>
+  <div id="actions_buttons">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+      new_resource_path, :class => 'new_button' unless current_page?(new_resource_path) %>
+
+    <% case action_name %>
+    <% when "show" %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_resource_path(resource), :class => 'edit_button' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                resource_path(resource), method: :delete, confirm: "Are you sure?", :class => 'destroy_button' %>
+    <% when "edit" %>
+      <%= link_to t('.show', :default => t("helpers.links.show")),
+                resource_path(resource), :class => 'show_button' %>
+    <% when "index" %>
+     <%= link_to t('.print', :default => "print"),
+                resource_path(resource), :class => 'show_button' %>
+    <% end %>
+    <%= yield :action_buttons %>
+  </div>
+</div>
