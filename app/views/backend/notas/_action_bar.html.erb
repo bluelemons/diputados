@@ -14,8 +14,8 @@
       <%= link_to t('.show', :default => t("helpers.links.show")),
                 resource_path(resource), :class => 'show_button' %>
     <% when "index" %>
-     <%= link_to t('.print', :default => "print"),
-                resource_path(resource), :class => 'show_button' %>
+     <%= link_to t('.print', :default => "Print"),
+                backend_notas_path(format: :pdf), :class => 'show_button' %>
     <% end %>
     <%= yield :action_buttons %>
   </div>
