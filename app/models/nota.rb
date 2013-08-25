@@ -8,8 +8,15 @@ class Nota < Expediente
 
   accepts_nested_attributes_for :pases
 
+  before_save :check_pases
+
   delegate :area, to: :ultimo_pase, prefix: true
   delegate :ingreso, to: :primer_pase
+
+  def check_pases
+    self.primer_pase = pases.first
+    self.ultimo_pase = pases.last
+  end
 
   def year
     ingreso.strftime("%Y")
