@@ -71,7 +71,7 @@ ActiveAdmin.register Proyecto do
           :final
           #,:expte, :marca, :etiq
 
-        panel "Archivos" do
+        panel "Archivos: los archivos txt son de uso interno." do
           table_for proyecto.assets do
             column "Nombre" do |a|
               link_to a.asset_file_name, a.asset.url
@@ -164,4 +164,3 @@ ActiveAdmin.register Proyecto do
   end
 
 end
-
