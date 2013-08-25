@@ -33,8 +33,6 @@ module Legacy
       @model = opts[:model]
       # constraints for seed-fu seeding
       @constraints = @model.const_get(:LEGACY_CONSTRAINTS) rescue [:id]
-      # references to fill if possible.
-      @references = @model.reflect_on_all_associations(:belongs_to)
       SeedFu.quiet = true unless opts.delete(:verbose)
       @legacy_table.encoding = opts[:encoding] || Legacy::LEGACY_ENCODING
       @output = opts[:output] || nil
@@ -89,10 +87,17 @@ module Legacy
 
     private
 
+    # references to fill if possible.
+    def references
+      @references ||= @model.reflect_on_all_associations(:belongs_to).keep_if do |reference|
+        reference.klass.const_defined? :LEGACY_CONSTRAINTS
+      end
+    end
+
     def prepare_record(record)
       attributes = downcase_and_symbolize_attributes record.attributes
       attributes = override_attributes(attributes)
-      attributes.merge! build_references(attributes) unless @references.empty?
+      attributes.merge! build_references(attributes) unless references.empty?
       print "·" if @output == :dots
       attributes
     end
@@ -104,7 +109,7 @@ module Legacy
 
     def build_references(seed_attr)
       hash = {}
-      @references.each do |r|
+      references.each do |r|
         hash[r.foreign_key] = seed_attr[r.foreign_key.to_sym] ||
                               find_associated_record_id(r.klass, seed_attr)
       end
