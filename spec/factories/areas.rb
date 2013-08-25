@@ -4,4 +4,8 @@ FactoryGirl.define do
   factory :computos, class: Area do
     name 'computos'
   end
+
+  factory :area, class: Area do
+    name 'area'
+  end
 end

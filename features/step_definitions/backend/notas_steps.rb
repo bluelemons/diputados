@@ -5,7 +5,7 @@ end
 def notas_fill_form
   fill_in "Numero", with: "1221"
   fill_in "Iniciador", with: "Some One"
-  select 'computos', :from => 'Area'
+  select 'area', :from => 'Area'
 
   click_button "Crear Nota"
 end
