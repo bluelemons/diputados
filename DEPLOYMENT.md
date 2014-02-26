@@ -30,10 +30,14 @@ Para configurar el servidor por primera vez, es necesario:
 
 7. Clonar el repositorio en tu máquina local.
 
-  $ git clone git@github.com:BlueLemon/diputados.git
+```
+$ git clone git@github.com:BlueLemon/diputados.git
+```
 
 8. Instalar rvm en tu máquina local siguiendo los mismos pasos que en el servidor. https://rvm.io/rvm/install
 
 9. instalar las gemas necesarias para la aplicacion
 
-  $ bundle install
+```
+$ bundle install
+```
