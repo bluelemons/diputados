@@ -54,6 +54,14 @@ utilizando [git][git] y tener instalado ruby preferentemente utilizando
     # Para instalar rvm
     \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
+Luego puede clonar el repositorio en tu máquina local.
+
+    git clone git@github.com:BlueLemon/diputados.git
+
+e instalar las gemas necesarias para la aplicacion
+
+    bundle install
+
 Las instrucciones para desplegar la aplicación en el servidor se encuentran en
 archivo DEPLOYMENT.md
 
