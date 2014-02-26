@@ -14,7 +14,7 @@ Para configurar el servidor por primera vez, es necesario:
 
    b. MySQL (Base de Datos).
 
-3. Instalar RVM (Ruby Version Manager) en el usuario `diputados`.
+3. Instalar RVM (Ruby Version Manager) en el usuario `diputados`. https://rvm.io/rvm/install
 
 4. Instalar [Phusssion Passanger][passenger] siguiendo las 
    [instrucciones][inst]
@@ -32,7 +32,7 @@ Para configurar el servidor por primera vez, es necesario:
 
   $ git clone git@github.com:BlueLemon/diputados.git
 
-8. Instalar rvm en tu máquina local siguiendo los mismos pasos que en el servidor.
+8. Instalar rvm en tu máquina local siguiendo los mismos pasos que en el servidor. https://rvm.io/rvm/install
 
 9. instalar las gemas necesarias para la aplicacion
 
