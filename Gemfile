@@ -43,6 +43,8 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'pry-rails'
+  gem 'guard',            require: false # react to file changes
+  gem 'guard-livereload', require: false # reload browser automagicaly
 end
 
 group :test do
@@ -64,8 +66,6 @@ group :deployment do
   gem 'rvm-capistrano'
   gem 'bundler'
   gem 'capistrano'
-  gem 'guard'
-  gem 'guard-livereload'
 end
 
 gem 'odf-report'
