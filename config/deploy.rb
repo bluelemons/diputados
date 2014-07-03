@@ -12,6 +12,8 @@ require "rvm/capistrano"
 
 set :application, "diputados"
 set :repository,  "https://github.com/bluelemons/diputados.git"
+set :branch,      fetch(:branch, "master")
+set :env,         fetch(:env, "production")
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
