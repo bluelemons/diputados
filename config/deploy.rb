@@ -11,7 +11,7 @@ set :rvm_type, :system  # Copy the exact line. I really mean :system here
 require "rvm/capistrano"
 
 set :application, "diputados"
-set :repository,  "https://github.com/BlueLemon/diputados.git"
+set :repository,  "https://github.com/bluelemons/diputados.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
