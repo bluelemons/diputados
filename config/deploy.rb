@@ -5,7 +5,7 @@ require "whenever/capistrano"
 
 # RVM Setup
 
-set :rvm_ruby_string, "2.0.0-p0"
+set :rvm_ruby_string, "ruby-2.1.2"
 set :rvm_type, :system  # Copy the exact line. I really mean :system here
 
 require "rvm/capistrano"
