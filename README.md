@@ -1,4 +1,4 @@
-# Diputados [![Dependency Status](https://gemnasium.com/BlueLemon/diputados.png)](https://gemnasium.com/BlueLemon/diputados) [![Code Climate](https://codeclimate.com/github/BlueLemon/diputados.png)](https://codeclimate.com/github/BlueLemon/diputados) [![Build Status](https://travis-ci.org/BlueLemon/diputados.png?branch=master)](https://travis-ci.org/BlueLemon/diputados)
+# Diputados [![Dependency Status](https://gemnasium.com/bluelemons/diputados.png)](https://gemnasium.com/bluelemons/diputados) [![Code Climate](https://codeclimate.com/github/bluelemons/diputados.png)](https://codeclimate.com/github/bluelemons/diputados) [![Build Status](https://travis-ci.org/bluelemons/diputados.png?branch=master)](https://travis-ci.org/bluelemons/diputados)
 
 Es una aplicación prototipo para la cámara de diputados de la provincia de Santa
 Fe que usará los datos de un sistema en dbf.
