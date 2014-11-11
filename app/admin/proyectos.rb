@@ -3,7 +3,7 @@
 ActiveAdmin.register Proyecto do
   menu :label => "Expedientes"
   before_filter :only => :index do |controller|
-    @per_page = 300 if ['application/pdf', 'application/xml'].include?(request.format)
+    @per_page = 1000 if ['application/pdf', 'application/xml'].include?(request.format)
   end
 
   actions :index, :show#, :destroy
